@@ -1,0 +1,19 @@
+<article class="media">
+    <a href="{{ post.url }}" class="pull-left">
+        <img class="media-object" src="{{ post.thumbnail }}" alt="{{ post.title }}" />
+    </a>
+    <div class="media-body">
+        <a href="{{ post.url }}">
+            <p>
+                <strong class="media-heading"><date>{{ post.date | date: site.date_format }}</date></strong>
+                <span class="label label-primary">{{ post.category }}</span>
+            </p>
+            <h4>
+                {{ post.title }}
+            </h4>
+            <p class="hl-media-excerpt">
+                {{ post.excerpt | replace: '<', '<!--' | replace: '>', '-->' }}
+            </p>
+        </a>
+    </div>
+</article>
