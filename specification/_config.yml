@@ -1,0 +1,5 @@
+permalink: /community/:year-:month-:day-:title.html
+paginate: 8
+paginate_path: community/:num
+date_format: "%Y/%m/%d"
+excerpt_separator: "</p>"
