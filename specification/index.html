@@ -1,0 +1,74 @@
+---
+layout: global
+title: NTTコミュニケーションズ HTML5ラボ
+description: WebRTCは、ブラウザ同士でリアルタイムに映像、音声、データを送受信できる画期的な新技術。SkyWayを使えば、サーバを準備することなく、簡単なJavaScriptを書くだけで、WebRTCを使ったアプリが開発できます。
+---
+<section id="about" class="hl-section">
+    <div class="jumbotron">
+        <p><img class="img-responsive" data-src="../js/holder.js/1020x200/text:Main Visual" alt="NTTコミュニケーションズ HTML5ラボ ロゴ"></p>
+        <p>Webには、私たちにしかできないことがある。</p>
+        <p>NTTコミュニケーションズが、なぜHTML5なのか。
+            そういう質問を、私たちは何度もされてきました。
+            その答えは、単純です。私たちは、人々をつなぐインフラをつくる企業だから。そしてWebは、そんなインフラそのものになりつつあるからです。
+            WebSocket, WebRTC, HTTP/2.0・・・HTML5に端を発したWebの進化は、Webをかつてないほど大きく、柔軟で、高速なアプリケーション基盤に変えようとしています。そのことは、Web技術者の皆さんは良く知るところでしょう。</p>
+        <p>私たちには、日本のインターネットインフラを構築し、支え、進化させてきたという自負があります。
+            そして今度は、Webという新しいインフラを支え、未来を形作っていきたい。
+            そのために、私たちにしかできないことがある。そう信じて、日々様々な事に取り組んでいます。
+            私たちは、HTML5に本気です。</p>
+    </div>
+</section>
+<section id="media" class="hl-section">
+    <h1>活動1 メディア</h1>
+    <p>本サイトでは、国内外で活躍する40名以上のWeb技術専門家が執筆した、HTML5を中心とした最新技術の動向や活用方法の解説、Web業界の著名人のインタビュー、事例やイベントの紹介など、多彩な記事を公開します。</p>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="thumbnail">
+                <a href="http://html5experts.jp/">
+                    <img data-src="../js/holder.js/600x300/text:HTML5 Experts.jp Logo" alt="HTML5 Experts.jp">
+                    <div class="caption">
+                        <p>HTML5 Experts.jpは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
+                            「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="thumbnail">
+                <a href="http://works.html5experts.jp/">
+                    <img data-src="../js/holder.js/600x300/text:HTML5 Experts Works Logo" alt="HTML5 Experts Works">
+                    <div class="caption">
+                        <p>HTML5 Experts Worksは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
+                            「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="product" class="hl-section">
+    <h1>活動2 プロダクト</h1>
+    <p>NTT Comは、クラウドサービスやネットワークサービス、アプリケーションサービスと連動する、マルチデバイス連携やVoIP連携などの開発を進めていきます。</p>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="thumbnail">
+                <a href="http://nttcom.github.io/skyway/">
+                    <img data-src="../js/holder.js/600x300/text:SkyWay Logo" alt="SkyWay">
+                    <div class="caption">
+                        <p>SkyWayは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
+                            「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="community" class="hl-section">
+    <h1>活動3 コミュニティ／イベント</h1>
+    <p>全国各地の Web 技術者コミュニティと連携し、HTML5技術セミナーや勉強会に加えて、HTML5技術をテーマにしたハッカソンやアプリコンテストなど、技術の実践を目的にしたイベントを順次開催します。</p>
+    {% for post in site.posts limit:5 %}
+    {% include post_list.html %}
+    {% endfor %}
+    <p class="text-center">
+        <a href="community/" class="btn btn-primary" role="button">もっと見る</a>
+    </p>
+</section>

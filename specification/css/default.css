@@ -1,0 +1,46 @@
+/* Structure */
+body {
+  padding-top: 70px;
+}
+/* Header */
+.hl-logo-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Home */
+.hl-section {
+  margin-bottom: 200px;
+}
+/* Home and Community */
+.hl-media-excerpt {
+  height: 1.428571429em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Footer */
+.hl-footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+.hl-social-buttons {
+  display: inline-block;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.hl-social-buttons li {
+  display: inline-block;
+  line-height: 1;
+  padding: 5px 8px;
+}
+.hl-links {
+  margin-top: 20px;
+  padding-left: 0;
+}
+.hl-links li {
+  display: inline;
+  padding: 0 2px;
+}

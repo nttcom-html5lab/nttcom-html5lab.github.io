@@ -1,0 +1,51 @@
+---
+layout: global
+title: コミュニティ／イベント一覧
+description: WebRTCは、ブラウザ同士でリアルタイムに映像、音声、データを送受信できる画期的な新技術。SkyWayを使えば、サーバを準備することなく、簡単なJavaScriptを書くだけで、WebRTCを使ったアプリが開発できます。
+---
+<section id="community">
+    <h1>コミュニティ／イベント一覧</h1>
+    {% for post in paginator.posts %}
+    {% include post_list.html %}
+    {% endfor %}
+
+    {% if paginator.total_pages > 1 %}
+    <div class="text-center">
+        <ul class="pagination">
+            {% if paginator.previous_page %}
+            {% if paginator.page == 2 %}
+            <li><a href="../">&laquo;</a></li>
+            {% else %}
+            <li><a href="../{{ paginator.previous_page }}/">&laquo;</a></li>
+            {% endif %}
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+            <li class="active"><span>{{ page }} <span class="sr-only">(current)</span></span></li>
+            {% elsif page == 1 %}
+            <li><a href="../">{{ page }}</a></li>
+            {% else %}
+            {% if paginator.page == 1 %}
+            <li><a href="{{ page }}/">{{ page }}</a></li>
+            {% else %}
+            <li><a href="../{{ page }}/">{{ page }}</a></li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+
+            {% if paginator.next_page %}
+            {% if paginator.page == 1 %}
+            <li><a href="{{ paginator.next_page }}/">&raquo;</a></li>
+            {% else %}
+            <li><a href="../{{ paginator.next_page }}/">&raquo;</a></li>
+            {% endif %}
+            {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+</section>
