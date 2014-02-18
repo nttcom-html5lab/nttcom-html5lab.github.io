@@ -1,18 +1,3 @@
-{% if page.url contains '/community/index.html' %}
-    {% comment %} /repository_name/community/index.html の場合 {% endcomment %}
-    {% assign relative_path = '../' %}
-{% elsif page.url contains '/community/' %}
-    {% if page.url contains '/index.html' %}
-        {% comment %} /repository_name/community/*/index.html の場合 {% endcomment %}
-        {% assign relative_path = '../../' %}
-    {% else %}
-        {% comment %} /repository_name/community/yyyy-mm-dd-title.html の場合 {% endcomment %}
-        {% assign relative_path = '../' %}
-    {% endif %}
-{% else %}
-    {% comment %} /repository_name/foo.html の場合 {% endcomment %}
-    {% assign relative_path = '' %}
-{% endif %}
 <article class="media">
     <a href="{{relative_path}}{{ post.url | replace_first: '/', '' }}" class="pull-left">
         <img class="media-object" src="{{ post.thumbnail }}" alt="{{ post.title }}" />
