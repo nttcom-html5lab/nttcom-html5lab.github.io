@@ -1,9 +1,10 @@
+{% include set_variable.html %}
 <article class="media">
-    <a href="{{relative_path}}{{ post.url | replace_first: '/', '' }}" class="pull-left">
+    <a href="{{ relative_path }}{{ post.url | replace_first: '/', '' }}" class="pull-left">
         <img class="media-object" src="{{ post.thumbnail }}" alt="{{ post.title }}" />
     </a>
     <div class="media-body">
-        <a href="{{relative_path}}{{ post.url | replace_first: '/', '' }}">
+        <a href="{{ relative_path }}{{ post.url | replace_first: '/', '' }}">
             <p>
                 <strong class="media-heading"><date>{{ post.date | date: site.date_format }}</date></strong>
                 <span class="label label-primary">{{ post.category }}</span>
