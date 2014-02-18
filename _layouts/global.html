@@ -1,19 +1,4 @@
-{% comment %} 変数 relative_path にサイトのトップレベルへの相対パスをセットする {% endcomment %}
-{% if page.url contains '/community/index.html' %}
-    {% comment %} community/index.html の場合 {% endcomment %}
-    {% assign relative_path = '../' %}
-{% elsif page.url contains '/community/' %}
-    {% if page.url contains '/index.html' %}
-        {% comment %} community/ページ番号/index.html の場合 {% endcomment %}
-        {% assign relative_path = '../../' %}
-    {% else %}
-        {% comment %} community/yyyy-mm-dd-記事タイトル.html の場合 {% endcomment %}
-        {% assign relative_path = '../' %}
-    {% endif %}
-{% else %}
-    {% comment %} index.html の場合 {% endcomment %}
-    {% assign relative_path = '' %}
-{% endif %}
+{% include set_variable.html %}
 <!DOCTYPE html>
 <html>
 <head>
