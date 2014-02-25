@@ -12,7 +12,7 @@ layout: global
 <ul class="pager">
     {% if page.previous.url %}
     <li class="previous">
-        <a href="{{page.previous.url}}">
+        <a href="{{ page.previous.url | replace_first: '/community/', '' }}">
             &larr;
             古い投稿
         </a>
@@ -20,7 +20,7 @@ layout: global
     {% endif %}
     {% if page.next.url %}
     <li class="next">
-        <a href="{{page.next.url}}">
+        <a href="{{ page.next.url | replace_first: '/community/', '' }}">
             新しい投稿
             &rarr;
         </a>
