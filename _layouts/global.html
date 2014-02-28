@@ -1,5 +1,5 @@
-{% include set_variable.html %}
 <!DOCTYPE html>
+{% include assign_relative_path.html %}
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,9 +17,13 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- ダミー画像を生成するライブラリ -->
+    <script src="{{ relative_path }}js/holder.js"></script>
+    <script src="{{ relative_path }}js/jquery-1.11.0.min.js"></script>
+    <script src="{{ relative_path }}js/bootstrap.min.js"></script>
 </head>
-<body data-spy="scroll" data-target=".hl-navbar">
-<nav class="navbar navbar-default navbar-fixed-top hl-navbar" role="navigation">
+<body data-spy="scroll" data-target=".hl-scroll-spy" data-offset="0">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -28,27 +32,36 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hl-logo-wrapper" href="{{ relative_path }}./"><img data-src="../js/holder.js/150x50/text:HTML5 Lab Logo" alt="NTTコミュニケーションズ HTML5ラボ" /></a>
+            <a class="navbar-brand hl-logo-wrapper" href="{{ relative_path }}./"><img class="img-responsive" data-src="../js/holder.js/150x50/text:HTML5 Lab Logo" alt="NTTコミュニケーションズ HTML5ラボ" /></a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{ relative_path }}#about">HTML5ラボとは</a>
+                    <a href="{{ relative_path }}./">Top</a>
                 </li>
                 <li>
-                    <a href="{{ relative_path }}#media">メディア</a>
+                    <a href="{{ relative_path }}about/">About</a>
                 </li>
                 <li>
-                    <a href="{{ relative_path }}#product">プロダクト</a>
-                </li>
-                <li>
-                    <a href="{{ relative_path }}#community">コミュニティ／イベント</a>
+                    <a href="{{ relative_path }}contact/">Contact</a>
                 </li>
             </ul>
+            <div class="col-sm-3 pull-right">
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control hl-search-box" placeholder="Search" />
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<main class="container">
+<main>
     {{ content }}
 </main>
 <footer class="hl-footer text-muted">
@@ -70,12 +83,8 @@
         </ul>
         <p class="hl-copy">Copyright &copy; 2014 NTT Communications</p>    </div>
 </footer>
-<!-- ダミー画像を生成するライブラリ -->
-<script src="{{ relative_path }}js/holder.js"></script>
-<script src="{{ relative_path }}js/jquery-1.11.0.min.js"></script>
-<script src="{{ relative_path }}js/bootstrap.min.js"></script>
 <script>
-    $('body').scrollspy({ target: '.hl-navbar'});
+    $('body').scrollspy({ target: '.hl-scroll-spy'});
 </script>
 </body>
 </html>

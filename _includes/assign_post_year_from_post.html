@@ -1,0 +1,8 @@
+{% comment %} 変数 post_year に現在処理中のページの年をセットする {% endcomment %}
+{% comment %} 投稿の年(例：2014-01-01-hoge.html)を利用する {% endcomment %}
+{% if post %}
+    {% assign _date = post.date %}
+{% else %}
+    {% assign _date = page.date %}
+{% endif %}
+{% assign post_year = _date | date: "%Y" %}
