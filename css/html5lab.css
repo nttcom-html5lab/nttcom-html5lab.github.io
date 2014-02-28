@@ -9,7 +9,7 @@ body {
 }
 /* Home */
 .hl-section {
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 /* Home and Community */
 .hl-media-excerpt {
@@ -45,12 +45,30 @@ body {
   padding: 0 2px;
 }
 .hl-affix.affix {
-  top: 71px;
-  width: 165px;
+  position: fixed;
+}
+.hl-affix.affix-bottom {
+  position: absolute;
+}
+@media (min-width: 992px) {
+  .hl-affix.affix,
+  .hl-affix.affix-bottom {
+    width: 131px;
+  }
+}
+@media (min-width: 1200px) {
+  .hl-affix.affix,
+  .hl-affix.affix-bottom {
+    width: 165px;
+  }
 }
 #about {
   background: url('?holder.js/1280x720/text:Main Visual') no-repeat center center;
   background-size: cover !important;
   height: 720px;
-  padding-top: 100px;
+  padding-top: 120px;
+  margin-top: -20px;
+}
+.hl-search-box {
+  width: 100% !important;
 }

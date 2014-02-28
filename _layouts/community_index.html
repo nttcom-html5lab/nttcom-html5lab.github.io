@@ -7,7 +7,7 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
 {% include assign_current_year.html %}
 <section id="community" class="hl-section container">
     <div class="row">
-        <div class="col-xs-12 col-md-10">
+        <div class="col-sm-12 col-md-10">
             <ol class="breadcrumb">
                 <li><a href="../../">Top</a></li>
                 <li><a href="../{{ current_year }}/">{{ page.title }}</a></li>
@@ -22,7 +22,7 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
 
             {{ content }}
         </div>
-        <div class="col-md-2">
+        <div class="hidden-xs hidden-sm col-md-2">
             <div class="hl-affix">
                 <nav>
                     <ul class="nav nav-pills nav-stacked">
@@ -43,11 +43,16 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
                     $('.hl-affix').affix({
                         offset: {
                             top: 0 ,
-                            bottom: $('.hl-footer').outerHeight()
+                            bottom: $('.hl-footer').outerHeight() + 100
                         }
                     });
                 });
             </script>
+            <style rel="stylesheet">
+                .hl-affix.affix {
+                    top: 71px;
+                }
+            </style>
         </div>
     </div>
 </section>
