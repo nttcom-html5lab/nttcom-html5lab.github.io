@@ -6,54 +6,41 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
 {% include assign_post_year_from_path.html %}
 {% include assign_current_year.html %}
 {% include assign_relative_path.html %}
-<section id="community" class="hl-section container">
-    <div class="row">
-        <div class="col-sm-12 col-md-10">
-            <ol class="breadcrumb">
-                <li><a href="../../">Top</a></li>
-                <li><a href="../{{ current_year }}/">{{ page.title }}</a></li>
-                <li class="active">{{ post_year }}</li>
-            </ol>
-            <header class="page-header">
-                <h1>{{ page.title }}</h1>
-            </header>
-            {% for post in site.categories[post_year] %}
-            {% include community_post_summary.html %}
-            {% endfor %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
+                <ol class="breadcrumb">
+                    <li><a href="../../">Top</a></li>
+                    <li><a href="../{{ current_year }}/">{{ page.title }}</a></li>
+                    <li class="active">{{ post_year }}</li>
+                </ol>
+                <header class="page-header">
+                    <h1>{{ page.title }}</h1>
+                </header>
+                {% for post in site.categories[post_year] %}
+                {% include community_post_summary.html %}
+                {% endfor %}
 
-            {{ content }}
-        </div>
-        <div class="hidden-xs hidden-sm col-md-2">
-            <div class="hl-affix">
-                <nav>
-                    <ul class="nav nav-pills nav-stacked">
-                        {% capture categories %}{% for category in site.categories %}{% if category[0] contains '20' %}{{ category[0] }},{% endif %}{% endfor %}{% endcapture %}
-                        {% assign sorted_categories = categories | split: ',' | sort %}
-                        {% for category in sorted_categories reversed %}
-                        {% if post_year == category %}
-                        <li class="active"><a href="./">{{ category }}</a></li>
-                        {% else %}
-                        <li><a href="../{{ category }}/">{{ category }}</a></li>
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
-                </nav>
+                {{ content }}
             </div>
-            <script>
-                $(document).on('ready', function() {
-                    $('.hl-affix').affix({
-                        offset: {
-                            top: 0 ,
-                            bottom: $('.hl-footer').outerHeight() + 100
-                        }
-                    });
-                });
-            </script>
-            <style rel="stylesheet">
-                .hl-affix.affix {
-                    top: 71px;
-                }
-            </style>
+            <div class="hidden-xs hidden-sm col-md-2">
+                <div class="hl-affix">
+                    <nav>
+                        <ul class="nav nav-pills nav-stacked">
+                            {% capture categories %}{% for category in site.categories %}{% if category[0] contains '20' %}{{ category[0] }},{% endif %}{% endfor %}{% endcapture %}
+                            {% assign sorted_categories = categories | split: ',' | sort %}
+                            {% for category in sorted_categories reversed %}
+                            {% if post_year == category %}
+                            <li class="active"><a href="./">{{ category }}</a></li>
+                            {% else %}
+                            <li><a href="../{{ category }}/">{{ category }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
 </section>
