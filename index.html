@@ -4,168 +4,171 @@ title: NTTコミュニケーションズ HTML5ラボ
 description: WebRTCは、ブラウザ同士でリアルタイムに映像、音声、データを送受信できる画期的な新技術。SkyWayを使えば、サーバを準備することなく、簡単なJavaScriptを書くだけで、WebRTCを使ったアプリが開発できます。
 ---
 {% include assign_current_year.html %}
-<section id="about" class="hl-section holderjs">
+<section id="about" class="hl-section holderjs hl-window-height">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-10">
                 <p class="lead"><strong>Webには、私たちにしかできないことがある。</strong></p>
-                <p><strong>NTTコミュニケーションズが、なぜHTML5なのか。</strong>
-                    そういう質問を、私たちは何度もされてきました。
+            </div>
+                <div class="hidden-xs hidden-sm col-md-2">
+                    <div class="hl-affix">
+                        <nav class="hl-scroll-spy">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <a href="#about">About</a>
+                                </li>
+                                <li>
+                                    <a href="#activity">Activity</a>
+                                </li>
+                                <li>
+                                    <a href="#media">Media</a>
+                                </li>
+                                <li>
+                                    <a href="#product">Product</a>
+                                </li>
+                                <li>
+                                    <a href="#community">Community / Event</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <script>
+                        $(document).on('ready', function() {
+                            $('.hl-affix').affix({
+                                offset: {
+                                    top: 0,
+                                    bottom: $('.hl-footer').outerHeight() + 100
+                                }
+                            });
+                        });
+                    </script>
+                    <style rel="stylesheet">
+                        .hl-affix.affix {
+                            top: 71px;
+                        }
+                    </style>
+                </div>
+        </div>
+    </div>
+</section>
+
+<section id="copy" class="hl-section holderjs">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
+                <p class="h2 text-center"><strong>NTTコミュニケーションズが、なぜHTML5なのか。</strong></p>
+                <p>そういう質問を、私たちは何度もされてきました。
                     その答えは、単純です。私たちは、人々をつなぐインフラをつくる企業だから。そしてWebは、そんなインフラそのものになりつつあるからです。
                     WebSocket, WebRTC, HTTP/2.0・・・HTML5に端を発したWebの進化は、Webをかつてないほど大きく、柔軟で、高速なアプリケーション基盤に変えようとしています。そのことは、Web技術者の皆さんは良く知るところでしょう。</p>
                 <p>私たちには、日本のインターネットインフラを構築し、支え、進化させてきたという自負があります。
                     そして今度は、Webという新しいインフラを支え、未来を形作っていきたい。
-                    そのために、私たちにしかできないことがある。そう信じて、日々様々な事に取り組んでいます。
-                    <strong>私たちは、HTML5に本気です。</strong></p>
-            </div>
-            <div class="hidden-xs hidden-sm col-md-2">
-                <div class="hl-affix">
-                    <nav class="hl-scroll-spy">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li>
-                                <a href="#about">About</a>
-                            </li>
-                            <li>
-                                <a href="#activity">Activity</a>
-                            </li>
-                            <li>
-                                <a href="#media">Media</a>
-                            </li>
-                            <li>
-                                <a href="#product">Product</a>
-                            </li>
-                            <li>
-                                <a href="#community">Community / Event</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <script>
-                    $(document).on('ready', function() {
-                        $('.hl-affix').affix({
-                            offset: {
-                                top: 0,
-                                bottom: $('.hl-footer').outerHeight() + 100
-                            }
-                        });
-                    });
-                </script>
-                <style rel="stylesheet">
-                    .hl-affix.affix {
-                        top: 171px;
-                    }
-                </style>
+                    そのために、私たちにしかできないことがある。そう信じて、日々様々な事に取り組んでいます。</p>
+                <p class="lead text-center"><strong>私たちは、HTML5に本気です。</strong></p>
             </div>
         </div>
     </div>
 </section>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-md-10">
-            <section id="activity" class="hl-section">
+
+<section id="activity" class="hl-section hl-window-height">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
                 <header class="page-header">
-                    <h1>活動</h1>
+                    <h1>HTML5ラボの取り組み</h1>
                 </header>
+                <p>HTML5ラボは、次世代のWeb標準仕様「HTML5」を活用した新たなサービスの開発を推進するプロジェクトです。</p>
                 <div class="row">
                     <div class="col-xs-12 col-sm-4">
-                        <div class="thumbnail">
-                            <a href="#media">
-                                <img data-src="holder.js/300x200/text:Media" alt="メディア">
-                                <div class="caption">
-                                    <h3>活動1 メディア</h3>
-                                    <p>HTML5 Experts.jpは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
-                                        「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
-                                </div>
-                            </a>
-                        </div>
+                        <a href="#media">
+                            <h2 class="h3">メディア</h2>
+                            <p>HTML5技術情報サイトを通じて、HTML5のエキスパートによる最先端の技術情報を発信</p>
+                        </a>
                     </div>
                     <div class="col-xs-12 col-sm-4">
-                        <div class="thumbnail">
-                            <a href="#product">
-                                <img data-src="holder.js/300x200/text:Product" alt="プロダクト">
-                                <div class="caption">
-                                    <h3>活動2 プロダクト</h3>
-                                    <p>HTML5 Experts.jpは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
-                                        「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
-                                </div>
-                            </a>
-                        </div>
+                        <a href="#product">
+                            <h2 class="h3">プロダクト</h2>
+                            <p>HTML5を活用した新サービスや、HTML5を支えるクラウド／ネットワークサービスを開発</p>
+                        </a>
                     </div>
                     <div class="col-xs-12 col-sm-4">
-                        <div class="thumbnail">
-                            <a href="#community">
-                                <img data-src="holder.js/300x200/text:Community" alt="コミュニティ">
-                                <div class="caption">
-                                    <h3>活動3 コミュニティ</h3>
-                                    <p>HTML5 Experts.jpは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
-                                        「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
-                                </div>
-                            </a>
-                        </div>
+                        <a href="#community">
+                            <h2 class="h3">コミュニティ／イベント</h2>
+                            <p>カンファレンスやアプリコンテストなど技術者コミュニティのイベント支援と独自イベントの開催</p>
+                        </a>
                     </div>
                 </div>
-            </section>
-            <section id="media" class="hl-section">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="media" class="hl-section hl-window-height">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
                 <header class="page-header">
-                    <h1>活動1 メディア</h1>
+                    <h1>メディア</h1>
                 </header>
-                <p>本サイトでは、国内外で活躍する40名以上のWeb技術専門家が執筆した、HTML5を中心とした最新技術の動向や活用方法の解説、Web業界の著名人のインタビュー、事例やイベントの紹介など、多彩な記事を公開します。</p>
+                <p>HTML5の普及促進を図るため、OS／デバイス／ブラウザに中立な立場で、HTML5技術サイトを運営しています。</p>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <div class="thumbnail">
-                            <a href="http://html5experts.jp/">
-                                <img data-src="holder.js/600x300/text:HTML5 Experts.jp Logo" alt="HTML5 Experts.jp">
-                                <div class="caption">
-                                    <p>HTML5 Experts.jpは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
-                                        「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
-                                </div>
-                            </a>
-                        </div>
+                        <h2 class="h3">HTML5 Experts.jp</h2>
+                        <p>
+                            <a href="http://html5experts.jp/"><img data-src="holder.js/600x200/text:HTML5 Experts.jp Logo" class="img-responsive img-thumbnail" alt="HTML5 Experts.jp"></a>
+                        </p>
+                        <p>HTML5の最新ニュースやハウツー、レポートなど、多彩な記事を提供する、HTML5技術サイトです。
+                            国内外で活躍する約50名のHTML5のエキスパート(専門家)が執筆を担当し、OS/デバイス/ブラウザに対して中立な立場で運営しています。</p>
+                        <p class="text-right"><a class="btn btn-primary" role="button">HTML5 Experts.jp サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <div class="thumbnail">
-                            <a href="http://works.html5experts.jp/">
-                                <img data-src="holder.js/600x300/text:HTML5 Experts Works Logo" alt="HTML5 Experts Works">
-                                <div class="caption">
-                                    <p>HTML5 Experts Worksは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
-                                        「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
-                                </div>
-                            </a>
-                        </div>
+                        <h2 class="h3">HTML5 Experts Works</h2>
+                        <p><a href="http://works.html5experts.jp/"><img data-src="holder.js/600x200/text:HTML5 Experts Works Logo" class="img-responsive img-thumbnail" Experts Works"></a></p>
+                        <p>HTML5 Experts.jpの執筆を担当するエキスパートとコントリビュータの方たちが制作した、ハイクオリティな作品を紹介するサイトです。</p>
+                        <p class="text-right"><a class="btn btn-primary" role="button">HTML5 Experts Works サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
                     </div>
                 </div>
-            </section>
-            <section id="product" class="hl-section">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="product" class="hl-section hl-window-height">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
                 <header class="page-header">
-                    <h1>活動2 プロダクト</h1>
+                    <h1>プロダクト</h1>
                 </header>
-                <p>NTT Comは、クラウドサービスやネットワークサービス、アプリケーションサービスと連動する、マルチデバイス連携やVoIP連携などの開発を進めていきます。</p>
+                <p>HTML5を活用した新たなサービスや、HTML5を支えるクラウド／ネットワークサービスを開発し、提供しています。</p>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <div class="thumbnail">
-                            <a href="http://nttcom.github.io/skyway/">
-                                <img data-src="holder.js/600x300/text:SkyWay Logo" alt="SkyWay">
-                                <div class="caption">
-                                    <p>SkyWayは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
-                                        「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。</p>
-                                </div>
-                            </a>
-                        </div>
+                        <h2 class="h3">SkyWay</h2>
+                        <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:SkyWay Logo" class="img-responsive img-thumbnail" alt="SkyWay"></a></p>
+                        <p>映像／音声／データをリアルタイムにブラウザ間で直接送受信できる、最先端のHTML5技術「WebRTC」を使ったアプリを、簡単に開発できる開発者向けのサービスです。
+                        </p>
+                        <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
                     </div>
                 </div>
-            </section>
-            <section id="community" class="hl-section">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="community" class="hl-section hl-window-height">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
                 <header class="page-header">
-                    <h1>活動3 コミュニティ／イベント</h1>
+                    <h1>コミュニティ／イベント</h1>
                 </header>
-                <p>全国各地の Web 技術者コミュニティと連携し、HTML5技術セミナーや勉強会に加えて、HTML5技術をテーマにしたハッカソンやアプリコンテストなど、技術の実践を目的にしたイベントを順次開催します。</p>
+                <p>カンファレンスやセミナー、ハッカソン、アプリコンテストなど、技術者コミュニティのイベントを支援し、独自イベントも開催しています。</p>
                 {% for post in site.posts limit:5 %}
                 {% include community_post_summary.html %}
                 {% endfor %}
                 <p class="text-center">
-                    <a href="community/{{ current_year }}/" class="btn btn-primary" role="button">もっと見る</a>
+                    <a href="community/{{ current_year }}/" class="btn btn-primary" role="button">コミュニティ／イベント一覧を見る <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </p>
-            </section>
+            </div>
         </div>
     </div>
-</div>
+</section>

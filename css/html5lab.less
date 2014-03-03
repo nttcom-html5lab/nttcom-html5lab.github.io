@@ -1,45 +1,38 @@
-/* Structure */
-body {
-    padding-top: 71px;
+//
+// html5lab.less
+// Bootstrapとは別に、独自に定義したスタイルを記述する
+// ==================================================
+
+.opacity(@opacity) {
+    opacity: @opacity;
+    // IE8 filter
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
 }
 
-/* Header */
+// All Pages
+// --------------------------------------------------
+
+// Header
 .hl-logo-wrapper {
     padding-top: 0;
     padding-bottom: 0;
 }
 
-/* Home */
+// Main
 .hl-section {
-    margin-bottom: 100px;
 }
 
-/* Home and Community */
-.hl-media-excerpt {
-    height: 1.428571429em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Footer */
+// Footer
 .hl-footer {
+    margin-top: 100px;
     padding-top: 40px;
     padding-bottom: 40px;
-    text-align: center;
     border-top: 1px solid #e5e5e5;
 }
 
 .hl-social-buttons {
-    display: inline-block;
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
-    li {
-        display: inline-block;
-        line-height: 1;
-        padding: 5px 8px;
-    }
+    height: 50px;
 }
 
 .hl-links {
@@ -51,7 +44,11 @@ body {
     }
 }
 
-.hl-copy {
+.hl-copyright {
+}
+
+.hl-logo {
+
 }
 
 .hl-affix.affix {
@@ -74,20 +71,43 @@ body {
     }
 }
 
-
-
 .hl-navbar {
 
 }
 
+// Top Page and Community Page
+// --------------------------------------------------
+
+
 #about {
-    background: url('?holder.js/1280x720/text:Main Visual') no-repeat center center;
+    margin-top: -71px;
+    padding-top: 71px;
+    background: url('?holder.js/1280x720/sky/text:Main Visual') no-repeat center center;
     background-size: cover !important;
-    height: 720px;
-    padding-top: 120px;
-    margin-top: -20px;
 }
 
-.hl-search-box {
-    width: 100% !important;
+#copy {
+    background-color: white;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
+
+#activity {
+    background-color: #d9edf7;
+}
+
+#media {
+    background-color: white;
+}
+
+#product {
+    background-color: #d9edf7;
+}
+
+#community {
+    background-color: white;
+}
+
+// Top Page and Community Page
+// --------------------------------------------------
+
