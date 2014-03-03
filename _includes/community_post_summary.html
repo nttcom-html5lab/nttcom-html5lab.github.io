@@ -1,9 +1,9 @@
-<article class="media">
+<article class="media-hl">
     <a href="{{ relative_path }}{{ post.url | remove_first: '/' }}" class="pull-left">
-        <img class="media-object" src="{{ post.thumbnail }}" alt="{{ post.title }}" />
+        <img class="media-hl-object" src="{{ post.thumbnail }}" alt="{{ post.title }}" />
     </a>
-    <div class="media-body">
-        <h2 class="h4">
+    <div class="media-hl-body">
+        <h2 class="media-hl-heading h4">
             <date>{{ post.date | date: site.date_format }}</date>
             {% for tag in post.tags %}
             <span class="label label-primary">{{ tag }}</span>

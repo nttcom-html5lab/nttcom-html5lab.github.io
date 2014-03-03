@@ -3,60 +3,135 @@
 // Bootstrapとは別に、独自に定義したスタイルを記述する
 // ==================================================
 
-.opacity(@opacity) {
-    opacity: @opacity;
-    // IE8 filter
-    @opacity-ie: (@opacity * 100);
-    filter: ~"alpha(opacity=@{opacity-ie})";
-}
+@import "html5lab-variables.less";
 
 // All Pages
 // --------------------------------------------------
 
-// Header
-.hl-logo-wrapper {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-// Main
-.hl-section {
-}
-
 // Footer
 .hl-footer {
-    margin-top: 100px;
     padding-top: 40px;
     padding-bottom: 40px;
-    border-top: 1px solid #e5e5e5;
-}
+    background: @footer-background-color;
+    color: @footer-text-color;
 
-.hl-social-buttons {
-    height: 50px;
-}
+    a {
+        color: @footer-text-color;
+    }
 
-.hl-links {
-    margin-top: 20px;
-    padding-left: 0;
-    li {
-        display: inline;
-        padding: 0 2px;
+    .hl-social-buttons {
+        max-height: 50px;
+    }
+
+    .hl-links {
+        margin-top: 20px;
+        padding-left: 0;
+        li {
+            display: inline;
+            padding: 0 2px;
+        }
+    }
+
+    .hl-copyright {
     }
 }
 
-.hl-copyright {
+// Top Page
+// --------------------------------------------------
+
+#toppageAbout {
+    background: @toppage-about-background-image no-repeat center center;
+    background-color: @toppage-about-background-color;
+    background-size: cover !important;
+    color: @toppage-about-text-color;
+    margin-top: -@body-padding-top;
+    padding-top: @body-padding-top;
 }
 
-.hl-logo {
-
+.hl-toppage-lead-copy {
 }
 
+.hl-toppage-down {
+}
+
+#toppageCopy {
+    background-color: @toppage-copy-background-color;
+    color: @toppage-copy-text-color;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#toppageActivity {
+    background-color: @toppage-activity-background-color;
+    color: @toppage-activity-text-color;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.hl-activity {
+    color: @toppage-activity-text-color;
+    display: block;
+    border: 1px solid @toppage-activity-text-color;
+    width: 220px;
+    height: 220px;
+    border-radius: 110px;
+
+    &:hover, &:focus {
+        color: @toppage-activity-text-color;
+    }
+}
+
+#toppageMedia {
+    background-color: @toppage-media-background-color;
+    color: @toppage-media-text-color;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#toppageProduct {
+    background-color: @toppage-product-background-color;
+    color: @toppage-product-text-color;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    .carousel-inner {
+        .item {
+            .row {
+                & > div {
+                    padding-bottom: 50px;
+                }
+            }
+        }
+    }
+}
+
+#toppageCommunity {
+    background-color: @toppage-community-background-color;
+    color: @toppage-community-text-color;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    a {
+        color: @toppage-community-text-color;
+        text-decoration: underline;
+
+        &:hover, &:focus {
+
+        }
+    }
+}
+
+.hl-toppage-nav {
+    position: fixed;
+    right: 10px;
+    top: @body-padding-top;
+}
+
+// Community Page
+// --------------------------------------------------
 .hl-affix.affix {
     position: fixed;
-}
-
-.hl-affix.affix-bottom {
-    position: absolute;
+    top: @body-padding-top;
 }
 
 @media (min-width:992px) {
@@ -70,44 +145,4 @@
         width: 165px;
     }
 }
-
-.hl-navbar {
-
-}
-
-// Top Page and Community Page
-// --------------------------------------------------
-
-
-#about {
-    margin-top: -71px;
-    padding-top: 71px;
-    background: url('?holder.js/1280x720/sky/text:Main Visual') no-repeat center center;
-    background-size: cover !important;
-}
-
-#copy {
-    background-color: white;
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
-
-#activity {
-    background-color: #d9edf7;
-}
-
-#media {
-    background-color: white;
-}
-
-#product {
-    background-color: #d9edf7;
-}
-
-#community {
-    background-color: white;
-}
-
-// Top Page and Community Page
-// --------------------------------------------------
 

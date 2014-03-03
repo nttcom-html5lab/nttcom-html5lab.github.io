@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]--><head>
 {% include assign_relative_path.html %}
-<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,18 +24,19 @@
     <script src="{{ relative_path }}js/holder.js"></script>
     <script src="{{ relative_path }}js/jquery-1.11.0.min.js"></script>
     <script src="{{ relative_path }}js/bootstrap.min.js"></script>
+    <script src="{{ relative_path }}js/html5lab.js"></script>
 </head>
 <body data-spy="scroll" data-target=".hl-scroll-spy" data-offset="0">
-<nav class="navbar navbar-html5lab navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-hl navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hl-logo-wrapper" href="{{ relative_path }}./"><img class="img-responsive" data-src="holder.js/150x50/text:HTML5 Lab Logo" alt="NTTコミュニケーションズ HTML5ラボ" /></a>
+            <a class="navbar-hl-logo" href="{{ relative_path }}./"><img class="img-responsive" data-src="holder.js/150x80/text:HTML5 Lab Logo" alt="NTTコミュニケーションズ HTML5ラボ" /></a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -58,22 +61,13 @@
             </ul>
             <ul class="nav navbar-nav hl-social-buttons navbar-right">
                 <li class="navbar-text">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site:homepage_url}}" data-lang="ja">ツイート</a>
+                <li class="navbar-text">
                     <div class="fb-like" data-text="{{ site.title }}" data-href="{{ site.homepage_url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                     <div id="fb-root"></div>
-                    <script>(function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) return;
-                        js = d.createElement(s); js.id = id;
-                        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=582225031817530";
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
                 </li>
                 <li class="navbar-text">
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site:homepage_url}}" data-lang="ja">ツイート</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                <li class="navbar-text">
-                    <a href="http://b.hatena.ne.jp/entry/{{ site.homepage_url }}" class="hatena-bookmark-button" data-hatena-bookmark-title="{{ site.title }}" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-                    <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+                    <a href="http://b.hatena.ne.jp/entry/{{ site.homepage_url }}" class="hatena-bookmark-button" data-hatena-bookmark-title="{{ site.title }}" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -96,12 +90,5 @@
         <p class="hl-logo"><a href="http://www.ntt.com/"><img data-src="holder.js/150x50/text:NTT Com Logo" alt="NTT Communications" /></a></p>
         <p class="hl-copyright">Copyright &copy; 2014 NTT Communications</p>    </div>
 </footer>
-<script>
-    (function() {
-        var height = $(window).height();
-        $('.hl-window-height').css('min-height', height);
-        $('body').scrollspy({ target: '.hl-scroll-spy'});
-    })();
-</script>
 </body>
 </html>
