@@ -3,74 +3,75 @@ layout: global
 title: お問い合わせ
 description: WebRTCは、ブラウザ同士でリアルタイムに映像、音声、データを送受信できる画期的な新技術。SkyWayを使えば、サーバを準備することなく、簡単なJavaScriptを書くだけで、WebRTCを使ったアプリが開発できます。
 ---
-<section id="contact" class="hl-section container">
-    <ol class="breadcrumb">
-        <li><a href="../">Top</a></li>
-        <li class="active">{{ page.title }}</li>
-    </ol>
-    <header class="page-header">
-        <h1>{{ page.title }}</h1>
-    </header>
-    <p>HTML5ラボに関する質問や相談については、以下のフォームからお問い合わせください。</p>
-    <div class="alert alert-danger">お名前が入力されていません。</div>
-    <div class="alert alert-danger">お名前、返信用メールアドレス、お問い合せ内容が入力されていません。</div>
-    <div class="alert alert-danger">
-        Internet Explorer 7以下には対応しておりません。
-        <a href="http://windows.microsoft.com/ja-jp/internet-explorer/download-ie" class="alert-link">Internet Explorerの最新版</a>、または他のブラウザ、<a href="http://www.google.co.jp/intl/ja/chrome/browser/" class="alert-link">Google Chrome</a>、<a href="http://www.mozilla.jp/firefox/" class="alert-link">Firefox</a>、Safariをお使いください。
-    </div>
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <label for="inputOrganization" class="col-sm-3 control-label">組織名</label>
-            <div class="col-xs-12 col-sm-9 col-md-6">
-                <input type="text" class="form-control" id="inputOrganization" placeholder="組織名(任意)">
-            </div>
+<section id="contact">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="../">Top</a></li>
+            <li class="active">{{ page.title }}</li>
+        </ol>
+        <header class="page-header">
+            <h1>{{ page.title }}</h1>
+        </header>
+        <p>HTML5ラボに関する質問や相談については、以下のフォームからお問い合わせください。</p>
+        <div class="alert alert-danger">お名前が入力されていません。</div>
+        <div class="alert alert-danger">お名前、返信用メールアドレス、お問い合せ内容が入力されていません。</div>
+        <div class="alert alert-danger">
+            Internet Explorer 7以下には対応しておりません。
+            <a href="http://windows.microsoft.com/ja-jp/internet-explorer/download-ie" class="alert-link">Internet Explorerの最新版</a>、または他のブラウザ、<a href="http://www.google.co.jp/intl/ja/chrome/browser/" class="alert-link">Google Chrome</a>、<a href="http://www.mozilla.jp/firefox/" class="alert-link">Firefox</a>、Safariをお使いください。
         </div>
-        <div class="form-group">
-            <label for="inputName" class="col-sm-3 control-label">お名前</label>
-            <div class="col-xs-12 col-sm-9 col-md-6">
-                <input type="text" class="form-control" id="inputName" placeholder="お名前(必須)">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="inputOrganization" class="col-sm-3 control-label">組織名</label>
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <input type="text" class="form-control" id="inputOrganization" placeholder="組織名(任意)">
+                </div>
             </div>
-        </div>
-        <div class="form-group has-success has-feedback">
-            <label for="inputName" class="col-sm-3 control-label">お名前</label>
-            <div class="col-xs-12 col-sm-9 col-md-6">
-                <input type="text" class="form-control" id="inputName" placeholder="お名前(必須)">
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            <div class="form-group">
+                <label for="inputName" class="col-sm-3 control-label">お名前</label>
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <input type="text" class="form-control" id="inputName" placeholder="お名前(必須)">
+                </div>
             </div>
-        </div>
-        <div class="form-group has-error has-feedback">
-            <label for="inputName" class="col-sm-3 control-label">お名前</label>
-            <div class="col-xs-12 col-sm-9 col-md-6">
-                <input type="text" class="form-control" id="inputName" placeholder="お名前(必須)">
-                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <div class="form-group has-success has-feedback">
+                <label for="inputName" class="col-sm-3 control-label">お名前</label>
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <input type="text" class="form-control" id="inputName" placeholder="お名前(必須)">
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputEmail" class="col-sm-3 control-label">返信用メールアドレス</label>
-            <div class="col-xs-12 col-sm-9 col-md-6">
-                <input type="email" class="form-control" id="inputEmail" placeholder="返信用メールアドレス(必須)" value="mail@mail.com">
+            <div class="form-group has-error has-feedback">
+                <label for="inputName" class="col-sm-3 control-label">お名前</label>
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <input type="text" class="form-control" id="inputName" placeholder="お名前(必須)">
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputContent" class="col-sm-3 control-label">お問い合わせ内容</label>
-            <div class="col-xs-12 col-sm-9 col-md-6">
-                <textarea class="form-control" id="inputContent" rows="8" placeholder="お問い合せ内容(必須)">HTML5ラボはどこにあるのですか。</textarea>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-3 control-label">返信用メールアドレス</label>
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="返信用メールアドレス(必須)" value="mail@mail.com">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-6 col-sm-3 col-md-offset-5 col-md-2">
-                <button type="submit" class="btn btn-block btn-primary" disabled="disabled">送信</button>
+            <div class="form-group">
+                <label for="inputContent" class="col-sm-3 control-label">お問い合わせ内容</label>
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <textarea class="form-control" id="inputContent" rows="8" placeholder="お問い合せ内容(必須)">HTML5ラボはどこにあるのですか。</textarea>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-6 col-sm-3 col-md-offset-5 col-md-2">
-                <button type="submit" class="btn btn-block btn-primary">送信</button>
+            <div class="form-group">
+                <div class="col-sm-offset-6 col-sm-3 col-md-offset-5 col-md-2">
+                    <button type="submit" class="btn btn-block btn-primary" disabled="disabled">送信</button>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-6 col-sm-3 col-md-offset-5 col-md-2">
-                <a href="./" class="btn btn-block btn-primary disabled" role="button" onclick="return false;">送信</a>
+            <div class="form-group">
+                <div class="col-sm-offset-6 col-sm-3 col-md-offset-5 col-md-2">
+                    <button type="submit" class="btn btn-block btn-primary">送信</button>
+                </div>
             </div>
-        </div>
-    </form>
+            <div class="form-group">
+                <div class="col-sm-offset-6 col-sm-3 col-md-offset-5 col-md-2">
+                    <a href="./" class="btn btn-block btn-primary disabled" role="button" onclick="return false;">送信</a>
+                </div>
+            </div>
+        </form>    </div>
 </section>
