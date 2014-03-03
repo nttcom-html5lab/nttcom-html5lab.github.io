@@ -1,29 +1,88 @@
-.hl-logo-wrapper {
-  padding-top: 0;
-  padding-bottom: 0;
-}
 .hl-footer {
-  margin-top: 100px;
   padding-top: 40px;
   padding-bottom: 40px;
-  border-top: 1px solid #e5e5e5;
+  background: #428bca;
+  color: #ffffff;
 }
-.hl-social-buttons {
-  height: 50px;
+.hl-footer a {
+  color: #ffffff;
 }
-.hl-links {
+.hl-footer .hl-social-buttons {
+  max-height: 50px;
+}
+.hl-footer .hl-links {
   margin-top: 20px;
   padding-left: 0;
 }
-.hl-links li {
+.hl-footer .hl-links li {
   display: inline;
   padding: 0 2px;
 }
+#toppageAbout {
+  background: url('?holder.js/1280x720/sky/text:Main Visual') no-repeat center center;
+  background-color: #ffffff;
+  background-size: cover !important;
+  color: #333333;
+  margin-top: -100px;
+  padding-top: 100px;
+}
+#toppageCopy {
+  background-color: #ffffff;
+  color: #333333;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#toppageActivity {
+  background-color: #428bca;
+  color: #ffffff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.hl-activity {
+  color: #ffffff;
+  display: block;
+  border: 1px solid #ffffff;
+  width: 220px;
+  height: 220px;
+  border-radius: 110px;
+}
+.hl-activity:hover,
+.hl-activity:focus {
+  color: #ffffff;
+}
+#toppageMedia {
+  background-color: #eeeeee;
+  color: #333333;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#toppageProduct {
+  background-color: #428bca;
+  color: #ffffff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#toppageProduct .carousel-inner .item .row > div {
+  padding-bottom: 50px;
+}
+#toppageCommunity {
+  background-color: #5bc0de;
+  color: #ffffff;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#toppageCommunity a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.hl-toppage-nav {
+  position: fixed;
+  right: 10px;
+  top: 100px;
+}
 .hl-affix.affix {
   position: fixed;
-}
-.hl-affix.affix-bottom {
-  position: absolute;
+  top: 100px;
 }
 @media (min-width: 992px) {
   .hl-affix.affix,
@@ -36,27 +95,4 @@
   .hl-affix.affix-bottom {
     width: 165px;
   }
-}
-#about {
-  margin-top: -71px;
-  padding-top: 71px;
-  background: url('?holder.js/1280x720/sky/text:Main Visual') no-repeat center center;
-  background-size: cover !important;
-}
-#copy {
-  background-color: white;
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-#activity {
-  background-color: #d9edf7;
-}
-#media {
-  background-color: white;
-}
-#product {
-  background-color: #d9edf7;
-}
-#community {
-  background-color: white;
 }
