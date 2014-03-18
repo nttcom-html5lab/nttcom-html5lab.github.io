@@ -12,7 +12,10 @@
 .hl-footer {
     padding-top: 40px;
     padding-bottom: 40px;
-    background: @footer-background-color;
+    background:@footer-background-image;
+    background-color:  @footer-background-color;
+
+
     color: @footer-text-color;
 
     a {
@@ -38,9 +41,10 @@
 
 // Top Page
 // --------------------------------------------------
+p {font-size: 12px;}
 
 #toppageAbout {
-    background: @toppage-about-background-image no-repeat center center;
+    background: @toppage-about-background-image no-repeat top center fixed;
     background-color: @toppage-about-background-color;
     background-size: cover !important;
     color: @toppage-about-text-color;
@@ -49,6 +53,9 @@
 }
 
 .hl-toppage-lead-copy {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 175px;
 }
 
 .hl-toppage-down {
@@ -57,59 +64,137 @@
 #toppageCopy {
     background-color: @toppage-copy-background-color;
     color: @toppage-copy-text-color;
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
+    padding-top: 90px;
+    padding-bottom: 90px;
+    p.h2{
+        strong {
+      font-size: 18px;
+        }
+    }
+    p.lead{
+        strong {
+      font-size: 14px;
+        }
 
+    }
+}
 #toppageActivity {
+    background: @toppage-activity-background-image  no-repeat center center fixed;
     background-color: @toppage-activity-background-color;
     color: @toppage-activity-text-color;
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
+    padding-top: 90px;
+    padding-bottom: 90px;
+    h1 {
+        font-size: 30px;
+        font-weight: bold;
+    }
 
+}
 .hl-activity {
     color: @toppage-activity-text-color;
     display: block;
-    border: 1px solid @toppage-activity-text-color;
+    border: 3px solid @toppage-activity-text-color;
     width: 220px;
     height: 220px;
+    padding:40px 10px 10px 10px;
     border-radius: 110px;
-
-    &:hover, &:focus {
-        color: @toppage-activity-text-color;
+            &:hover, &:focus {
+            text-decoration: none;
+             color: @toppage-activity-text-color;
     }
+         h2.h4 {
+        font-size: 24px;
+        text-align: center;
+        font-weight: bold;
+         }
+       p {
+        text-align: center;
+         }
+
 }
 
 #toppageMedia {
+    background: @toppage-media-background-image  no-repeat center center fixed;
     background-color: @toppage-media-background-color;
     color: @toppage-media-text-color;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+        h1 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .row {
+        .col-sm-6   {
+        padding: 0px 45px;
+            }
+    }
 }
 
+
 #toppageProduct {
+    background: @toppage-product-background-image  no-repeat center center fixed;
     background-color: @toppage-product-background-color;
     color: @toppage-product-text-color;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    h1 {
+        font-size: 30px;
+    }
 
     .carousel-inner {
         .item {
             .row {
                 & > div {
                     padding-bottom: 50px;
+                    padding-left: 45px;
+                    padding-right:45px;
                 }
             }
         }
     }
+    .carousel-hl-control{
+        background: none;
+    }
 }
 
+
+
 #toppageCommunity {
+    background: @toppage-community-background-image  no-repeat center center fixed;
     background-color: @toppage-community-background-color;
     color: @toppage-community-text-color;
     padding-top: 100px;
     padding-bottom: 100px;
+        h1 {
+        font-size: 30px;
+    }
+    .media-hl-body {
+        min-height: 75px;
+        border-bottom: 1px solid #8cabd9;
+        padding-bottom: 5px;
+
+        h2 {
+            font-size: 14px;
+            font-weight: bold;
+            .label-primary {
+                font-size: 12px;
+                margin: 0px 1em;
+            }
+        }
+        p {
+            margin-top: 15px;
+            font-weight: normal;
+        }
+    }
+    .label-primary {
+        background: #0a3c7c;
+
+    }
+    .btn-primary {
+        margin-top: 25px;
+        background: #779dd0;
+        box-shadow: 0px 2px 0px #4e6f9c;
+    }
 
     a {
         color: @toppage-community-text-color;
@@ -119,6 +204,7 @@
 
         }
     }
+
 }
 
 .hl-toppage-nav {
@@ -127,12 +213,39 @@
     top: @body-padding-top;
 }
 
+    p.read {
+    font-size: 14px;
+    margin-top: 25px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 // Community Page
 // --------------------------------------------------
 .hl-affix.affix {
     position: fixed;
     top: @body-padding-top;
 }
+
+// contact about com
+// --------------------------------------------------
+
+#contact {
+    padding-bottom: 90px;
+}
+
+@media (min-width: 1200px){
+    .container {
+    width: 970px;
+}
+}
+
+@media (min-width:992px) {
+    .hl-affix.affix, .hl-affix.affix-bottom {
+        width: 131px;
+    }
+}
+
 
 @media (min-width:992px) {
     .hl-affix.affix, .hl-affix.affix-bottom {
