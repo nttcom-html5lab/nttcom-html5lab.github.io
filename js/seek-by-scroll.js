@@ -20,14 +20,7 @@ $(document).on('ready', function() {
     };
 
     var scrollHandler = function() {
-        if (isPlaying) {
-            return;
-        }
-        if (video.readyState !== video.HAVE_ENOUGH_DATA
-            && video.readyState !== video.HAVE_FUTURE_DATA
-            && video.readyState !== video.HAVE_CURRENT_DATA) {
-            return;
-        }
+        //console.log('scrollHandler');
         currentScroll = $body.scrollTop() || $html.scrollTop();
         var currentTime = Math.max(Math.min(duration * currentScroll / (bodyHeight - windowHeight), duration - 0.1), 0);
         video.currentTime = currentTime;
@@ -39,6 +32,7 @@ $(document).on('ready', function() {
         if (!isPlaying) {
             return;
         }
+        //console.log('timeupdateHandler');
         var currentTime = video.currentTime;
         var newScroll = (bodyHeight - windowHeight) * currentTime / duration;
 
@@ -54,6 +48,7 @@ $(document).on('ready', function() {
     };
 
     var loadeddataHandler = function() {
+        //console.log('loadeddataHandler');
         duration = video.duration;
         video.pause();
         scrollHandler();
@@ -63,11 +58,13 @@ $(document).on('ready', function() {
     };
 
     var scrollDelayHandler = function() {
+        //console.log('scrollDelayHandler');
         isPlaying = true;
         video.play();
     };
 
     var wheelHandler = function() {
+        //console.log('wheelHandler');
         $htmlbody.stop(true, true);
         isPlaying = false;
         video.pause();
@@ -75,7 +72,7 @@ $(document).on('ready', function() {
 
     var visibilityChangeHandler = function() {
         var isVisible = !document.hidden;
-        console.log('visibilityChangeHandler. isVisible = ' + isVisible);
+        //console.log('visibilityChangeHandler. isVisible = ' + isVisible);
         if (isPlaying && !isVisible) {
             $htmlbody.stop(true, true);
             isPlaying = false;
@@ -87,6 +84,20 @@ $(document).on('ready', function() {
         }
     };
 
+    var hash = location.hash.replace(/^#/, '');
+    var src = '';
+    switch (hash) {
+        case 'mono':
+            src = 'web25_mono.m4v';
+            break;
+        case 'sepia':
+            src = 'web25_sepia.m4v';
+            break;
+        default:
+            src = 'web25.m4v';
+            break;
+    };
+    video.src = 'video/' + src;
     video.play();
     resizeHandler();
 
@@ -94,6 +105,14 @@ $(document).on('ready', function() {
         var isVisible = !document.hidden;
         if (!isVisible) {
             clearTimeout(scrollDelayTimer);
+            return;
+        }
+        if (isPlaying) {
+            return;
+        }
+        if (video.readyState !== video.HAVE_ENOUGH_DATA
+            && video.readyState !== video.HAVE_FUTURE_DATA
+            && video.readyState !== video.HAVE_CURRENT_DATA) {
             return;
         }
         scrollHandler();
