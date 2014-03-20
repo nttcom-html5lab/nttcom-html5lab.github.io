@@ -1,1 +1,80 @@
-.hl-footer{padding-top:40px;padding-bottom:40px;background:url(../img/footerBg.jpg);background-color:#0a3c7c;color:#fff}.hl-footer a{color:#fff}.hl-footer .hl-social-buttons{max-height:50px}.hl-footer .hl-links{margin-top:20px;padding-left:0}.hl-footer .hl-links li{display:inline;padding:0 2px}p{font-size:12px}#toppageAbout{background:url(../img/about-background.jpg) no-repeat top center fixed;background-color:#5ea3d2;background-size:cover !important;color:#333;margin-top:-100px;padding-top:100px}.hl-toppage-lead-copy{font-size:36px;font-weight:bold;margin-top:175px}#toppageCopy{background-color:#f8f8f8;color:#333;padding-top:90px;padding-bottom:90px}#toppageCopy p.h2 strong{font-size:18px}#toppageCopy p.lead strong{font-size:14px}#toppageActivity{background:url(../img/activity-background.png) no-repeat center center fixed;background-color:#0989b6;color:#fff;padding-top:90px;padding-bottom:90px}#toppageActivity h1{font-size:30px;font-weight:bold}.hl-activity{color:#fff;display:block;border:3px solid #fff;width:220px;height:220px;padding:40px 10px 10px 10px;border-radius:110px}.hl-activity:hover,.hl-activity:focus{text-decoration:none;color:#fff}.hl-activity h2.h4{font-size:24px;text-align:center;font-weight:bold}.hl-activity p{text-align:center}#toppageMedia{background:url(../img/media-background.jpg) no-repeat center center fixed;background-color:#eee;color:#333;padding-top:90px;padding-bottom:90px}#toppageMedia h1{font-size:30px;font-weight:bold}#toppageMedia .row .col-sm-6{padding:0 45px}#toppageProduct{background:url(../img/product-background.jpg) no-repeat center center fixed;background-color:#2a60aa;color:#fff;padding-top:90px;padding-bottom:90px}#toppageProduct h1{font-size:30px}#toppageProduct .carousel-inner .item .row>div{padding-bottom:50px;padding-left:45px;padding-right:45px}#toppageProduct .carousel-hl-control{background:none}#toppageCommunity{background:url(../img/community-background.jpg) no-repeat center center fixed;background-color:#6189c0;color:#fff;padding-top:100px;padding-bottom:100px}#toppageCommunity h1{font-size:30px}#toppageCommunity .media-hl-body{min-height:75px;border-bottom:1px solid #8cabd9;padding-bottom:5px}#toppageCommunity .media-hl-body h2{font-size:14px;font-weight:bold}#toppageCommunity .media-hl-body h2 .label-primary{font-size:12px;margin:0 1em}#toppageCommunity .media-hl-body p{margin-top:15px;font-weight:normal}#toppageCommunity .label-primary{background:#0a3c7c}#toppageCommunity .btn-primary{margin-top:25px;background:#779dd0;box-shadow:0 2px 0 #4e6f9c}#toppageCommunity a{color:#fff;text-decoration:underline}.hl-toppage-nav{position:fixed;right:10px;top:100px}p.read{font-size:14px;margin-top:25px;text-align:center;margin-bottom:40px}.hl-affix.affix{position:fixed;top:100px}#contact{padding-bottom:90px}@media (min-width:1200px){.container{width:970px}}@media (min-width:992px){.hl-affix.affix,.hl-affix.affix-bottom{width:131px}}@media (min-width:992px){.hl-affix.affix,.hl-affix.affix-bottom{width:131px}}@media (min-width:1200px){.hl-affix.affix,.hl-affix.affix-bottom{width:165px}}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+.hl-navbar {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #333333;
+}
+.hl-navbar .hl-brand {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.hl-navbar .hl-brand .hl-loog {
+  font-size: 28px;
+  line-height: 28px;
+}
+.hl-navbar .hl-brand .hl-tagline {
+  font-size: 10px;
+  line-height: 11px;
+  letter-spacing: -1px;
+}
+.hl-social-buttons {
+  height: 50px;
+}
+.hl-vertical-wrapper {
+  position: relative;
+}
+.hl-vertical-50 {
+  position: absolute;
+  top: 50%;
+}
+.hl-vertical-inner {
+  position: relative;
+}
+.hl-text-box {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.hl-footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #333333;
+}
+.hl-footer a {
+  color: #333333;
+}
+.hl-footer .hl-links {
+  margin-top: 20px;
+  padding-left: 0;
+}
+.hl-footer .hl-links li {
+  display: inline;
+  padding: 0 2px;
+}
+#toppageBackground {
+  position: fixed;
+  z-index: -100;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  background: url("?holder.js/1280x720/text:Full Screen Video") center center no-repeat;
+  background-size: cover !important;
+}
+#toppageBackground #video {
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+}
+#toppageBackground .current-time-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: Menlo;
+  background-color: rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}

@@ -4,279 +4,248 @@ title: NTTコミュニケーションズ HTML5ラボ
 description: WebRTCは、ブラウザ同士でリアルタイムに映像、音声、データを送受信できる画期的な新技術。SkyWayを使えば、サーバを準備することなく、簡単なJavaScriptを書くだけで、WebRTCを使ったアプリが開発できます。
 ---
 {% include assign_current_year.html %}
-<section id="toppageAbout" class="holderjs hl-window-height content">
+
+<script src="{{ relative_path }}js/seek-by-scroll.js"></script>
+
+<section class="hl-auto-height holderjs" id="toppageBackground">
+    <video autoplay="autoplay" loop="loop" id="video">
+        <source src="video/web25.m4v">
+    </video>
+    <div class="current-time-container"><span id="currentTime"></span> / <span id="duration"></span></div>
+</section>
+
+<section id="toppageWhat" class="hl-auto-height hl-vertical-wrapper">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-11">
-                <div class="lead hl-toppage-lead-copy">Webには、私たちにしかできないことがある。</div>
-                <div class="lead text-center hl-toppage-down"><span class="glyphicon glyphicon-chevron-down"></span></div>
+        <div class="hl-vertical-50">
+            <div class="hl-vertical-inner hl-text-box" style="height: 78px; top: -39px;">
+                <p class="lead">――HTML5ラボって何？</p>
+                <p class="lead">HTML5ラボはNTTコミュニケーションズの中でHTML5に取り組む小さなラボです。</p>
             </div>
-            <div class="hidden-xs hidden-sm col-md-1">
-                <div class="hl-toppage-nav">
-                    <nav class="hl-scroll-spy">
-                        <ul class="nav nav-hl-circle nav-stacked">
-                            <li>
-                                <a href="#toppageAbout"></a>
-                            </li>
-                            <li>
-                                <a href="#toppageCopy"></a>
-                            </li>
-                            <li>
-                                <a href="#toppageActivity"></a>
-                            </li>
-                            <li>
-                                <a href="#toppageMedia"></a>
-                            </li>
-                            <li>
-                                <a href="#toppageProduct"></a>
-                            </li>
-                            <li>
-                                <a href="#toppageCommunity"></a>
-                            </li>
-                        </ul>
-                    </nav>
+        </div>
+    </div>
+</section>
+
+<section id="toppageWhy" class="hl-auto-height hl-vertical-wrapper">
+    <div class="container">
+        <div class="hl-vertical-50">
+            <div class="hl-vertical-inner hl-text-box" style="height: 78px; top: -39px;">
+                <p class="lead">――NTTがなぜHTML5をやってるの？</p>
+                <p class="lead">それは、HTML5が好きだから、楽しいからです。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="toppageHow" class="hl-auto-height hl-vertical-wrapper">
+    <div class="container">
+        <div class="hl-vertical-50">
+            <div class="hl-vertical-inner hl-text-box" style="height: 107px; top: -54px;">
+                <p class="lead">――何をやってるの？</p>
+                <p class="lead">
+                    ラボというくらいだから、いろんなことに挑戦しています。<br/>
+                    例えば…</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="toppageOss" class="hl-auto-height">
+    <div class="container">
+        <div class="row hl-text-box">
+            <h1>オープンソース（できるだけ）。</h1>
+            <p class="lead">
+                プロダクトを開発し、（社内基準があるので全部というわけには行きませんができるだけ）オープンソースで公開しています。
+            </p>
+        </div>
+        <div class="row hl-text-box">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="img/skyway_logo.png" alt="skyway">
+                    <div class="caption">
+                        <h3>SkyWay</h3>
+                        <p>WebRTCを使ったアプリを簡単に作れる開発者向けのAPIとライブラリ <a href="http://nttcom.github.io/skyway/">もっと見る</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="toppageOss" class="hl-auto-height">
+    <div class="container ">
+        <div class="row hl-text-box">
+            <h1>開発者コミュニティへの参加。</h1>
+            <p class="lead">
+                HTML5ラボのメンバーは開発者コミュニティの一員としても積極的に活動しています。
+            </p>
+        </div>
+        <div class="row hl-text-box">
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="thumbnail">
+                    <img data-src="holder.js/150x150/text:@komasshu"  alt="skyway">
+                    <div class="caption">
+                        <h4>小松健作</h4>
+                        <p>
+                            HTML5ラボ 所長<br/>
+                            HTML5 Experts #3<br/>
+                            html5jの中心メンバー<br/>
+                            ○○など執筆書籍多数
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="thumbnail">
+                    <img data-src="holder.js/150x150/text:@komasshu"  alt="skyway">
+                    <div class="caption">
+                        <h4>白石俊平</h4>
+                        <p>
+                            HTML5ラボ フェロー<br/>
+                            html5jの主宰者<br/>
+                            HTML5 Experts.jp 編集長<br/>
+                            HTML5 Experts #1<br/>
+                            ○○など執筆書籍多数
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="thumbnail">
+                    <img data-src="holder.js/150x150/text:@komasshu"  alt="skyway">
+                    <div class="caption">
+                        <h4>吉川徹</h4>
+                        <p>
+                            HTML5ラボ フェロー<br/>
+                            html5jの中心メンバー<br/>
+                            HTML5 Experts.jp 副編集長<br/>
+                            HTML5 Experts #2<br/>
+                            ○○など執筆書籍多数
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="thumbnail">
+                    <img data-src="holder.js/150x150/text:@komasshu"  alt="skyway">
+                    <div class="caption">
+                        <h4>仲裕介</h4>
+                        <p>
+                            HTML5ラボ 研究員<br/>
+                            HTML5 Experts.jp 副編集長<br/>
+                            html5j自動車部長<br/>
+                            html5jエンタープライズ部員
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="thumbnail">
+                    <img data-src="holder.js/150x150/text:@komasshu"  alt="skyway">
+                    <div class="caption">
+                        <h4>本間咲来</h4>
+                        <p>
+                            HTML5ラボ 研究員<br/>
+                            html5jスタッフ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="toppageOss" class="hl-auto-height">
+    <div class="container">
+        <div class="row hl-text-box">
+            <h1>開発者コミュニティのバックアップ。</h1>
+            <p class="lead">
+                HTML5ラボは開発者コミュニティを人・モノ・金の全面から協力しています。
+            </p>
+        </div>
+        <div class="row hl-text-box">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="holder.js/400x200/text:HTML5 Conference 2013" alt="skyway">
+                    <div class="caption">
+                        <h3>HTML5 Conference 2013</h3>
+                        <p>会場を提供し、IPv6ネットワーク設営しました。 <a href="http://nttcom.github.io/skyway/">もっと見る</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="holder.js/400x200/text:HTML5 Conference 2013" alt="skyway">
+                    <div class="caption">
+                        <h3>HTML5 Japan Cup 2014</h3>
+                        <p>メインスポンサーとして企画段階から参画しています。 <a href="http://nttcom.github.io/skyway/">もっと見る</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="toppageCopy" class="holderjs ">
+<section id="toppageOss" class="hl-auto-height">
     <div class="container">
-        <p class="h2 text-center"><strong>NTTコミュニケーションズが、なぜHTML5なのか。</strong></p>
-        <p>そういう質問を、私たちは何度もされてきました。
-            その答えは、単純です。私たちは、人々をつなぐインフラをつくる企業だから。そしてWebは、そんなインフラそのものになりつつあるからです。
-            WebSocket, WebRTC, HTTP/2.0・・・HTML5に端を発したWebの進化は、Webをかつてないほど大きく、柔軟で、高速なアプリケーション基盤に変えようとしています。そのことは、Web技術者の皆さんは良く知るところでしょう。</p>
-        <p>私たちには、日本のインターネットインフラを構築し、支え、進化させてきたという自負があります。
-            そして今度は、Webという新しいインフラを支え、未来を形作っていきたい。
-            そのために、私たちにしかできないことがある。そう信じて、日々様々な事に取り組んでいます。</p>
-        <p class="lead text-center"><strong>私たちは、HTML5に本気です。</strong></p>
-    </div>
-</section>
-
-<section id="toppageActivity" class="hl-window-height content">
-    <div class="container">
-        <h1 class="text-center">HTML5ラボの取り組み</h1>
-        <p class="read">HTML5ラボは、次世代のWeb標準仕様「HTML5」を活用した新たなサービスの開発を推進するプロジェクトです。</p>
-        <div class="row">
-            <div class="col-xs-12 col-sm-4">
-                <a href="#toppageMedia" class="hl-activity">
-                    <h2 class="h4">メディア</h2>
-                    <p>HTML5技術情報サイトを通じて、HTML5のエキスパートによる最先端の技術情報を発信</p>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <a href="#toppageProduct" class="hl-activity">
-                    <h2 class="h4">プロダクト</h2>
-                    <p>HTML5を活用した新サービスや、HTML5を支えるクラウド／ネットワークサービスを開発</p>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-                <a href="#toppageCommunity" class="hl-activity">
-                    <h2 class="h4">コミュニティ<br>／イベント</h2>
-                    <p>カンファレンスやアプリコンテストなど技術者コミュニティのイベント支援と独自イベントの開催</p>
-                </a>
-            </div>
+        <div class="row hl-text-box">
+            <h1>メディア</h1>
+            <p class="lead">
+                技術ブログを作ろうと思ったら、勢い余ってメディアになってしまいました。
+            </p>
         </div>
-    </div>
-</section>
-
-<section id="toppageMedia" class="hl-window-height content">
-    <div class="container">
-        <h1 class="text-center">メディア</h1>
-        <p class="read">HTML5の普及促進を図るため、OS／デバイス／ブラウザに中立な立場で、HTML5技術サイトを運営しています。</p>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <h2 class="h3">HTML5 Experts.jp</h2>
-                <p>
-                    <a href="http://html5experts.jp/">
-                        <img src="img/html5Experts_logo.png" class="img-responsive img-thumbnail" alt="HTML5 Experts.jp">
-
-                        <!-- img data-src="holder.js/600x200/text:HTML5 Experts.jp Logo" class="img-responsive img-thumbnail" alt="HTML5 Experts.jp" -->
-
-                    </a>
-                </p>
-                <p>HTML5の最新ニュースやハウツー、レポートなど、多彩な記事を提供する、HTML5技術サイトです。
-                    国内外で活躍する約50名のHTML5のエキスパート(専門家)が執筆を担当し、OS/デバイス/ブラウザに対して中立な立場で運営しています。</p>
-                <p class="text-right"><a class="btn btn-primary" role="button">HTML5 Experts.jp サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <h2 class="h3">HTML5 Experts Works</h2>
-                <p><a href="http://works.html5experts.jp/"><img data-src="holder.js/600x200/text:HTML5 Experts Works Logo" class="img-responsive img-thumbnail" alt="Experts Works"></a></p>
-                <p>HTML5 Experts.jpの執筆を担当するエキスパートとコントリビュータの方たちが制作した、ハイクオリティな作品を紹介するサイトです。</p>
-                <p class="text-right"><a class="btn btn-primary" role="button">HTML5 Experts Works サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="toppageProduct" class="hl-window-height content">
-    <div class="container">
-        <h1 class="text-center">プロダクト</h1>
-        <p class="read">HTML5を活用した新たなサービスや、HTML5を支えるクラウド／ネットワークサービスを開発し、提供しています。</p>
-
-        <div class="row">
-            <div class="carousel-inner hidden-xs">
-                <div id="hl-toppage-products" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#hl-toppage-products" data-slide-to="0" class="active"></li>
-                        <li data-target="#hl-toppage-products" data-slide-to="1"></li>
-                    </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active container">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h2 class="h3">SkyWay</h2>
-                                    <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:SkyWay Logo" class="img-responsive img-thumbnail" alt="SkyWay"></a></p>
-                                    <p>映像／音声／データをリアルタイムにブラウザ間で直接送受信できる、最先端のHTML5技術「WebRTC」を使ったアプリを、簡単に開発できる開発者向けのサービスです。</p>
-                                    <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h2 class="h3">LocalWay</h2>
-                                    <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:LocalWay" class="img-responsive img-thumbnail" alt="LocalWay"></a></p>
-                                    <p>Chrome Apps版のSkyWayです。山間部や災害時など、インターネット接続が利用できない場合に、LAN内でWebRTCを利用できるサービスです。</p>
-                                    <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item container">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h2 class="h3">SkyCast (Dummy)</h2>
-                                    <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:SkyCast" class="img-responsive img-thumbnail" alt="SkyCast"></a></p>
-                                    <p>Webブラウザだけで画面共有できるサービスです。コードリーディングのイベント等で便利に活用できます。</p>
-                                    <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <h2 class="h3">SkyConferencing</h2>
-                                    <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:SkyConferencing" class="img-responsive img-thumbnail" alt="SkyConferenceing"></a></p>
-                                    <p>Webブラウザだけで、URLを共有するだけで始められる、Lightweightなビデオ会議サービスです。</p>
-                                    <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                                </div>
-                            </div>
-                        </div>
+        <div class="row hl-text-box">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="img/html5Experts_logo.png" alt="skyway">
+                    <div class="caption">
+                        <h3>HTML5 Experts.jp</h3>
+                        <p>HTML5専門の情報サイト。国内外で活躍する50名以上のHTML5のエキスパートが記事を執筆しています。 <a href="http://nttcom.github.io/skyway/">もっと見る</a></p>
                     </div>
-
-                    <!-- Controls -->
-                    <a class="left carousel-hl-control" href="#hl-toppage-products" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-hl-control" href="#hl-toppage-products" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
                 </div>
             </div>
         </div>
-
-        <div class="carousel-inner visible-xs">
-            <div id="hl-toppage-products-xs" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#hl-toppage-products-xs" data-slide-to="0" class="active"></li>
-                    <li data-target="#hl-toppage-products-xs" data-slide-to="1"></li>
-                    <li data-target="#hl-toppage-products-xs" data-slide-to="2"></li>
-                    <li data-target="#hl-toppage-products-xs" data-slide-to="3"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <div class="item active container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2 class="h3">SkyWay</h2>
-                                <p>
-                                    <a href="http://nttcom.github.io/skyway/"><img src="img/skyway_logo.png" alt="SkyWay"><!-- data-src="holder.js/600x200/text:SkyWay Logo" class="img-responsive img-thumbnail"  --></a>
-
-                                </p>
-                                <p>映像／音声／データをリアルタイムにブラウザ間で直接送受信できる、最先端のHTML5技術「WebRTC」を使ったアプリを、簡単に開発できる開発者向けのサービスです。</p>
-                                <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2 class="h3">LocalWay</h2>
-                                <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:LocalWay" class="img-responsive img-thumbnail" alt="LocalWay"></a></p>
-                                <p>Chrome Apps版のSkyWayです。山間部や災害時など、インターネット接続が利用できない場合に、LAN内でWebRTCを利用できるサービスです。</p>
-                                <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2 class="h3">SkyCast (Dummy)</h2>
-                                <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:SkyCast" class="img-responsive img-thumbnail" alt="SkyCast"></a></p>
-                                <p>Webブラウザだけで画面共有できるサービスです。コードリーディングのイベント等で便利に活用できます。</p>
-                                <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2 class="h3">SkyConferencing</h2>
-                                <p><a href="http://nttcom.github.io/skyway/"><img data-src="holder.js/600x200/text:SkyConferencing" class="img-responsive img-thumbnail" alt="SkyConferenceing"></a></p>
-                                <p>Webブラウザだけで、URLを共有するだけで始められる、Lightweightなビデオ会議サービスです。</p>
-                                <p class="text-right"><a class="btn btn-primary" role="button">Sky Way サイトへ <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Controls -->
-                <a class="left carousel-hl-control" href="#hl-toppage-products-xs" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-hl-control" href="#hl-toppage-products-xs" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-            </div>
-        </div>
-
     </div>
 </section>
 
-<section id="toppageCommunity" class="hl-window-height content">
+<section id="toppageOss" class="hl-auto-height">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1 class="text-center">コミュニティ／イベント</h1>
-                <p class="read">カンファレンスやセミナー、ハッカソン、アプリコンテストなど、技術者コミュニティのイベントを支援し、独自イベントも開催しています。</p>
-                {% for post in site.posts limit:5 %}
-                {% include community_post_summary.html %}
-                {% endfor %}
-                <p class="text-center">
-                    <a href="community/{{ current_year }}/" class="btn btn-primary" role="button">コミュニティ／イベント一覧を見る <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <div class="row hl-text-box">
+            <h1>活動履歴</h1>
+            <p class="lead">
+                HTML5ラボのメンバーは、固い仕事から柔らかい仕事まで、いろんなところで活躍しています。
+            </p>
+        </div>
+        <div class="row hl-text-box">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" data-src="holder.js/80x80/text:" alt="">
+                </a>
+                <div class="media-body">
+                    HTML5ラボが実施した総務省の次世代ブラウザに関する実証実験の成果が公開されました。
+                </div>
+            </div>
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" data-src="holder.js/80x80/text:MIC" alt="">
+                </a>
+                <div class="media-body">
+                    開発者向けWebRTCプラットフォーム「SkyWay」を公開しました。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="toppageWhy" class="hl-auto-height hl-vertical-wrapper">
+    <div class="container">
+        <div class="hl-vertical-50">
+            <div class="hl-vertical-inner hl-text-box" style="height: 136px; top: -68px;">
+                <p class="lead">――何を目指しているの？</p>
+                <p class="lead">
+                    HTML5はこれから社会を支える技術になっていく、私たちはそう信じています。<br/>
+                    HTML5を使って世界を良くしたい。<br/>
+                    私たちは、HTML5に本気です。
                 </p>
             </div>
         </div>
     </div>
 </section>
-
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script>
-jQuery(function($){
-  var $window = $(window);
- 
-  $('.content').each(function(index) {
-    var $self = $(this);
-    var offsetPositions = $self.offset();
- 
-    $(window).scroll(function() {
-      // この領域がブラウザに表示されている場合
-      if (($window.scrollTop() + $window.height()) > offsetPositions.top && ((offsetPositions.top + $self.height()) > $window.scrollTop())) {
-        var offsetY =  -(($window.scrollTop() - offsetPositions.top)/ 17); 
-        //var offsetY =  -($window.scrollTop()/ 17); 
-        var positions = '50%' + offsetY + 'px';
-        $self.css('backgroundPosition', positions);
-      }
-    });
-  });
-});
-</script>
-

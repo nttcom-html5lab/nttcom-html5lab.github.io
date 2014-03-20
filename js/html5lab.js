@@ -26,7 +26,7 @@
     $(document).on('ready', function() {
         // html読み込み時の処理
         var height = $(window).height();
-        $('.hl-window-height').css('min-height', height);
+        $('.hl-auto-height').css('min-height', height);
         $('body').scrollspy({ target: '.hl-scroll-spy'});
         $('.hl-affix').affix({
             offset: {
@@ -41,7 +41,7 @@
     }).on('resize', function() {
         // resize持の処理
         var height = $(window).height();
-        $('.hl-window-height').css('min-height', height);
+        $('.hl-auto-height').css('min-height', height + 'px');
     });
 
 })();
