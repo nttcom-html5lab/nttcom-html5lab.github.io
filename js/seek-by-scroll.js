@@ -85,18 +85,29 @@ $(document).on('ready', function() {
     };
 
     var hash = location.hash.replace(/^#/, '');
-    var src = '';
+    var filename = '';
     switch (hash) {
         case 'mono':
-            src = 'web25_mono.m4v';
+            filename = 'web25_mono';
             break;
         case 'sepia':
-            src = 'web25_sepia.m4v';
+            filename = 'web25_sepia';
             break;
         default:
-            src = 'web25.m4v';
+            filename = 'web25';
             break;
     };
+    var extension = '';
+    if (navigator.userAgent.toLowerCase().match(/chrome/)) {
+        extension = 'webm';
+    } else if (navigator.userAgent.toLowerCase().match(/safari/)) {
+        extension = 'm4v';
+    } else if (navigator.userAgent.toLowerCase().match(/firefox/)) {
+        extension = 'webm';
+    } else {
+        extension = 'm4v';
+    }
+    var src = filename + '.' + extension;
     video.src = 'video/' + src;
     video.play();
     resizeHandler();
