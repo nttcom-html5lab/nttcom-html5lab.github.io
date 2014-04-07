@@ -128,7 +128,7 @@ $(document).on('ready', function() {
         }
         scrollHandler();
         clearTimeout(scrollDelayTimer);
-        scrollDelayTimer = setTimeout(scrollDelayHandler, 5000);
+        scrollDelayTimer = setTimeout(scrollDelayHandler, 20000);
     });
 
     $video.on('loadeddata', loadeddataHandler);
