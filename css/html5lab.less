@@ -90,16 +90,16 @@ body {
         min-width: 100%;
         min-height: 100%;
     }
-    .current-time-container {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-family: Menlo;
-        background-color: rgba(255,255,255,0.2);
-        text-shadow: 0 0 1px rgba(255,255,255,0.2) !important;
-    }
 }
 
+.current-time-container {
+    position: fixed;
+    top: 200px;
+    right: 10px;
+    font-family: Menlo;
+    z-index: 100;
+    background-color: rgba(255,255,255,0.8);
+}
 
 #toppageAbout {
 }

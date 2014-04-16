@@ -2,146 +2,218 @@ $(document).on('ready', function() {
     var $window = $(window);
     var $html = $('html');
     var $body = $('body');
-    var $htmlbody = $('html, body');
+    var $htmlAndBody = $('html, body');
     var $video = $('#video');
     var video = $video.get(0);
     var duration = 0;
     var $document = $(document);
     var windowHeight = 0;
     var currentScroll = 0;
-    var bodyHeight = 0;
+    var documentHeight = 0;
     var isPlaying = false;
+    var isSuspended = false;
+    var SCROLL_DELAY_TIME = 10000;
+    var IE_SEEK_INTERVAL = 1000;
+    var lastSeekTime = Date.now();
+    var isFocused = true;
+    var isVisible = true;
 
-    var resizeHandler = function() {
+    var readyHandler = function () {
+        resizeDelayHandeler();
+    };
+
+    var loadHandler = function() {
+        // document.height が変わるのでもう一度呼ぶ
+        resizeDelayHandeler();
+
+        window.focus();
+    };
+
+    var resizeDelayHandeler = function() {
+        console.log('resizeDelayHandler was called.');
         windowHeight = $window.height();
-        $('.auto-height').height(windowHeight + 'px');
+        $('.auto-height').css('min-height', windowHeight + 'px');
         currentScroll = $body.scrollTop() || $html.scrollTop();
-        bodyHeight = $body.height();
+        documentHeight = $document.height();
+        // console.log('documentHeight = ' + documentHeight + ', windowHeight = ' + windowHeight + ', currentScroll = ' + currentScroll)
     };
 
-    var scrollHandler = function() {
-        //console.log('scrollHandler');
-        currentScroll = $body.scrollTop() || $html.scrollTop();
-        var currentTime = Math.max(Math.min(duration * currentScroll / (bodyHeight - windowHeight), duration - 0.1), 0);
-        video.currentTime = currentTime;
-        var stringedTime = (Math.floor(currentTime * 10) / 10).toFixed(1);
-        $('#currentTime').text(stringedTime);
-    };
-
-    var timeupdateHandler = function() {
-        if (!isPlaying) {
-            return;
-        }
-        //console.log('timeupdateHandler');
-        var currentTime = video.currentTime;
-        var newScroll = (bodyHeight - windowHeight) * currentTime / duration;
-
-        var stringedTime = (Math.floor(currentTime * 10) / 10).toFixed(1);
-        $('#currentTime').text(stringedTime);
-
-        $htmlbody.stop(true, false).animate({
-            scrollTop: newScroll
-        }, {
-            duration: 500,
-            easing: 'linear'
-        });
-    };
-
-    var loadeddataHandler = function() {
-        //console.log('loadeddataHandler');
-        duration = video.duration;
+    var loadedMetadataHandler = function() {
+        console.log('loadedMetadataHandler');
         video.pause();
-        scrollHandler();
-        scrollDelayTimer = setTimeout(scrollDelayHandler, 5000);
+        duration = video.duration;
+        seekByScroll();
+    };
+
+    var loadedDataHandler = function() {
+        console.log('loadedDataHandler');
+        startPlayingTimer = setTimeout(startPlaying, SCROLL_DELAY_TIME);
         var stringedDuration = (Math.floor(duration * 10) / 10).toFixed(1);
         $('#duration').text(stringedDuration + 's');
     };
 
-    var scrollDelayHandler = function() {
-        //console.log('scrollDelayHandler');
+    var seekByScroll = function() {
+
+        // IEは頻繁にcurrentTimeを更新すると追随できないので、頻度を下げる
+        var isIE = !!navigator.userAgent.toLowerCase().match('msie 9');
+        var isVideoSupported = 'HTMLVideoElement' in window;
+        if (isIE && isVideoSupported) {
+            var now = Date.now();
+            if (now - lastSeekTime < IE_SEEK_INTERVAL) {
+                console.log('ignored seeking because of too short interval.');
+                return;
+            }
+            lastSeekTime = now;
+        }
+
+        currentScroll = $body.scrollTop() || $html.scrollTop();
+        var currentTime = Math.max(Math.min(duration * currentScroll / (documentHeight - windowHeight), duration - 0.1), 0);
+        video.currentTime = currentTime;
+        var stringedTime = (Math.floor(currentTime * 10) / 10).toFixed(1);
+        $('#currentTime').text(stringedTime);
+        // console.log('seekByScroll was called. current time is ' + currentTime + '.');
+    };
+
+    var scrollByTimeUpdate = function() {
+        //console.log('scrollByTimeUpdate');
+        var currentTime = video.currentTime;
+        var newScroll = (documentHeight - windowHeight) * currentTime / duration;
+
+        var stringedTime = (Math.floor(currentTime * 10) / 10).toFixed(1);
+        $('#currentTime').text(stringedTime);
+
+        $htmlAndBody.stop(true, false).animate({
+            scrollTop: newScroll
+        }, {
+            duration: 400,
+            easing: 'linear'
+        });
+        // console.log('(' + documentHeight + ' - ' + windowHeight + ') * ' + currentTime + ' / ' + duration +' = ' + newScroll);
+    };
+
+    var startPlaying = function() {
+        console.log('startPlaying');
         isPlaying = true;
         video.play();
     };
 
-    var wheelHandler = function() {
-        //console.log('wheelHandler');
-        $htmlbody.stop(true, true);
+    var stopPlaying = function() {
+        console.log('stopPlaying');
+        $htmlAndBody.stop(true, true);
         isPlaying = false;
         video.pause();
     };
 
-    var visibilityChangeHandler = function() {
-        var isVisible = !document.hidden;
-        //console.log('visibilityChangeHandler. isVisible = ' + isVisible);
-        if (isPlaying && !isVisible) {
-            $htmlbody.stop(true, true);
-            isPlaying = false;
+    var suspend = function() {
+        if (!isFocused || !isVisible) {
+            var nowIsSuspended = true;
+        } else {
+            var nowIsSuspended = false;
+        }
+        if (isSuspended === nowIsSuspended) {
+            return;
+        }
+        isSuspended = nowIsSuspended;
+        console.log('isSuspended = ' + isSuspended);
+
+        if (isPlaying && isSuspended) {
+            $htmlAndBody.stop(true, true);
             video.pause();
         }
-        if (!isPlaying && isVisible) {
-            isPlaying = true;
+        
+        if (isPlaying && !isSuspended) {
             video.play();
         }
+
+        if (!isPlaying && isSuspended) {
+            clearTimeout(startPlayingTimer);
+        }
+
+        if (!isPlaying && !isSuspended) {
+            if (!video.ended) {
+                startPlayingTimer = setTimeout(startPlaying, SCROLL_DELAY_TIME);
+            }
+        }
     };
-
-    var hash = location.hash.replace(/^#/, '');
-    var filename = '';
-    switch (hash) {
-        case 'mono':
-            filename = 'web25_mono';
-            break;
-        case 'sepia':
-            filename = 'web25_sepia';
-            break;
-        default:
-            filename = 'web25';
-            break;
-    };
-    var extension = '';
-    if (navigator.userAgent.toLowerCase().match(/chrome/)) {
-        extension = 'webm';
-    } else if (navigator.userAgent.toLowerCase().match(/safari/)) {
-        extension = 'm4v';
-    } else if (navigator.userAgent.toLowerCase().match(/firefox/)) {
-        extension = 'webm';
-    } else {
-        extension = 'm4v';
-    }
-    var src = filename + '.' + extension;
-    video.src = 'video/' + src;
-    video.play();
-    resizeHandler();
-
-    $window.on('scroll', function() {
-        var isVisible = !document.hidden;
-        if (!isVisible) {
-            clearTimeout(scrollDelayTimer);
-            return;
-        }
-        if (isPlaying) {
-            return;
-        }
-        if (video.readyState !== video.HAVE_ENOUGH_DATA
-            && video.readyState !== video.HAVE_FUTURE_DATA
-            && video.readyState !== video.HAVE_CURRENT_DATA) {
-            return;
-        }
-        scrollHandler();
-        clearTimeout(scrollDelayTimer);
-        scrollDelayTimer = setTimeout(scrollDelayHandler, 20000);
-    });
-
-    $video.on('loadeddata', loadeddataHandler);
 
     var resizeTimer = null;
-    $window.on('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resizeHandler, 100);
+    var startPlayingTimer = null;
+
+    $window
+        .on('load', loadHandler)
+        .on('scroll', function() {
+            if (isSuspended) {
+                console.warn('scroll event was fired though isSuspended is true.');
+                clearTimeout(startPlayingTimer);
+                return;
+            }
+            if (isPlaying) {
+                console.log('ignored scroll event because isPlaying is true.');
+                return;
+            }
+            if (video.readyState === video.HAVE_NOTHING) {
+                console.log('ignored scroll event because of readyState is ' + video.readyState);
+                return;
+            }
+            seekByScroll();
+            clearTimeout(startPlayingTimer);
+            startPlayingTimer = setTimeout(startPlaying, SCROLL_DELAY_TIME);
+        })
+        .on('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resizeDelayHandeler, 100);
+        })
+        .on('focus', function() {
+            isFocused = true;
+            console.log('isFocused = ' + isFocused + ', isVisible = ' + isVisible);
+            suspend();
+        })
+        .on('blur', function() {
+            isFocused = false;
+            console.log('isFocused = ' + isFocused + ', isVisible = ' + isVisible);
+            suspend();
+        });
+
+    $video
+        .on('loadedmetadata', loadedMetadataHandler)
+        .on('loadeddata', loadedDataHandler)
+        .on('timeupdate', function() {
+            if (isSuspended) {
+                console.warn('timeupdate event was fired though isSuspended is true.');
+                return;
+            }
+            if (!isPlaying) {
+                console.log('ignored timeupdate event because isPlaying is false.');
+                return;
+            }
+            scrollByTimeUpdate();
+        });
+
+    $document
+        .on('mousewheel DOMMouseScroll mousedown', function() {
+            if (!isPlaying) {
+                return;
+            }
+            stopPlaying();
+        })
+        .on('visibilitychange', function() {
+            switch (document.visibilityState) {
+                case 'visible':
+                    isVisible = true;
+                    break;
+                case 'hidden':
+                case 'pretender':
+                    isVisible = false;
+                    break;
+            }
+            console.log('isFocused = ' + isFocused + ', isVisible = ' + isVisible);
+            suspend();
+        });
+
+    $('#playButton').on('click touchstart', function() {
+        alert();
+        startPlaying();
     });
 
-    var scrollDelayTimer = null;
-    $video.on('timeupdate', timeupdateHandler);
-    $document.on('mousewheel', wheelHandler);
-
-    $document.on('visibilitychange', visibilityChangeHandler);
+    readyHandler();
 });
