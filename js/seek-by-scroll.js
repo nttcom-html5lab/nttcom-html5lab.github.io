@@ -26,6 +26,19 @@ $(document).on('ready', function() {
         // document.height が変わるのでもう一度呼ぶ
         resizeDelayHandeler();
 
+        try {
+            console.log(
+                    ' _   _  _____  __  __  _     ___    _       _    ___\n' +
+                    '| |_| ||_   _||  \\/  || |   | __|  | |     / \\  | D )\n' +
+                    '|  _  |  | |  | |\\/| || |__ |__ \\  | |__  / A \\ | D \\\n' +
+                    '|_| |_|  |_|  |_|  |_||____||___/  |____|/_/¯\\_\\|___/\n' +
+                    '\n' +
+                    '         N T T   C o m m u n i c a t i o n s\n' +
+                    '\n' +
+                    '     Nice to meet you also in developer console!\n'
+            );
+        } catch (e) {}
+
         window.focus();
     };
 
