@@ -63,13 +63,13 @@ body {
   min-width: 100%;
   min-height: 100%;
 }
-#toppageBackground .current-time-container {
-  position: absolute;
-  top: 10px;
+.current-time-container {
+  position: fixed;
+  top: 200px;
   right: 10px;
   font-family: Menlo;
-  background-color: rgba(255, 255, 255, 0.2);
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.2) !important;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 /* Left will inherit from right (so we don't need to duplicate code */
 .github-fork-ribbon {
