@@ -35,7 +35,14 @@ $(document).on('ready', function() {
                     '\n' +
                     '         N T T   C o m m u n i c a t i o n s\n' +
                     '\n' +
-                    '     Nice to meet you also in developer console!\n'
+                    'Hi! Thank you for looking in the developer console!\n' +
+                    'If you have any cool ideas or see any bugs,\n' +
+                    'please submit a pull request.\n' +
+                    '\n' +
+                    'コンソールまで見てくれてありがとう！\n' +
+                    'おもしろいアイデアや不具合などあれば、プルリクエストを送ってくださいね。\n' +
+                    '\n' +
+                    'https://github.com/html5lab/html5lab.github.io/'
             );
         } catch (e) {}
 
@@ -155,11 +162,6 @@ $(document).on('ready', function() {
     $window
         .on('load', loadHandler)
         .on('scroll', function() {
-            if (isSuspended) {
-                console.warn('scroll event was fired though isSuspended is true.');
-                clearTimeout(startPlayingTimer);
-                return;
-            }
             if (isPlaying) {
                 console.log('ignored scroll event because isPlaying is true.');
                 return;
@@ -168,7 +170,16 @@ $(document).on('ready', function() {
                 console.log('ignored scroll event because of readyState is ' + video.readyState);
                 return;
             }
+
             seekByScroll();
+
+            if (isSuspended) {
+                console.warn('scroll event was fired though isSuspended is true.');
+                clearTimeout(startPlayingTimer);
+
+                // Suspend 中も seek はできるが、再生タイマーはセットしない。
+                return;
+            }
             clearTimeout(startPlayingTimer);
             startPlayingTimer = setTimeout(startPlaying, SCROLL_DELAY_TIME);
         })
