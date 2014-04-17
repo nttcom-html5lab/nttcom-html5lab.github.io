@@ -12,11 +12,9 @@ $(document).on('ready', function() {
     var documentHeight = 0;
     var isPlaying = false;
     var isSuspended = false;
-    var SCROLL_DELAY_TIME = 10000;
+    var SCROLL_DELAY_TIME = 5000;
     var IE_SEEK_INTERVAL = 1000;
     var lastSeekTime = Date.now();
-    var isFocused = true;
-    var isVisible = true;
 
     var readyHandler = function () {
         resizeDelayHandeler();
@@ -124,23 +122,23 @@ $(document).on('ready', function() {
         video.pause();
     };
 
-    var suspend = function() {
-        if (!isFocused || !isVisible) {
-            var nowIsSuspended = true;
-        } else {
-            var nowIsSuspended = false;
+    var visibilityChangeHandler = function() {
+        switch (document.visibilityState) {
+            case 'visible':
+                isSuspended = false;
+                break;
+            case 'hidden':
+            case 'pretender':
+                isSuspended = true;
+                break;
         }
-        if (isSuspended === nowIsSuspended) {
-            return;
-        }
-        isSuspended = nowIsSuspended;
-        console.log('isSuspended = ' + isSuspended);
+        console.log('isSuspended = ' + isSuspended + ', isPlaying = ' + isPlaying);
 
         if (isPlaying && isSuspended) {
             $htmlAndBody.stop(true, true);
             video.pause();
         }
-        
+
         if (isPlaying && !isSuspended) {
             video.play();
         }
@@ -186,16 +184,6 @@ $(document).on('ready', function() {
         .on('resize', function() {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(resizeDelayHandeler, 100);
-        })
-        .on('focus', function() {
-            isFocused = true;
-            console.log('isFocused = ' + isFocused + ', isVisible = ' + isVisible);
-            suspend();
-        })
-        .on('blur', function() {
-            isFocused = false;
-            console.log('isFocused = ' + isFocused + ', isVisible = ' + isVisible);
-            suspend();
         });
 
     $video
@@ -211,6 +199,8 @@ $(document).on('ready', function() {
                 return;
             }
             scrollByTimeUpdate();
+        }).on('ended', function() {
+            isPlaying = false;
         });
 
     $document
@@ -220,19 +210,7 @@ $(document).on('ready', function() {
             }
             stopPlaying();
         })
-        .on('visibilitychange', function() {
-            switch (document.visibilityState) {
-                case 'visible':
-                    isVisible = true;
-                    break;
-                case 'hidden':
-                case 'pretender':
-                    isVisible = false;
-                    break;
-            }
-            console.log('isFocused = ' + isFocused + ', isVisible = ' + isVisible);
-            suspend();
-        });
+        .on('visibilitychange', visibilityChangeHandler);
 
     $('#playButton').on('click touchstart', function() {
         alert();
