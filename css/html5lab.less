@@ -40,7 +40,6 @@ body {
 }
 
 // Main
-
 #toppageWhat {
     margin-top: 20%;
 }
@@ -75,7 +74,7 @@ body {
 // Top Page
 // --------------------------------------------------
 
-#toppageBackground {
+.toppage-background {
     position: fixed;
     z-index: -100;
     left: 0;
@@ -94,11 +93,32 @@ body {
 
 .current-time-container {
     position: fixed;
-    top: 200px;
+    top: 10px;
     right: 10px;
-    font-family: Menlo;
+    font-family: Menlo, Menlo, Monaco, Consolas, "Courier New", monospace;
     z-index: 100;
     background-color: rgba(255,255,255,0.8);
+}
+
+.controls {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+html.isPlaying {
+    #playButton {
+        display: none;
+    }
+}
+
+html:not(.isPlaying) {
+    #pauseButton {
+        display: none;
+    }
 }
 
 #toppageAbout {

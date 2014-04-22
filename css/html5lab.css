@@ -47,7 +47,7 @@ body {
   display: inline;
   padding: 0 2px;
 }
-#toppageBackground {
+.toppage-background {
   position: fixed;
   z-index: -100;
   left: 0;
@@ -58,18 +58,32 @@ body {
   background: url("?holder.js/1280x720/text:Full Screen Video") center center no-repeat;
   background-size: cover !important;
 }
-#toppageBackground #video {
+.toppage-background #video {
   display: block;
   min-width: 100%;
   min-height: 100%;
 }
 .current-time-container {
   position: fixed;
-  top: 200px;
+  top: 10px;
   right: 10px;
-  font-family: Menlo;
+  font-family: Menlo, Menlo, Monaco, Consolas, "Courier New", monospace;
   z-index: 100;
   background-color: rgba(255, 255, 255, 0.8);
+}
+.controls {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+}
+html.isPlaying #playButton {
+  display: none;
+}
+html:not(.isPlaying) #pauseButton {
+  display: none;
 }
 /* Left will inherit from right (so we don't need to duplicate code */
 .github-fork-ribbon {
