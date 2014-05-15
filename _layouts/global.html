@@ -17,14 +17,12 @@
     <link href="{{ relative_path }}css/bootstrap-html5lab.css" rel="stylesheet">
     <link href="{{ relative_path }}css/html5lab.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="{{ relative_path }}js/html5shiv.js"></script>
+    <script src="{{ relative_path }}js/respond.min.js"></script>
     <![endif]-->
-    <!-- ダミー画像を生成するライブラリ -->
-    <script src="{{ relative_path }}js/holder.js"></script>
-    <script src="{{ relative_path }}js/jquery-1.11.0.min.js"></script>
+    <script src="{{ relative_path }}js/jquery-1.11.0.js"></script>
     <script src="{{ relative_path }}js/bootstrap.min.js"></script>
-    <script src="{{ relative_path }}js/html5lab.js"></script>
+    <script src="{{ relative_path }}js/util.js"></script>
     <!--
      _   _  _____  __  __  _     ___    _       _    ___
     | |_| ||_   _||  \/  || |   | __|  | |     / \  | D )
@@ -106,7 +104,7 @@
             <li>|</li>
             <li><a href="http://www.ntt.com/aboutus/hp/webbeacon.html">クッキーとウェブビーコンについて</a></li>
         </ul>
-        <p class="hl-logo"><a href="http://www.ntt.com/"><img data-src="holder.js/150x50/text:NTT Com Logo" alt="NTT Communications" /></a></p>
+        <p class="hl-logo"><a href="http://www.ntt.com/"><img src="http://placekitten.com/150/50" alt="NTT Communications" /></a></p>
         <p class="hl-copyright">Copyright &copy; 2014 NTT Communications</p>    </div>
 </footer>
 </body>
