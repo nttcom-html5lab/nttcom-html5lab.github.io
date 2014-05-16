@@ -1,0 +1,19 @@
+{
+    "name": "nttcom-html5lab-site",
+    "version": "0.0.1",
+    "description": "NTT Communications HTML5 Lab's Web Site",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:nttcom-webcore/html5lab-staging.git"
+    },
+    "author": "rotsuya, shumpei",
+    "dependencies": {},
+    "devDependencies": {
+        "gulp-coffee": "*",
+        "gulp-concat": "*",
+        "gulp-uglify": "*",
+        "gulp-imagemin": "*",
+        "gulp-less": "*",
+        "gulp": "^3.6.2"
+    }
+}

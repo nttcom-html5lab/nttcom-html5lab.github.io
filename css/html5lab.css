@@ -6,7 +6,7 @@ body {
   background-color: #000;
 }
 .hl-navbar {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: red;
   color: #333333;
 }
 .hl-navbar .hl-brand {
