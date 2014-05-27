@@ -68,7 +68,7 @@ var bgv = (function() {
         setTimeout(function() {
             isInitialized = true;
             measureSizes();
-            startPlaying();
+            //startPlaying();
         }, 0);
     }
 
