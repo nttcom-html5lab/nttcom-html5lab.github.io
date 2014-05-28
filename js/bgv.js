@@ -4,6 +4,7 @@ var bgv = (function() {
     var isBgvLoaded = false;
     var resizeTimer = null;
 
+    var $document = $(document);
     var $html = $('html');
     var $body = $('body');
     var $htmlAndBody = $('html, body');
@@ -11,18 +12,25 @@ var bgv = (function() {
     var currentScroll = 0;
     var documentHeight = 0;
     var isPlaying = false;
+    var isFirstPlay = true;
+    var isTouch = 'ontouchstart' in window;
     var isSuspended = false;
+    var wasSusptended = false;
     var isInitialized = false;
     var duration = 0;
     var isDebug = true;
     isDebug = isDebug && ('console' in window);
 
     function readyHandler() {
+        if (isDebug) console.log('document.onready');
+
         flexvideo
             .on('loadedmetadata', loadedMetadataHandler)
             .on('loadeddata', loadedDataHandler)
             .on('timeupdate', timeUpdateHandler)
             .on('ended', endedHandler)
+            .on('playing', playingHandler)
+            .on('paused', pausedHandler)
             .initialize('.toppage-background', '#video', '#pictures');
 
         $html.addClass('isPausing');
@@ -33,12 +41,12 @@ var bgv = (function() {
                 + '<span id="currentTime"></span> / <span id="duration"></span>'
                 + '</section>'
             );
-            console.log('document.onready');
         }
     }
 
     function loadedMetadataHandler() {
         if (isDebug) console.log('flexvideo.onloadedmetadata');
+
         flexvideo.pause();
 
         duration = flexvideo.getDuration();
@@ -65,6 +73,7 @@ var bgv = (function() {
     }
 
     function initialize() {
+        if (isDebug) console.log('bgv.initialize()');
         setTimeout(function() {
             isInitialized = true;
             measureSizes();
@@ -85,8 +94,20 @@ var bgv = (function() {
     }
 
     function endedHandler() {
-        if (isDebug) console.log('flexvideo ended.');
+        if (isDebug) console.log('flexvideo.onended');
         stopPlaying();
+    }
+
+    function playingHandler() {
+        if (isDebug) console.log('flexvideo.onplaying');
+        isPlaying = true;
+        $('html').removeClass('isPausing').addClass('isPlaying');
+    }
+
+    function pausedHandler() {
+        if (isDebug) console.log('flexvideo.onpaused');
+        $('html').removeClass('isPlaying').addClass('isPausing');
+        isPlaying = false;
     }
 
     function resizeHandler() {
@@ -98,25 +119,33 @@ var bgv = (function() {
     }
 
     function measureSizes() {
-        if (isDebug) console.log('measureSizes was called.');
+        if (isDebug) console.log('bgv.measureSizes()');
         windowHeight = $(window).height();
         currentScroll = $body.scrollTop() || $html.scrollTop();
-        documentHeight = $(document).height();
+        documentHeight = $document.height();
         if (isDebug) console.log('documentHeight = ' + documentHeight + ', windowHeight = ' + windowHeight + ', currentScroll = ' + currentScroll);
         scrollHandler();
     }
 
-    function wheelHandler() {
+    function wheelHandler(event) {
+        if (isDebug && event && event.type) console.log('document.on' + event.type)
         if (isPlaying) {
             stopPlaying();
         }
     }
 
     function scrollHandler() {
+        if (isDebug) console.log('window.onscroll');
         if (isPlaying) {
-            //if (isDebug) console.log('ignored scroll event because isPlaying is true.');
+            if (isDebug) console.log('ignored scroll event because isPlaying is true.');
             return;
         }
+        if (isPlaying && isTouch && isFirstPlay) {
+            if (isDebug) console.log('ignored scroll event because of first play.');
+            isFirstPlay = false;
+            return;
+        }
+
         if (flexvideo.getReadyState() === flexvideo.HAVE_NOTHING) {
             if (isDebug) console.warn('ignored scroll event because of readyState is ' + flexvideo.getReadyState());
             return;
@@ -190,25 +219,44 @@ var bgv = (function() {
         }
     }
 
-    function visibilityChangeHandler() {
-        switch (document.visibilityState) {
-            case 'visible':
+    function visibilityChangeHandler(event) {
+        if (isDebug && event && event.target && event.type) console.log(event.target + '.on' + event.type)
+        switch (event.type) {
+            case 'pageshow':
                 isSuspended = false;
                 break;
-            case 'hidden':
-            case 'pretender':
+            case 'pagehide':
                 isSuspended = true;
                 break;
+            case 'visibilitychange':
+                switch (document.visibilityState) {
+                    case 'visible':
+                        isSuspended = false;
+                        break;
+                    case 'hidden':
+                    case 'pretender':
+                        isSuspended = true;
+                        break;
+                }
+                break;
         }
-        if (isDebug) console.log('isSuspended = ' + isSuspended + ', isPlaying = ' + isPlaying);
+
+        if (isSuspended === wasSusptended) {
+            return;
+        }
+        wasSusptended = isSuspended;
+
+        //if (isDebug) console.log('isSuspended = ' + isSuspended + ', isPlaying = ' + isPlaying);
 
         if (isPlaying && isSuspended) {
-            $htmlAndBody.stop(true, true);
-            flexvideo.pause();
+            setTimeout(function() {
+                $htmlAndBody.stop(true, true);
+                flexvideo.pause();
+            }, 0);
         }
 
-        if (isPlaying && !isSuspended && !flexvideo.getEnded()) {
-            flexvideo.play();
+        if (isPlaying && !isSuspended && !getEnded()) {
+            setTimeout(flexvideo.play, 0);
         }
     }
 
@@ -229,27 +277,58 @@ var bgv = (function() {
     }
 
     function startPlaying() {
-        var currentTime = flexvideo.getCurrentTime();
-        var isIE = /(trident|msie)/.test(navigator.userAgent.toLowerCase());
-        var isCurrentTimeBug = flexvideo.support.video && isIE;
-        if (flexvideo.getEnded()
-            || ((duration === -1) && (currentTime >= duration))
-            || (isCurrentTimeBug && (duration - currentTime < 0.5))   // IE11 Work Around
-            ) {
+        if (isDebug) console.log('bgv.startPlaying()');
+        if (getEnded()) {
             return;
         }
-        if (isDebug) console.log('startPlaying');
-        isPlaying = true;
-        $('html').removeClass('isPausing').addClass('isPlaying');
         flexvideo.play();
     }
 
     function stopPlaying() {
-        if (isDebug) console.log('stopPlaying');
+        if (isDebug) console.log('bgv.stopPlaying()');
         flexvideo.pause();
         $htmlAndBody.stop(true, false);
-        $('html').removeClass('isPlaying').addClass('isPausing');
-        isPlaying = false;
+    }
+
+    function getEnded() {
+        var currentTime = flexvideo.getCurrentTime();
+        var isIE = /(trident|msie)/.test(navigator.userAgent.toLowerCase());
+        var isCurrentTimeBug = flexvideo.support.video && isIE;
+        return flexvideo.getEnded()
+            || ((duration === -1) && (currentTime >= duration))
+            || ((duration === -1) && isCurrentTimeBug && (duration - currentTime < 0.5));  // IE11 Work Around
+    }
+
+
+    var startX = -1;
+    var startY = -1;
+
+    function touchStartHandler(event) {
+        startX = event.originalEvent.touches[0].pageX;
+        startY = event.originalEvent.touches[0].pageY;
+        if (isDebug) console.log('document.ontouchstart (' + startX + ', ' + startY + ')');
+    }
+
+    function touchMoveHandler(event) {
+        if (startX === -1) {
+            return;
+        }
+        var x = event.originalEvent.touches[0].pageX;
+        var y = event.originalEvent.touches[0].pageY;
+        var distance = Math.sqrt(Math.pow(startX - x, 2) + Math.pow(startY - y, 2));
+        if (isDebug) console.log('document.outouchmove (' + x + ', ' + y + ') ' + distance);
+        if (distance > 10) {
+            if (isDebug) console.log('distance > 10');
+            startX = -1;
+            startY = -1;
+            $document.trigger('vwheel');
+        }
+    }
+
+    function touchEndHandler() {
+        if (isDebug) console.log('document.ontouchend');
+        startX = -1;
+        startY = -1;
     }
 
     return {
@@ -260,6 +339,9 @@ var bgv = (function() {
         wheelHandler: wheelHandler,
         visibilityChangeHandler: visibilityChangeHandler,
         clickedPlayButtonHandler: clickedPlayButtonHandler,
-        clickedPauseButtonHandler: clickedPauseButtonHandler
+        clickedPauseButtonHandler: clickedPauseButtonHandler,
+        touchStartHandler: touchStartHandler,
+        touchMoveHandler: touchMoveHandler,
+        touchEndHandler: touchEndHandler
     };
 })();
