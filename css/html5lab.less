@@ -126,6 +126,11 @@ body {
         height: 1px;
         background-color: aqua;
         z-index: 2020;
+        -webkit-transition: left 0.1s linear 0, width 0.1s linear 0;
+        -moz-transition: left 0.1s linear 0, width 0.1s linear 0;
+        -ms-transition: left 0.1s linear 0, width 0.1s linear 0;
+        -o-transition: left 0.1s linear 0, width 0.1s linear 0;
+        transition: left 0.1s linear 0, width 0.1s linear 0;
     }
 
     .buffered {
@@ -160,6 +165,16 @@ body {
     width: 100%;
     text-align: center;
     z-index: 100;
+    #playButton, #pauseButton {
+        width: 60px;
+        height: 60px;
+        font-size: 18px;
+        line-height: 30px;
+        padding: 15px;
+        margin: 0 auto;
+        display: block;
+        background: rgba(255, 255, 255, 0.5);
+    }
 }
 
 html {
