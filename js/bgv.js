@@ -120,7 +120,7 @@ var bgv = (function() {
     }
 
     function wheelHandler(event) {
-        if (isDebug && event && event.type) console.log('document.on' + event.type)
+        if (isDebug && event && event.type) console.log('document.on' + event.type);
         if (isPlaying) {
             stopPlaying();
         }
@@ -226,7 +226,14 @@ var bgv = (function() {
     }
 
     function visibilityChangeHandler(event) {
-        if (isDebug && event && event.target && event.target.nodeName && event.type) console.log(event.target.nodeName + '.on' + event.type)
+        if (isDebug && event.type) {
+            if (event.target && event.target.nodeName) {
+                console.log(event.target.nodeName + '.on' + event.type);
+            } else if (event.target === window) {
+                console.log('window' + '.on' + event.type);
+            }
+        }
+
         switch (event.type) {
             case 'pageshow':
                 isSuspended = false;

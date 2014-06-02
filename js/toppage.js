@@ -23,6 +23,6 @@
         .on('load', bgv.windowLoadHandler)
         .on('scroll', bgv.scrollHandler)
         .on('resize', bgv.resizeHandler)
-        .on('pageshow', bgv.visibilityChangeHandler)
-        .on('pagehide', bgv.visibilityChangeHandler);
+        .on('pageshow load', bgv.visibilityChangeHandler)
+        .on('pagehide blur', bgv.visibilityChangeHandler);
 })();
