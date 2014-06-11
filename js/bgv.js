@@ -264,7 +264,7 @@ var bgv = (function() {
         }
 
         if (isPlaying && !isSuspended && !getEnded()) {
-            setTimeout(flexvideo.play, 0);
+            setTimeout($.proxy(flexvideo.play, flexvideo), 0);
         }
     }
 
