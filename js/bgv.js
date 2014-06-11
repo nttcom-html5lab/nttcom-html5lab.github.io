@@ -201,11 +201,11 @@ var bgv = (function() {
 
         if (isDebug) {
             $('#currentTime').text(stringedTime);
-            $('#played').css({
-                width: (currentTime / duration * 100) + '%'
-            });
         }
 
+        $('#played').css({
+            width: (currentTime / duration * 100) + '%'
+        });
         for (var i = 0; i < Math.max(bufferedLength, $bufferedLength); i++) {
             if (i < bufferedLength) {
                 if (i >= $bufferedLength) {
