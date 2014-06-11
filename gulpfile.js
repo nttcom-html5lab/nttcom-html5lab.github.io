@@ -6,10 +6,10 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 
-var BUILD_DIR = '_site'
+var BUILD_DIR = './';
 
 var paths = {
-    scripts: ['js/**/*.js'],
+    scripts: ['js/util.js', 'js/flexvideo.js', 'js/bgv.js', 'js/toppage.js'],
     less: ['less/**/*.less'],
     images: 'img/**/*'
 };
@@ -18,7 +18,7 @@ gulp.task('scripts', function() {
     // Minify and copy all JavaScript (except vendor scripts)
     return gulp.src(paths.scripts)
         .pipe(uglify())
-        .pipe(concat('all.min.js'))
+        .pipe(concat('toppage.all.min.js'))
         .pipe(gulp.dest(BUILD_DIR + '/js'));
 });
 
@@ -30,10 +30,12 @@ gulp.task('less', function() {
 
 // Copy all static images
 gulp.task('images', function() {
+/*
     return gulp.src(paths.images)
     // Pass in options to the task
         .pipe(imagemin({optimizationLevel: 5}))
         .pipe(gulp.dest(BUILD_DIR + '/img'));
+*/
 });
 
 // Rerun the task when a file changes
