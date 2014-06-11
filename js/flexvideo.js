@@ -1,5 +1,5 @@
 var flexvideo = (function() {
-    var $container, $video, video, $pictures;
+    var $wrapper, $video, video, $pictures;
 
     var IE_SEEK_INTERVAL = 1000;
     var lastSeekTime = 0;
@@ -13,6 +13,10 @@ var flexvideo = (function() {
 
     var BG_SRC_WIDTH = 1280;
     var BG_SRC_HEIGHT = 720;
+
+    var WAIT_FOR_PLAYING_DURATION = 100;
+    var WAIT_FOR_PLAYING_MAX = 50;
+    var waitForPlayingTimes = 0;
 
     var duration = -1;
 
@@ -42,8 +46,9 @@ var flexvideo = (function() {
         var TIME_UPDATE_DURATION = 200;
     }
 
-    function initialize(_container, _video, _pictures) {
-        $container = $(_container);
+    function initialize(_wrapper, _video, _pictures) {
+        if (isDebug) console.log('flexvideo.initialize()');
+        $wrapper = $(_wrapper);
         $video = $(_video);
         video = $video.get(0);
 
@@ -53,7 +58,7 @@ var flexvideo = (function() {
                 height: BG_SRC_HEIGHT + 'px'
             });
         } else {
-            $container.find('img').css({
+            $wrapper.find('img').css({
                 width: '100%',
                 height: '100%'
             });
@@ -74,7 +79,6 @@ var flexvideo = (function() {
             secondsOfFrames.sort(function(a, b) {
                 return a - b;
             });
-            if (isDebug) console.log(secondsOfFrames);
 
             setTimeout($.proxy(function() {
                 this.emit('loadedmetadata');
@@ -85,15 +89,19 @@ var flexvideo = (function() {
             return;
         }
 
+        function emitEvent(event) {
+            this.emit(event.originalEvent.type);
+        }
+
         $video.on('loadedmetadata', $.proxy(function(event) {
             duration = video.duration;
             this.emit(event.originalEvent.type);
-        }, this)).on('loadeddata', $.proxy(function(event) {
-            this.emit(event.originalEvent.type);
-        }, this)).on('timeupdate', $.proxy(function(event) {
-            this.emit(event.originalEvent.type);
-        }, this)).on('ended', $.proxy(function(event) {
-            this.emit(event.originalEvent.type);
+        }, this)).on('loadeddata', $.proxy(emitEvent, this))
+        .on('timeupdate', $.proxy(emitEvent, this))
+        .on('ended', $.proxy(emitEvent, this))
+        .on('playing', $.proxy(emitEvent, this))
+        .on('pause', $.proxy(function(event) {
+            this.emit('paused');
         }, this));
     }
 
@@ -144,7 +152,7 @@ var flexvideo = (function() {
             getCss(css, 'scale', scale);
         }
 
-        $container.css(css);
+        $wrapper.css(css);
     }
 
     function on(eventType, handler) {
@@ -163,26 +171,36 @@ var flexvideo = (function() {
     }
 
     function play() {
+        if (isDebug) console.log('flexvideo.play()');
         if (!support.video) {
             lastTimeUpdateFallback = util.getNow();
             timeUpdateFallbackTimer = setInterval($.proxy(timeUpdateFallback, this), TIME_UPDATE_DURATION);
+            this.emit('playing');
             return;
         }
 
         if (video.seeking) {
             if (isDebug) console.log('waiting for playing');
-            setTimeout(play, 100);
+            if (waitForPlayingTimes++ < WAIT_FOR_PLAYING_MAX) {
+                setTimeout(play, WAIT_FOR_PLAYING_DURATION);
+                return;
+            }
+            if (isDebug) console.log('waiting for playing time out');
+            return;
         }
 
+        waitForPlayingTimes = 0;
         video.play();
     }
 
     function pause() {
+        if (isDebug) console.log('flexvideo.pause()');
         if (!support.video) {
             if (timeUpdateFallbackTimer) {
                 clearInterval(timeUpdateFallbackTimer);
                 timeUpdateFallbackTimer = 0;
             }
+            this.emit('paused');
             return;
         }
         video.pause();
