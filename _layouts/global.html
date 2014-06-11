@@ -6,7 +6,7 @@
     {% include assign_relative_path.html %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="description" content="{{ page.description }}">
     {% if page.url == '/index.html' %}
     <title>{{ page.title }}</title>
@@ -22,7 +22,6 @@
     <![endif]-->
     <script src="{{ relative_path }}js/jquery-1.11.0.js"></script>
     <script src="{{ relative_path }}js/bootstrap.min.js"></script>
-    <script src="{{ relative_path }}js/util.js"></script>
     <!--
      _   _  _____  __  __  _     ___    _       _    ___
     | |_| ||_   _||  \/  || |   | __|  | |     / \  | D )
@@ -108,5 +107,26 @@
         <p class="hl-logo"><a href="http://www.ntt.com/"><img src="http://placekitten.com/150/50" alt="NTT Communications" /></a></p>
         <p class="hl-copyright">Copyright &copy; 2014 NTT Communications</p>    </div>
 </footer>
-</body>
+<script>
+    // Facebookをベースにしたscriptの非同期読み込み用の関数
+    var jsload = function (d, s, id, src) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = src;
+        fjs.parentNode.insertBefore(js, fjs);
+    };
+
+    // Twitter
+    jsload(document, 'script', 'twitter-wjs', '//platform.twitter.com/widgets.js');
+    // Facebook
+    jsload(document, 'script', 'facebook-jssdk', '//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=582225031817530');
+    // Hatena
+    jsload(document, 'script', 'hatena-js', '//b.st-hatena.com/js/bookmark_button.js');
+
+    // Google Analytics もここに
+</script></body>
 </html>

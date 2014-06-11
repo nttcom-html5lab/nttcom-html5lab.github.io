@@ -42,6 +42,10 @@ var bgv = (function() {
                 + '</section>'
             );
         }
+
+        if (!flexvideo.support.video) {
+            $('#video').hide();
+        }
     }
 
     function loadedMetadataHandler() {
@@ -201,11 +205,11 @@ var bgv = (function() {
 
         if (isDebug) {
             $('#currentTime').text(stringedTime);
-            $('#played').css({
-                width: (currentTime / duration * 100) + '%'
-            });
         }
 
+        $('#played').css({
+            width: (currentTime / duration * 100) + '%'
+        });
         for (var i = 0; i < Math.max(bufferedLength, $bufferedLength); i++) {
             if (i < bufferedLength) {
                 if (i >= $bufferedLength) {
@@ -267,7 +271,7 @@ var bgv = (function() {
         }
 
         if (isPlaying && !isSuspended && !getEnded()) {
-            setTimeout(flexvideo.play, 0);
+            setTimeout($.proxy(flexvideo.play, flexvideo), 0);
         }
     }
 
