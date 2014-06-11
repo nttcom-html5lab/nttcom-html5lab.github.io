@@ -42,6 +42,10 @@ var bgv = (function() {
                 + '</section>'
             );
         }
+
+        if (!flexvideo.support.video) {
+            $('#video').hide();
+        }
     }
 
     function loadedMetadataHandler() {

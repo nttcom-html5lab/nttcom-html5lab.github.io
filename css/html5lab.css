@@ -51,8 +51,14 @@ body {
   color: white;
   text-align: right;
   text-shadow: 2px 2px 10px #255652;
+  font-size: 40px;
+  margin: 200px 0 32px;
+  word-wrap: break-word;
+}
+@media (min-width: 768px) {
   font-size: 80px;
   margin: 400px 0 64px;
+  word-wrap: inherit;
 }
 .textbox .content {
   background-color: #000;
