@@ -71,7 +71,7 @@ var flexvideo = (function() {
             });
         }
 
-        $window.on('resize', resizeHandler);
+        $window.on('resize iosstatusbarvisibilitychange', resizeHandler);
         resizeHandler();
 
         if (!support.video) {
