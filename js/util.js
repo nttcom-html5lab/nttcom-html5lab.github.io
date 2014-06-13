@@ -7,6 +7,52 @@ var util = (function() {
         }
     };
 
+    var ua = navigator.userAgent.toLowerCase();
+
+
+    var isDebug = true;
+
+    var device = {
+        iPhone: /iphone/.test(ua),
+        iPad: /ipad/.test(ua),
+        iPod: /ipod/.test(ua)
+    };
+
+    var style = $('body').get(0).style;
+    // var style = document.createElement('style').style;
+    var support = {
+        console: !!(window.console && console.log),
+        touch: 'ontouchstart' in window,
+        video: 'HTMLVideoElement' in window,
+        transform: ('-webkit-transform' in style && '-webkit-transform')
+            || ('-moz-transform' in style && '-moz-transform')
+            || ('-ms-transform' in style && '-ms-transform')
+            || ('-o-transform' in style && '-o-transform')
+            || ('transform' in style && 'transform')
+    };
+
+    var os = {
+        iOS: device.iPhone || device.iPad || device.iPod
+    };
+
+    if (os.iOS) {
+        var osVersionString = ua.match(/os ([\d_]+)/);
+        if (osVersionString && osVersionString.length > 1) {
+            os.version = osVersionString[1].replace('_', '.');
+        }
+    }
+
+    var browser = {
+        ie: /(trident|msie)/.test(navigator.userAgent.toLowerCase())
+    };
+
+    if (browser.ie) {
+        var browserVersionString = ua.match(/(msie |rv:)([\d\.]+)/);
+        if (browserVersionString && browserVersionString.length > 2) {
+            browser.version = browserVersionString[2];
+        }
+    }
+
     var isIE9 = browser.ie && /^9/.test(browser.version);
     support.inlineVideo = support.video && !device.iPhone && !device.iPod && !isIE9;
     // iPhoneおよびiPod Touchは、videoのインライン再生が不可能なので、画像にフォールバックする
@@ -52,6 +98,10 @@ var util = (function() {
     }
 
     return {
-        getNow: getNow
+        getNow: getNow,
+        isDebug: isDebug && support.console,
+        support: support,
+        os: os,
+        browser: browser
     };
 })();

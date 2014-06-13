@@ -1,8 +1,7 @@
 (function() {
     var $document = $(document);
-    var isTouch = 'ontouchstart' in window;
 
-    if (isTouch) {
+    if (util.support.touch) {
         $document
             .on('touchstart', bgv.touchStartHandler)
             .on('touchmove', bgv.touchMoveHandler)
