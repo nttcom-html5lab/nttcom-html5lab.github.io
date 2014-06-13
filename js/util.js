@@ -8,6 +8,11 @@ var util = (function() {
     };
 
     try {
+    var isIE9 = browser.ie && /^9/.test(browser.version);
+    support.inlineVideo = support.video && !device.iPhone && !device.iPod && !isIE9;
+    // iPhoneおよびiPod Touchは、videoのインライン再生が不可能なので、画像にフォールバックする
+    // IE9は頻繁にseekすると制御不能になるため、画像に強制フォールバックする
+
     if (os.iOS) {
         var iOS7more = /^[^2-6]/.test(os.version);
         if (iOS7more) {

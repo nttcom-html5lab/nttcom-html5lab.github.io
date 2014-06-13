@@ -1,8 +1,6 @@
 var flexvideo = (function() {
     var $wrapper, $video, video, $pictures;
 
-    var IE_SEEK_INTERVAL = 1000;
-    var lastSeekTime = 0;
     var $window = $(window);
 
     var HAVE_NOTHING = 0;
@@ -286,18 +284,6 @@ var flexvideo = (function() {
             }
 
             return;
-        }
-
-        // IEは頻繁にcurrentTimeを更新すると追随できないので、頻度を下げる
-        var isIE9 = /msie 9/.test(navigator.userAgent.toLowerCase());
-        if (isIE9) {
-            var now = util.getNow();
-            if (now - lastSeekTime < IE_SEEK_INTERVAL) {
-                if (isDebug) console.log('ignored seeking because of too short interval. ' + (now - lastSeekTime) + 'ms');
-                return;
-            }
-            console.log('seeked. ' + (now - lastSeekTime) + 'ms');
-            lastSeekTime = now;
         }
 
         video.currentTime = newTime;
