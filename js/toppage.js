@@ -22,7 +22,6 @@
     $(window)
         .on('load', bgv.windowLoadHandler)
         .on('scroll', bgv.scrollHandler)
-        .on('resize', bgv.resizeHandler)
         .on('resize iosstatusbarvisibilitychange', bgv.resizeHandler)
         .on('pageshow load', bgv.visibilityChangeHandler)
         .on('pagehide blur', bgv.visibilityChangeHandler);
