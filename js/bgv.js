@@ -21,6 +21,10 @@ var bgv = (function() {
     var isDebug = true;
     isDebug = isDebug && ('console' in window);
 
+    if (util.os.iOS) {
+        var iOS7more = /^[^2-6]/.test(util.os.version);
+    }
+
     function readyHandler() {
         if (isDebug) console.log('document.onready');
 
@@ -116,7 +120,12 @@ var bgv = (function() {
     }
 
     function measureSizes() {
-        windowHeight = $(window).height();
+        if (iOS7more) {
+            windowHeight = window.innerHeight;
+        } else {
+            windowHeight = $(window).height();
+        }
+
         currentScroll = $body.scrollTop() || $html.scrollTop();
         documentHeight = $document.height();
         if (isDebug) console.log('bgv.measureSizes(); documentHeight = ' + documentHeight + ', windowHeight = ' + windowHeight + ', currentScroll = ' + currentScroll);

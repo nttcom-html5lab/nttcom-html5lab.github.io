@@ -34,6 +34,9 @@ var flexvideo = (function() {
     };
     var isDebug = true;
     isDebug = isDebug && ('console' in window);
+    if (util.os.iOS) {
+        var iOS7more = /^[^2-6]/.test(util.os.version);
+    }
 
     // fallback
     if (!support.video) {
@@ -105,9 +108,18 @@ var flexvideo = (function() {
         }, this));
     }
 
-    function resizeHandler() {
-        var windowWidth = $window.width();
-        var windowHeight = $window.height();
+    function resizeHandler(event) {
+        if (event && event.type) {
+            console.log('window.on' + event.type);
+        }
+
+        if (iOS7more) {
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+        } else {
+            var windowWidth = $window.width();
+            var windowHeight = $window.height();
+        }
 
         function getCss(_css, _property) {
             switch (_property) {

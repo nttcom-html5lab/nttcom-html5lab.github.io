@@ -8,6 +8,23 @@ var util = (function() {
     };
 
     try {
+    if (os.iOS) {
+        var iOS7more = /^[^2-6]/.test(os.version);
+        if (iOS7more) {
+            var iOSHeight = window.innerHeight;
+            var iOSResizeTimer = setInterval(function() {
+                var height = window.innerHeight;
+                if (iOSHeight !== height) {
+                    iOSHeight = height;
+                    $(window).trigger('iosstatusbarvisibilitychange');
+                }
+            }, 1000);
+
+            $(window).on('unload', function() {
+                clearInterval(iOSResizeTimer);
+            });
+        }
+    }
         console.log(
                 '\n' +
                 ' _   _  _____  __  __  _     ___    _       _    ___\n' +
