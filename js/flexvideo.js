@@ -9,8 +9,11 @@ var flexvideo = (function() {
     var HAVE_FUTURE_DATA = 3;
     var HAVE_ENOUGH_DATA = 4;
 
-    var BG_SRC_WIDTH = 1280;
-    var BG_SRC_HEIGHT = 720;
+    var VIDEO_SRC_WIDTH = 1280;
+    var VIDEO_SRC_HEIGHT = 720;
+
+    var PICTURE_SRC_WIDTH = 960;
+    var PICTURE_SRC_HEIGHT = 540;
 
     var WAIT_FOR_PLAYING_DURATION = 100;
     var WAIT_FOR_PLAYING_MAX = 50;
@@ -36,6 +39,9 @@ var flexvideo = (function() {
         var iOS7more = /^[^2-6]/.test(util.os.version);
     }
 
+    var src_width = util.support.inlineVideo ? VIDEO_SRC_WIDTH : PICTURE_SRC_WIDTH;
+    var src_height = util.support.inlineVideo ? VIDEO_SRC_HEIGHT : PICTURE_SRC_HEIGHT;
+
     // fallback
     if (!support.video) {
         var currentTime = -1;
@@ -55,8 +61,8 @@ var flexvideo = (function() {
 
         if (support.transform) {
             $video.css({
-                width: BG_SRC_WIDTH + 'px',
-                height: BG_SRC_HEIGHT + 'px'
+                width: src_width + 'px',
+                height: src_height + 'px'
             });
         } else {
             $wrapper.find('img').css({
@@ -138,8 +144,8 @@ var flexvideo = (function() {
                         _css.transform = (_css.transform ? _css.transform + ' ' : '')
                             + 'scale(' + _scale + ')';
                     } else {
-                        _css.width = BG_SRC_WIDTH * _scale + 'px';
-                        _css.height = BG_SRC_HEIGHT * _scale + 'px';
+                        _css.width = src_width * _scale + 'px';
+                        _css.height = src_height * _scale + 'px';
                     }
                     break;
             }
@@ -148,17 +154,17 @@ var flexvideo = (function() {
         var distance = 0;
         var scale = 0;
 
-        if (windowWidth / windowHeight > BG_SRC_WIDTH / BG_SRC_HEIGHT) {
-            distance = (windowHeight - windowWidth * BG_SRC_HEIGHT / BG_SRC_WIDTH) / 2;
+        if (windowWidth / windowHeight > src_width / src_height) {
+            distance = (windowHeight - windowWidth * src_height / src_width) / 2;
             getCss(css, 'translate', 0, distance);
 
-            scale = windowWidth / BG_SRC_WIDTH;
+            scale = windowWidth / src_width;
             getCss(css, 'scale', scale);
         } else {
-            distance = (windowWidth - windowHeight * BG_SRC_WIDTH / BG_SRC_HEIGHT) / 2;
+            distance = (windowWidth - windowHeight * src_width / src_height) / 2;
             getCss(css, 'translate', distance, 0);
 
-            scale = windowHeight / BG_SRC_HEIGHT;
+            scale = windowHeight / src_height;
             getCss(css, 'scale', scale);
         }
 
