@@ -1,5 +1,5 @@
 var flexvideo = (function() {
-    var $wrapper, $video, video, $pictures;
+    var $container, $video, video, $pictures;
 
     var $window = $(window);
 
@@ -33,13 +33,13 @@ var flexvideo = (function() {
 
     // fallback
     if (!util.support.inlineVideo) {
-        var currentTime = -1;
-        var secondsOfFrames = [];
-        var timeUpdateFallbackTimer = 0;
-        var currentFrame = 0;
-        var nextFrame = 0;
-        var lastTimeUpdateFallback = util.getNow();
-        var TIME_UPDATE_DURATION = 200;
+        var pictureCurrentTime = -1;
+        var secondsOfPictures = [];   // 使わないコードも書ける to be refactored
+        var pictureUpdateTimer = 0;
+        var currenPictureIndex = 0;
+        var nextPictureIndex = 0;
+        var lastTimePictureUpdate = util.getNow();
+        var PICTURE_UPDATE_DURATION = 200;
     }
 
     function initialize(container, video_source, picture_source, picture_duration, picture_interval) {
@@ -186,7 +186,7 @@ var flexvideo = (function() {
             getCss(css, 'scale', scale);
         }
 
-        $wrapper.css(css);
+        $container.css(css);
     }
 
     function on(eventType, handler) {
@@ -207,8 +207,8 @@ var flexvideo = (function() {
     function play() {
         if (util.isDebug) console.log('flexvideo.play()');
         if (!util.support.inlineVideo) {
-            lastTimeUpdateFallback = util.getNow();
-            timeUpdateFallbackTimer = setInterval($.proxy(timeUpdateFallback, this), TIME_UPDATE_DURATION);
+            lastTimePictureUpdate = util.getNow();
+            pictureUpdateTimer = setInterval($.proxy(pictureUpdate, this), PICTURE_UPDATE_DURATION);
             this.emit('playing');
             return;
         }
@@ -229,15 +229,15 @@ var flexvideo = (function() {
 
     function pause() {
         if (util.isDebug) console.log('flexvideo.pause()');
-        if (!util.support.inlineVideo) {
-            if (timeUpdateFallbackTimer) {
-                clearInterval(timeUpdateFallbackTimer);
-                timeUpdateFallbackTimer = 0;
-            }
-            this.emit('paused');
+        if (util.support.inlineVideo) {
+            video.pause();
             return;
         }
-        video.pause();
+        if (pictureUpdateTimer) {
+            clearInterval(pictureUpdateTimer);
+            pictureUpdateTimer = 0;
+        }
+        this.emit('paused');
     }
 
     function getDuration() {
@@ -245,125 +245,124 @@ var flexvideo = (function() {
     }
 
     function setCurrentTime(newTime) {
-        if (!util.support.inlineVideo) {
-            var keyFrameLength = secondsOfFrames.length;
-
-            function getNewFrame() {
-                var _newFrame = -1;
-                var _keyFrameLength = secondsOfFrames.length;
-                for (var i = 0; i < _keyFrameLength; i++) {
-                    if (secondsOfFrames[i] > newTime) {
-                        _newFrame = i - 1;
-                        break;
-                    }
-                }
-                if (_newFrame === -1) {
-                    _newFrame = _keyFrameLength - 1;
-                }
-                return _newFrame;
-            }
-
-            var newFrame = getNewFrame();
-
-            if (currentTime === 0 || currentFrame !== newFrame) {
-                function loadImage(_frame, _toLoad, _toShow, _toHide) {
-                    var $img = $pictures.find('img[data-sec=' + secondsOfFrames[_frame]
-                        + ']');
-                    if (_toLoad) {
-                        if (!$img.attr('src')) {
-                            $img.attr('src', $img.attr('data-src'));
-                        }
-                    }
-                    if (_toShow) {
-                        $img.show();
-                    }
-                    if (_toHide) {
-                        $img.hide();
-                    }
-                }
-
-                loadImage(currentFrame, false, false, true);
-                loadImage(newFrame, true, true, false);
-
-                // 先読み
-                if (newFrame < keyFrameLength - 1) {
-                    nextFrame = newFrame + 1;
-                    loadImage(nextFrame, true, false, false);
-                } else {
-                    nextFrame = newFrame;
-                }
-
-                if (util.isDebug) console.log('change picture ' + newFrame);
-                currentFrame = newFrame;
-            }
-
-            currentTime = newTime;
-
-            this.emit('timeupdate');
-
-            if (newTime >= duration) {
-                clearInterval(timeUpdateFallbackTimer);
-                timeUpdateFallbackTimer = 0;
-                this.emit('ended');
-            }
-
+        if (util.support.inlineVideo) {
+            video.currentTime = newTime;
             return;
         }
 
-        video.currentTime = newTime;
+        var keyFrameLength = secondsOfPictures.length;
+
+        function getNewFrame() {
+            var _newFrame = -1;
+            var _keyFrameLength = secondsOfPictures.length;
+            for (var i = 0; i < _keyFrameLength; i++) {
+                if (secondsOfPictures[i] > newTime) {
+                    _newFrame = i - 1;
+                    break;
+                }
+            }
+            if (_newFrame === -1) {
+                _newFrame = _keyFrameLength - 1;
+            }
+            return _newFrame;
+        }
+
+        var newFrame = getNewFrame();
+
+        if (pictureCurrentTime === 0 || currenPictureIndex !== newFrame) {
+            function loadImage(_frame, _toLoad, _toShow, _toHide) {
+                var $img = $pictures.find('img[data-sec=' + secondsOfPictures[_frame]
+                    + ']');
+                if (_toLoad) {
+                    if (!$img.attr('src')) {
+                        $img.attr('src', $img.attr('data-src'));
+                    }
+                }
+                if (_toShow) {
+                    $img.show();
+                }
+                if (_toHide) {
+                    $img.hide();
+                }
+            }
+
+            loadImage(currenPictureIndex, false, false, true);
+            loadImage(newFrame, true, true, false);
+
+            // 先読み
+            if (newFrame < keyFrameLength - 1) {
+                nextPictureIndex = newFrame + 1;
+                loadImage(nextPictureIndex, true, false, false);
+            } else {
+                nextPictureIndex = newFrame;
+            }
+
+            if (util.isDebug) console.log('change picture ' + newFrame);
+            currenPictureIndex = newFrame;
+        }
+
+        pictureCurrentTime = newTime;
+
+        this.emit('timeupdate');
+
+        if (newTime >= duration) {
+            clearInterval(pictureUpdateTimer);
+            pictureUpdateTimer = 0;
+            this.emit('ended');
+        }
     }
 
     function getCurrentTime() {
-        if (!util.support.inlineVideo) {
-            return currentTime;
+        if (util.support.inlineVideo) {
+            return video.currentTime;
         }
-        return video.currentTime;
+        return pictureCurrentTime;
     }
 
     function getReadyState() {
-        if (!util.support.inlineVideo) {
-            if (duration === -1) {
-                return HAVE_NOTHING;
-            }
-            return HAVE_ENOUGH_DATA;
+        if (util.support.inlineVideo) {
+            return video.readyState;
         }
-        return video.readyState;
+        if (duration === -1) {
+            return HAVE_NOTHING;
+        }
+        return HAVE_ENOUGH_DATA;
     }
 
     function getEnded() {
-        if (!util.support.inlineVideo) {
-            return (currentTime >= duration);
+        if (util.support.inlineVideo) {
+            return video.ended;
         }
-        return video.ended;
+        return (pictureCurrentTime >= duration);
     }
 
-    function timeUpdateFallback() {
+    function pictureUpdate() {
         var now = util.getNow();
-        var newTime = Math.min(currentTime + (now - lastTimeUpdateFallback) / 1000, duration);
-        lastTimeUpdateFallback = now;
+        var newTime = Math.min(pictureCurrentTime + (now - lastTimePictureUpdate) / 1000, duration);
+        lastTimePictureUpdate = now;
         ($.proxy(setCurrentTime, this))(newTime);
     }
     
     function getBuffered() {
-        if (!util.support.inlineVideo) {
-            return {
-                length: 1,
-                start: function() {
-                    return secondsOfFrames[currentFrame];
-                },
-                end: function() {
-                    return secondsOfFrames[nextFrame];
-                }
+        if (util.support.inlineVideo) {
+            return video.buffered;
+        }
+        return {
+            length: 1,
+            start: function() {
+                return secondsOfPictures[currenPictureIndex];
+            },
+            end: function() {
+                return secondsOfPictures[nextPictureIndex];
             }
         }
-        return video.buffered;
     }
 
     if (!util.support.inlineVideo) {
         $(window).on('beforeunload', function() {
-            if (timeUpdateFallbackTimer) {
-                clearInterval(timeUpdateFallbackTimer);
-                timeUpdateFallbackTimer = 0;
+            if (pictureUpdateTimer) {
+                clearInterval(pictureUpdateTimer);
+                pictureUpdateTimer = 0;
             }
         });
     }
