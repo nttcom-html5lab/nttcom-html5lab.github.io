@@ -12,10 +12,15 @@ var util = (function() {
 
     var isDebug = true;
 
+    var isAndroid = /android/.test(ua);
+    var isMobile = /mobile/.test(ua);
+
     var device = {
         iPhone: /iphone/.test(ua),
         iPad: /ipad/.test(ua),
-        iPod: /ipod/.test(ua)
+        iPod: /ipod/.test(ua),
+        smartphone: isAndroid && isMobile,
+        tablet: isAndroid && !isMobile
     };
 
     var style = $('body').get(0).style;
@@ -32,7 +37,8 @@ var util = (function() {
     };
 
     var os = {
-        iOS: device.iPhone || device.iPad || device.iPod
+        iOS: device.iPhone || device.iPad || device.iPod,
+        android: isAndroid
     };
 
     if (os.iOS) {
@@ -54,7 +60,8 @@ var util = (function() {
     }
 
     var isIE9 = browser.ie && /^9/.test(browser.version);
-    support.inlineVideo = support.video && !device.iPhone && !device.iPod && !isIE9;
+
+    support.inlineVideo = support.video && !device.iPhone && !device.iPod && !device.smartphone && !isIE9;
     // iPhoneおよびiPod Touchは、videoのインライン再生が不可能なので、画像にフォールバックする
     // IE9は頻繁にseekすると制御不能になるため、画像に強制フォールバックする
 
