@@ -5,10 +5,6 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
 ---
 {% include assign_current_year.html %}
 
-<script src="{{ relative_path }}js/flexvideo.js"></script>
-<script src="{{ relative_path }}js/bgv.js"></script>
-<script src="{{ relative_path }}js/toppage.js"></script>
-
 <section class="toppage-background">
   <video id="video" autoplay>
     <source src="video/html5lab.webm" />
@@ -370,3 +366,12 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
     </div>
   </section>
 </div>
+
+{% comment %}
+<script src="{{ relative_path }}js/toppage.all.min.js"></script>
+{% endcomment %}
+<!-- デバッグ用 -->
+<script src="{{ relative_path }}js/util.js"></script>
+<script src="{{ relative_path }}js/flexvideo.js"></script>
+<script src="{{ relative_path }}js/bgv.js"></script>
+<script src="{{ relative_path }}js/toppage.js"></script>

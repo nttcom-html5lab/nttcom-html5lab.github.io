@@ -1,8 +1,6 @@
 var flexvideo = (function() {
     var $wrapper, $video, video, $pictures;
 
-    var IE_SEEK_INTERVAL = 1000;
-    var lastSeekTime = 0;
     var $window = $(window);
 
     var HAVE_NOTHING = 0;
@@ -11,8 +9,11 @@ var flexvideo = (function() {
     var HAVE_FUTURE_DATA = 3;
     var HAVE_ENOUGH_DATA = 4;
 
-    var BG_SRC_WIDTH = 1280;
-    var BG_SRC_HEIGHT = 720;
+    var VIDEO_SRC_WIDTH = 1280;
+    var VIDEO_SRC_HEIGHT = 720;
+
+    var PICTURE_SRC_WIDTH = 960;
+    var PICTURE_SRC_HEIGHT = 540;
 
     var WAIT_FOR_PLAYING_DURATION = 100;
     var WAIT_FOR_PLAYING_MAX = 50;
@@ -20,23 +21,15 @@ var flexvideo = (function() {
 
     var duration = -1;
 
-    var isSupportedVideo = 'HTMLVideoElement' in window;
-    var isIPhone = /iphone/.test(navigator.userAgent.toLowerCase());
-    var style = $('body').get(0).style;
-    // var style = document.createElement('style').style;
-    var support = {
-        video: isSupportedVideo && !isIPhone,
-        transform: ('-webkit-transform' in style && '-webkit-transform')
-            || ('-moz-transform' in style && '-moz-transform')
-            || ('-ms-transform' in style && '-ms-transform')
-            || ('-o-transform' in style && '-o-transform')
-            || ('transform' in style && 'transform')
-    };
-    var isDebug = true;
-    isDebug = isDebug && ('console' in window);
+    if (util.os.iOS) {
+        var iOS7more = /^[^2-6]/.test(util.os.version);
+    }
+
+    var src_width = util.support.inlineVideo ? VIDEO_SRC_WIDTH : PICTURE_SRC_WIDTH;
+    var src_height = util.support.inlineVideo ? VIDEO_SRC_HEIGHT : PICTURE_SRC_HEIGHT;
 
     // fallback
-    if (!support.video) {
+    if (!util.support.inlineVideo) {
         var currentTime = -1;
         var secondsOfFrames = [];
         var timeUpdateFallbackTimer = 0;
@@ -47,15 +40,16 @@ var flexvideo = (function() {
     }
 
     function initialize(_wrapper, _video, _pictures) {
-        if (isDebug) console.log('flexvideo.initialize()');
+        if (util.isDebug) console.log('flexvideo.initialize()');
+
         $wrapper = $(_wrapper);
         $video = $(_video);
         video = $video.get(0);
 
-        if (support.transform) {
+        if (util.support.transform) {
             $video.css({
-                width: BG_SRC_WIDTH + 'px',
-                height: BG_SRC_HEIGHT + 'px'
+                width: src_width + 'px',
+                height: src_height + 'px'
             });
         } else {
             $wrapper.find('img').css({
@@ -64,10 +58,10 @@ var flexvideo = (function() {
             });
         }
 
-        $window.on('resize', resizeHandler);
+        $window.on('resize iosstatusbarvisibilitychange', resizeHandler);
         resizeHandler();
 
-        if (!support.video) {
+        if (!util.support.inlineVideo) {
             $pictures = $(_pictures);
             $pictures.show();
             duration = $pictures.attr('data-duration') - 0;
@@ -105,16 +99,25 @@ var flexvideo = (function() {
         }, this));
     }
 
-    function resizeHandler() {
-        var windowWidth = $window.width();
-        var windowHeight = $window.height();
+    function resizeHandler(event) {
+        if (event && event.type) {
+            console.log('window.on' + event.type);
+        }
+
+        if (iOS7more) {
+            var windowWidth = window.innerWidth;
+            var windowHeight = window.innerHeight;
+        } else {
+            var windowWidth = $window.width();
+            var windowHeight = $window.height();
+        }
 
         function getCss(_css, _property) {
             switch (_property) {
                 case 'translate':
                     var _dx = arguments[2];
                     var _dy = arguments[3];
-                    if (support.transform) {
+                    if (util.support.transform) {
                         _css.transform = (_css.transform ? _css.transform + ' ' : '')
                             + 'translate(' + _dx + 'px, ' + _dy + 'px)';
                     } else {
@@ -124,12 +127,12 @@ var flexvideo = (function() {
                     break;
                 case 'scale':
                     var _scale = arguments[2];
-                    if (support.transform) {
+                    if (util.support.transform) {
                         _css.transform = (_css.transform ? _css.transform + ' ' : '')
                             + 'scale(' + _scale + ')';
                     } else {
-                        _css.width = BG_SRC_WIDTH * _scale + 'px';
-                        _css.height = BG_SRC_HEIGHT * _scale + 'px';
+                        _css.width = src_width * _scale + 'px';
+                        _css.height = src_height * _scale + 'px';
                     }
                     break;
             }
@@ -138,17 +141,17 @@ var flexvideo = (function() {
         var distance = 0;
         var scale = 0;
 
-        if (windowWidth / windowHeight > BG_SRC_WIDTH / BG_SRC_HEIGHT) {
-            distance = (windowHeight - windowWidth * BG_SRC_HEIGHT / BG_SRC_WIDTH) / 2;
+        if (windowWidth / windowHeight > src_width / src_height) {
+            distance = (windowHeight - windowWidth * src_height / src_width) / 2;
             getCss(css, 'translate', 0, distance);
 
-            scale = windowWidth / BG_SRC_WIDTH;
+            scale = windowWidth / src_width;
             getCss(css, 'scale', scale);
         } else {
-            distance = (windowWidth - windowHeight * BG_SRC_WIDTH / BG_SRC_HEIGHT) / 2;
+            distance = (windowWidth - windowHeight * src_width / src_height) / 2;
             getCss(css, 'translate', distance, 0);
 
-            scale = windowHeight / BG_SRC_HEIGHT;
+            scale = windowHeight / src_height;
             getCss(css, 'scale', scale);
         }
 
@@ -171,8 +174,8 @@ var flexvideo = (function() {
     }
 
     function play() {
-        if (isDebug) console.log('flexvideo.play()');
-        if (!support.video) {
+        if (util.isDebug) console.log('flexvideo.play()');
+        if (!util.support.inlineVideo) {
             lastTimeUpdateFallback = util.getNow();
             timeUpdateFallbackTimer = setInterval($.proxy(timeUpdateFallback, this), TIME_UPDATE_DURATION);
             this.emit('playing');
@@ -180,12 +183,12 @@ var flexvideo = (function() {
         }
 
         if (video.seeking) {
-            if (isDebug) console.log('waiting for playing');
+            if (util.isDebug) console.log('waiting for playing');
             if (waitForPlayingTimes++ < WAIT_FOR_PLAYING_MAX) {
                 setTimeout(play, WAIT_FOR_PLAYING_DURATION);
                 return;
             }
-            if (isDebug) console.log('waiting for playing time out');
+            if (util.isDebug) console.log('waiting for playing time out');
             return;
         }
 
@@ -194,8 +197,8 @@ var flexvideo = (function() {
     }
 
     function pause() {
-        if (isDebug) console.log('flexvideo.pause()');
-        if (!support.video) {
+        if (util.isDebug) console.log('flexvideo.pause()');
+        if (!util.support.inlineVideo) {
             if (timeUpdateFallbackTimer) {
                 clearInterval(timeUpdateFallbackTimer);
                 timeUpdateFallbackTimer = 0;
@@ -211,7 +214,7 @@ var flexvideo = (function() {
     }
 
     function setCurrentTime(newTime) {
-        if (!support.video) {
+        if (!util.support.inlineVideo) {
             var keyFrameLength = secondsOfFrames.length;
 
             function getNewFrame() {
@@ -259,7 +262,7 @@ var flexvideo = (function() {
                     nextFrame = newFrame;
                 }
 
-                if (isDebug) console.log('change picture ' + newFrame);
+                if (util.isDebug) console.log('change picture ' + newFrame);
                 currentFrame = newFrame;
             }
 
@@ -276,30 +279,18 @@ var flexvideo = (function() {
             return;
         }
 
-        // IEは頻繁にcurrentTimeを更新すると追随できないので、頻度を下げる
-        var isIE9 = /msie 9/.test(navigator.userAgent.toLowerCase());
-        if (isIE9) {
-            var now = util.getNow();
-            if (now - lastSeekTime < IE_SEEK_INTERVAL) {
-                if (isDebug) console.log('ignored seeking because of too short interval. ' + (now - lastSeekTime) + 'ms');
-                return;
-            }
-            console.log('seeked. ' + (now - lastSeekTime) + 'ms');
-            lastSeekTime = now;
-        }
-
         video.currentTime = newTime;
     }
 
     function getCurrentTime() {
-        if (!support.video) {
+        if (!util.support.inlineVideo) {
             return currentTime;
         }
         return video.currentTime;
     }
 
     function getReadyState() {
-        if (!support.video) {
+        if (!util.support.inlineVideo) {
             if (duration === -1) {
                 return HAVE_NOTHING;
             }
@@ -309,7 +300,7 @@ var flexvideo = (function() {
     }
 
     function getEnded() {
-        if (!support.video) {
+        if (!util.support.inlineVideo) {
             return (currentTime >= duration);
         }
         return video.ended;
@@ -323,7 +314,7 @@ var flexvideo = (function() {
     }
     
     function getBuffered() {
-        if (!support.video) {
+        if (!util.support.inlineVideo) {
             return {
                 length: 1,
                 start: function() {
@@ -337,7 +328,7 @@ var flexvideo = (function() {
         return video.buffered;
     }
 
-    if (!support.video) {
+    if (!util.support.inlineVideo) {
         $(window).on('beforeunload', function() {
             if (timeUpdateFallbackTimer) {
                 clearInterval(timeUpdateFallbackTimer);
@@ -348,7 +339,6 @@ var flexvideo = (function() {
 
     // export
     return {
-        support: support,
         HAVE_NOTHING: HAVE_NOTHING,
         HAVE_METADATA: HAVE_METADATA,
         HAVE_CURRENT_DATA: HAVE_CURRENT_DATA,

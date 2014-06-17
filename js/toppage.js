@@ -1,8 +1,7 @@
 (function() {
     var $document = $(document);
-    var isTouch = 'ontouchstart' in window;
 
-    if (isTouch) {
+    if (util.support.touch) {
         $document
             .on('touchstart', bgv.touchStartHandler)
             .on('touchmove', bgv.touchMoveHandler)
@@ -22,7 +21,7 @@
     $(window)
         .on('load', bgv.windowLoadHandler)
         .on('scroll', bgv.scrollHandler)
-        .on('resize', bgv.resizeHandler)
-        .on('pageshow', bgv.visibilityChangeHandler)
-        .on('pagehide', bgv.visibilityChangeHandler);
+        .on('resize iosstatusbarvisibilitychange', bgv.resizeHandler)
+        .on('pageshow load', bgv.visibilityChangeHandler)
+        .on('pagehide blur', bgv.visibilityChangeHandler);
 })();
