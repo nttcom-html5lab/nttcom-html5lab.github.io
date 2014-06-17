@@ -3,6 +3,9 @@ var flexvideo = (function() {
 
     var $window = $(window);
 
+    var VIDEO_EXTENSIONS = ['webm', 'm4v'];
+    var PICTURE_EXTENSION = 'jpg';
+
     var HAVE_NOTHING = 0;
     var HAVE_METADATA = 1;
     var HAVE_CURRENT_DATA = 2;
@@ -39,40 +42,79 @@ var flexvideo = (function() {
         var TIME_UPDATE_DURATION = 200;
     }
 
-    function initialize(_wrapper, _video, _pictures) {
+    function initialize(container, video_source, picture_source, picture_duration, picture_interval) {
         if (util.isDebug) console.log('flexvideo.initialize()');
 
-        $wrapper = $(_wrapper);
-        $video = $(_video);
-        video = $video.get(0);
+        var $frag = $(document.createDocumentFragment());
 
-        if (util.support.transform) {
-            $video.css({
-                width: src_width + 'px',
-                height: src_height + 'px'
+        if (util.support.inlineVideo) {
+
+            $video = $('<video>').attr({
+                id: 'video',
+                autoplay: 'autoplay'
             });
+            video = $video.get(0);
+            $.each(VIDEO_EXTENSIONS, function() {
+                $('<source>').attr('src', video_source + '.' + this).appendTo($video);
+            });
+
+            $frag.append($video);
+
+            if (util.support.transform) {
+                $video.css({
+                    width: src_width + 'px',
+                    height: src_height + 'px'
+                });
+            }
+
+            $video
+                .on('loadedmetadata', $.proxy(function() {
+                    duration = video.duration;
+                    this.emit('loadedmetadata');
+                }, this))
+                .on('loadeddata', $.proxy(function() {
+                    this.emit('loadeddata');
+                }, this))
+                .on('timeupdate', $.proxy(function() {
+                    this.emit('timeupdate');
+                }, this))
+                .on('ended', $.proxy(function() {
+                    this.emit('ended');
+                }, this))
+                .on('playing', $.proxy(function() {
+                    this.emit('playing');
+                }, this))
+                .on('pause', $.proxy(function() {
+                    this.emit('paused');
+                }, this));
+
         } else {
-            $wrapper.find('img').css({
-                width: '100%',
-                height: '100%'
-            });
-        }
 
-        $window.on('resize iosstatusbarvisibilitychange', resizeHandler);
-        resizeHandler();
+            $pictures = $('<div>').attr('id', 'pictures');
+            for (var sec = 0; sec <= picture_duration; sec = sec + picture_interval) {
+                var src = picture_source.replace('%{sec}', sec) + '.' + PICTURE_EXTENSION;
+                var $img = $('<img>').attr({
+                    'data-sec': sec,
+                    'data-src': src
+                }).appendTo($pictures);
+                if (sec === 0) {
+                    $img.attr('src', src);
+                }
+                secondsOfPictures.push(sec);
+            }
 
-        if (!util.support.inlineVideo) {
-            $pictures = $(_pictures);
+            $frag.append($pictures);
+
             $pictures.show();
-            duration = $pictures.attr('data-duration') - 0;
 
-            $pictures.find('img').each(function() {
-                secondsOfFrames.push($(this).attr('data-sec') - 0);
-            });
+            if (!util.support.transform) {
+                $container.find('img').css({
+                    width: '100%',
+                    height: '100%'
+                });
+            }
 
-            secondsOfFrames.sort(function(a, b) {
-                return a - b;
-            });
+            duration = picture_duration;
 
             setTimeout($.proxy(function() {
                 this.emit('loadedmetadata');
@@ -80,23 +122,12 @@ var flexvideo = (function() {
                     this.emit('loadeddata');
                 }, this), 0);
             }, this), 0);
-            return;
         }
 
-        function emitEvent(event) {
-            this.emit(event.originalEvent.type);
-        }
+        $container = $(container).append($frag);
 
-        $video.on('loadedmetadata', $.proxy(function(event) {
-            duration = video.duration;
-            this.emit(event.originalEvent.type);
-        }, this)).on('loadeddata', $.proxy(emitEvent, this))
-        .on('timeupdate', $.proxy(emitEvent, this))
-        .on('ended', $.proxy(emitEvent, this))
-        .on('playing', $.proxy(emitEvent, this))
-        .on('pause', $.proxy(function(event) {
-            this.emit('paused');
-        }, this));
+        $window.on('resize iosstatusbarvisibilitychange', resizeHandler);
+        resizeHandler();
     }
 
     function resizeHandler(event) {
