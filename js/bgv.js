@@ -14,7 +14,7 @@ var bgv = (function() {
     var isPlaying = false;
     var isFirstPlay = true;
     var isSuspended = false;
-    var wasSusptended = false;
+    var wasSuspended = false;
     var isInitialized = false;
     var duration = 0;
 
@@ -266,10 +266,10 @@ var bgv = (function() {
                 break;
         }
 
-        if (isSuspended === wasSusptended) {
+        if (isSuspended === wasSuspended) {
             return;
         }
-        wasSusptended = isSuspended;
+        wasSuspended = isSuspended;
 
         if (util.isDebug) console.log('isSuspended = ' + isSuspended + ', isPlaying = ' + isPlaying);
 
