@@ -3,7 +3,7 @@ var flexvideo = (function() {
 
     var $window = $(window);
 
-    var VIDEO_EXTENSIONS = ['webm', 'm4v'];
+    var VIDEO_EXTENSIONS = ['webm', 'mp4'];
     var PICTURE_EXTENSION = 'jpg';
 
     var HAVE_NOTHING = 0;
