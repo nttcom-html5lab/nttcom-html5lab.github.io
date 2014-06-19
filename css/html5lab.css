@@ -33,11 +33,11 @@ body {
 .hl-footer {
   padding-top: 40px;
   padding-bottom: 40px;
-  background: rgba(255, 255, 255, 0.5);
-  color: #333333;
+  background: inherit;
+  color: #aaaaaa;
 }
 .hl-footer a {
-  color: #333333;
+  color: #aaaaaa;
 }
 .hl-footer .hl-links {
   margin-top: 20px;
