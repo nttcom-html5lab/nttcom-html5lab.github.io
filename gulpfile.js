@@ -4,14 +4,15 @@ var fs = require('fs');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var imagemin = require('gulp-imagemin');
+var minifyCss = require('gulp-minify-css');
+var concatCss = require('gulp-concat-css');
 
 var BUILD_DIR = './';
 
 var paths = {
     scripts: ['js/util.js', 'js/flexvideo.js', 'js/bgv.js', 'js/toppage.js'],
     less: ['less/**/*.less'],
-    images: 'img/**/*'
+    css: ['css/bootstrap-html5lab.css', 'css/html5lab.css']
 };
 
 gulp.task('scripts', function() {
@@ -23,27 +24,23 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('less', function() {
-    gulp.src(paths.less)
+    return gulp.src(paths.less)
         .pipe(less())
         .pipe(gulp.dest(BUILD_DIR + '/css'));
 });
 
-// Copy all static images
-gulp.task('images', function() {
-/*
-    return gulp.src(paths.images)
-    // Pass in options to the task
-        .pipe(imagemin({optimizationLevel: 5}))
-        .pipe(gulp.dest(BUILD_DIR + '/img'));
-*/
+gulp.task('css', function() {
+    return gulp.src(paths.css)
+        .pipe(minifyCss({keepBreaks: false}))
+        .pipe(concatCss('all.min.css'))
+        .pipe(gulp.dest(BUILD_DIR + '/css'));
 });
 
-// Rerun the task when a file changes
 gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['scripts']);
     gulp.watch(paths.less, ['less']);
-    gulp.watch(paths.images, ['images']);
+    gulp.watch(paths.images, ['css']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['scripts', 'less', 'images', 'watch']);
+gulp.task('default', ['scripts', 'less', 'css', 'watch']);

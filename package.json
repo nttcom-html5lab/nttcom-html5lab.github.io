@@ -12,8 +12,9 @@
         "gulp-coffee": "*",
         "gulp-concat": "*",
         "gulp-uglify": "*",
-        "gulp-imagemin": "*",
         "gulp-less": "*",
+        "gulp-minify-css": "*",
+        "gulp-concat-css": "*",
         "gulp": "^3.6.2"
     }
 }
