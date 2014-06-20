@@ -34,16 +34,20 @@ body {
     }
 }
 
-.hl-social-buttons {
-    height: 50px;
-}
-
 // Main
 #toppageWhat {
     margin-top: 20%;
 }
 .hl-text-box {
     background-color: rgba(255,255,255,0.5);
+@media (min-width: @screen-sm-min) {
+    .hl-social-buttons {
+        & > .navbar-text {
+            width: 120px;
+            height: 20px;
+            overflow: hidden;
+        }
+    }
 }
 
 // Footer
