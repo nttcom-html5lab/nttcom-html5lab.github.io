@@ -3,9 +3,10 @@ var flexvideo = (function() {
 
     var $window = $(window);
 
-    var VIDEO_EXTENSIONS = ['webm', 'm4v'];
+    var VIDEO_EXTENSIONS = ['webm', 'mp4'];
     var PICTURE_EXTENSION = 'jpg';
 
+    var HEADER_HEIGHT = 50;
     var HAVE_NOTHING = 0;
     var HAVE_METADATA = 1;
     var HAVE_CURRENT_DATA = 2;
@@ -143,6 +144,8 @@ var flexvideo = (function() {
             var windowHeight = $window.height();
         }
 
+        windowHeight -= HEADER_HEIGHT;
+
         function getCss(_css, _property) {
             switch (_property) {
                 case 'translate':
@@ -174,13 +177,13 @@ var flexvideo = (function() {
 
         if (windowWidth / windowHeight > src_width / src_height) {
             distance = (windowHeight - windowWidth * src_height / src_width) / 2;
-            getCss(css, 'translate', 0, distance);
+            getCss(css, 'translate', 0, distance + HEADER_HEIGHT);
 
             scale = windowWidth / src_width;
             getCss(css, 'scale', scale);
         } else {
             distance = (windowWidth - windowHeight * src_width / src_height) / 2;
-            getCss(css, 'translate', distance, 0);
+            getCss(css, 'translate', distance, HEADER_HEIGHT);
 
             scale = windowHeight / src_height;
             getCss(css, 'scale', scale);

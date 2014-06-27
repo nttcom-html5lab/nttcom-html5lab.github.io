@@ -9,11 +9,10 @@
     "author": "rotsuya, shumpei",
     "dependencies": {},
     "devDependencies": {
-        "gulp-coffee": "*",
         "gulp-concat": "*",
         "gulp-uglify": "*",
-        "gulp-imagemin": "*",
         "gulp-less": "*",
+        "gulp-cssmin": "*",
         "gulp": "^3.6.2"
     }
 }
