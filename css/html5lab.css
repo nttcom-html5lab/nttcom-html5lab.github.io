@@ -76,7 +76,8 @@ a.more {
   color: #e48729;
   background: url("../img/arrow.png") no-repeat 90px center;
   font-size: 12px;
-  display: inline-block;
+  display: block;
+  width: 120px;
 }
 #flexvideo {
   position: fixed;
@@ -107,6 +108,23 @@ a.more {
 }
 #flexvideo #pictures img {
   display: none;
+}
+.product header {
+  height: 120px;
+}
+.community-event header {
+  height: 160px;
+  background: white;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 16px;
+}
+.community-event header h4 {
+  margin: 0;
+}
+.media-site header .logo-container {
+  background-color: white;
+  height: 120px;
 }
 .seek-bar {
   position: fixed;
