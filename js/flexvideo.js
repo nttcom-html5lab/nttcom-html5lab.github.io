@@ -56,7 +56,10 @@ var flexvideo = (function() {
             });
             video = $video.get(0);
             $.each(VIDEO_EXTENSIONS, function() {
-                $('<source>').attr('src', video_source + '.' + this).appendTo($video);
+                $('<source>').attr({
+                    src: video_source + '.' + this,
+                    type: 'video/' + this
+                }).appendTo($video);
             });
 
             $frag.append($video);
