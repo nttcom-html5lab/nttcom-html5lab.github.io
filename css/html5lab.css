@@ -56,9 +56,11 @@ body {
   word-wrap: break-word;
 }
 @media (min-width: 768px) {
-  font-size: 80px;
-  margin: 400px 0 64px;
-  word-wrap: inherit;
+  .textbox h2 {
+    font-size: 80px;
+    margin: 400px 0 64px;
+    word-wrap: inherit;
+  }
 }
 .textbox .content {
   background-color: #000;

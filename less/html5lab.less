@@ -83,17 +83,18 @@ body {
     font-size: 40px;
     margin: 200px 0 32px;
     word-wrap: break-word;
+  @media (min-width: @screen-sm-min) {
+      font-size: 80px;
+      margin: 400px 0 64px;
+      word-wrap: inherit;
+  }
+  @media (min-width: @screen-md-min) {
+  }
+  @media (min-width: @screen-lg-min) {
+  }
+
 }
 
-@media (min-width: @screen-sm-min) {
-    font-size: 80px;
-    margin: 400px 0 64px;
-    word-wrap: inherit;
-}
-@media (min-width: @screen-md-min) {
-}
-@media (min-width: @screen-lg-min) {
-}
 
 .textbox .content {
   background-color: #000;
