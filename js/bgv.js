@@ -19,9 +19,9 @@ var bgv = (function() {
     var duration = 0;
 
     var FLEXVIDEO_SELECTOR = '#flexvideo';
-    var VIDEO_FILE_NAME = 'video/html5lab-0.1.3';
-    var PICTURE_FILE_NAME = 'video/html5lab-0.1.2-%{sec}';
-    var PICTURE_DURATION = 55;
+    var VIDEO_FILE_NAME = 'video/html5lab-min-0.1.3';
+    var PICTURE_FILE_NAME = 'video/html5lab-0.1.3-%{sec}';
+    var PICTURE_DURATION = 57;
     var PICTURE_INTERVAL = 1;
 
     if (util.os.iOS) {
