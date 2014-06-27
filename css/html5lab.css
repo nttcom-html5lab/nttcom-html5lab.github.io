@@ -126,6 +126,9 @@ a.more {
   background-color: white;
   height: 120px;
 }
+img.header-thumb {
+  width: 100%;
+}
 .seek-bar {
   position: fixed;
   top: 50px;
