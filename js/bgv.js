@@ -14,9 +14,15 @@ var bgv = (function() {
     var isPlaying = false;
     var isFirstPlay = true;
     var isSuspended = false;
-    var wasSusptended = false;
+    var wasSuspended = false;
     var isInitialized = false;
     var duration = 0;
+
+    var FLEXVIDEO_SELECTOR = '#flexvideo';
+    var VIDEO_FILE_NAME = 'video/html5lab-min-0.1.3';
+    var PICTURE_FILE_NAME = 'video/html5lab-0.1.3-%{sec}';
+    var PICTURE_DURATION = 57;
+    var PICTURE_INTERVAL = 1;
 
     if (util.os.iOS) {
         var iOS7more = /^[^2-6]/.test(util.os.version);
@@ -32,9 +38,7 @@ var bgv = (function() {
             .on('ended', endedHandler)
             .on('playing', playingHandler)
             .on('paused', pausedHandler)
-            .initialize('.toppage-background', '#video', '#pictures');
-
-        $html.addClass('isPausing');
+            .initialize(FLEXVIDEO_SELECTOR, VIDEO_FILE_NAME, PICTURE_FILE_NAME, PICTURE_DURATION, PICTURE_INTERVAL);
 
         if (util.isDebug) {
             $('main').append(
@@ -81,10 +85,11 @@ var bgv = (function() {
 
     function initialize() {
         if (util.isDebug) console.log('bgv.initialize()');
+        $html.addClass('isPausing');
         setTimeout(function() {
             isInitialized = true;
             measureSizes();
-            startPlaying();
+            //startPlaying();
         }, 0);
     }
 
@@ -266,10 +271,10 @@ var bgv = (function() {
                 break;
         }
 
-        if (isSuspended === wasSusptended) {
+        if (isSuspended === wasSuspended) {
             return;
         }
-        wasSusptended = isSuspended;
+        wasSuspended = isSuspended;
 
         if (util.isDebug) console.log('isSuspended = ' + isSuspended + ', isPlaying = ' + isPlaying);
 
@@ -320,7 +325,6 @@ var bgv = (function() {
             || ((duration === -1) && (currentTime >= duration))
             || ((duration === -1) && isCurrentTimeBug && (duration - currentTime < 0.5));  // IE11 Work Around
     }
-
 
     var startX = -1;
     var startY = -1;

@@ -1,111 +1,16 @@
 ---
 layout: global
 title: NTTコミュニケーションズ HTML5 Lab
-description: WebRTCは、ブラウザ同士でリアルタイムに映像、音声、データを送受信できる画期的な新技術。SkyWayを使えば、サーバを準備することなく、簡単なJavaScriptを書くだけで、WebRTCを使ったアプリが開発できます。
+description: HTML5 Labとは、NTTコミュニケーションズという企業の中で、HTML5を初めとしたWeb最新技術に取り組んでいる、小さなラボです。小さいからこその自由を活かして、なるべく発想を柔軟に、可能な限り先進的でユニークな事に取り組むことをミッションとして活動しています。
 ---
 {% include assign_current_year.html %}
 
-<section class="toppage-background">
-  <video id="video" autoplay>
-    <source src="video/html5lab.webm" />
-    <source src="video/html5lab.m4v" />
-  </video>
-  <div id="pictures" data-duration="89">
-    <img src="video/html5lab_0.jpg" data-src="video/html5lab_0.jpg" data-sec="0" />
-    <img data-src="video/html5lab_1.jpg" data-sec="1" />
-    <img data-src="video/html5lab_2.jpg" data-sec="2" />
-    <img data-src="video/html5lab_3.jpg" data-sec="3" />
-    <img data-src="video/html5lab_4.jpg" data-sec="4" />
-    <img data-src="video/html5lab_5.jpg" data-sec="5" />
-    <img data-src="video/html5lab_6.jpg" data-sec="6" />
-    <img data-src="video/html5lab_7.jpg" data-sec="7" />
-    <img data-src="video/html5lab_8.jpg" data-sec="8" />
-    <img data-src="video/html5lab_9.jpg" data-sec="9" />
-    <img data-src="video/html5lab_10.jpg" data-sec="10" />
-    <img data-src="video/html5lab_11.jpg" data-sec="11" />
-    <img data-src="video/html5lab_12.jpg" data-sec="12" />
-    <img data-src="video/html5lab_13.jpg" data-sec="13" />
-    <img data-src="video/html5lab_14.jpg" data-sec="14" />
-    <img data-src="video/html5lab_15.jpg" data-sec="15" />
-    <img data-src="video/html5lab_16.jpg" data-sec="16" />
-    <img data-src="video/html5lab_17.jpg" data-sec="17" />
-    <img data-src="video/html5lab_18.jpg" data-sec="18" />
-    <img data-src="video/html5lab_19.jpg" data-sec="19" />
-    <img data-src="video/html5lab_20.jpg" data-sec="20" />
-    <img data-src="video/html5lab_21.jpg" data-sec="21" />
-    <img data-src="video/html5lab_22.jpg" data-sec="22" />
-    <img data-src="video/html5lab_23.jpg" data-sec="23" />
-    <img data-src="video/html5lab_24.jpg" data-sec="24" />
-    <img data-src="video/html5lab_25.jpg" data-sec="25" />
-    <img data-src="video/html5lab_26.jpg" data-sec="26" />
-    <img data-src="video/html5lab_27.jpg" data-sec="27" />
-    <img data-src="video/html5lab_28.jpg" data-sec="28" />
-    <img data-src="video/html5lab_29.jpg" data-sec="29" />
-    <img data-src="video/html5lab_30.jpg" data-sec="30" />
-    <img data-src="video/html5lab_31.jpg" data-sec="31" />
-    <img data-src="video/html5lab_32.jpg" data-sec="32" />
-    <img data-src="video/html5lab_33.jpg" data-sec="33" />
-    <img data-src="video/html5lab_34.jpg" data-sec="34" />
-    <img data-src="video/html5lab_35.jpg" data-sec="35" />
-    <img data-src="video/html5lab_36.jpg" data-sec="36" />
-    <img data-src="video/html5lab_37.jpg" data-sec="37" />
-    <img data-src="video/html5lab_38.jpg" data-sec="38" />
-    <img data-src="video/html5lab_39.jpg" data-sec="39" />
-    <img data-src="video/html5lab_40.jpg" data-sec="40" />
-    <img data-src="video/html5lab_41.jpg" data-sec="41" />
-    <img data-src="video/html5lab_42.jpg" data-sec="42" />
-    <img data-src="video/html5lab_43.jpg" data-sec="43" />
-    <img data-src="video/html5lab_44.jpg" data-sec="44" />
-    <img data-src="video/html5lab_45.jpg" data-sec="45" />
-    <img data-src="video/html5lab_46.jpg" data-sec="46" />
-    <img data-src="video/html5lab_47.jpg" data-sec="47" />
-    <img data-src="video/html5lab_48.jpg" data-sec="48" />
-    <img data-src="video/html5lab_49.jpg" data-sec="49" />
-    <img data-src="video/html5lab_50.jpg" data-sec="50" />
-    <img data-src="video/html5lab_51.jpg" data-sec="51" />
-    <img data-src="video/html5lab_52.jpg" data-sec="52" />
-    <img data-src="video/html5lab_53.jpg" data-sec="53" />
-    <img data-src="video/html5lab_54.jpg" data-sec="54" />
-    <img data-src="video/html5lab_55.jpg" data-sec="55" />
-    <img data-src="video/html5lab_56.jpg" data-sec="56" />
-    <img data-src="video/html5lab_57.jpg" data-sec="57" />
-    <img data-src="video/html5lab_58.jpg" data-sec="58" />
-    <img data-src="video/html5lab_59.jpg" data-sec="59" />
-    <img data-src="video/html5lab_60.jpg" data-sec="60" />
-    <img data-src="video/html5lab_61.jpg" data-sec="61" />
-    <img data-src="video/html5lab_62.jpg" data-sec="62" />
-    <img data-src="video/html5lab_63.jpg" data-sec="63" />
-    <img data-src="video/html5lab_64.jpg" data-sec="64" />
-    <img data-src="video/html5lab_65.jpg" data-sec="65" />
-    <img data-src="video/html5lab_66.jpg" data-sec="66" />
-    <img data-src="video/html5lab_67.jpg" data-sec="67" />
-    <img data-src="video/html5lab_68.jpg" data-sec="68" />
-    <img data-src="video/html5lab_69.jpg" data-sec="69" />
-    <img data-src="video/html5lab_70.jpg" data-sec="70" />
-    <img data-src="video/html5lab_71.jpg" data-sec="71" />
-    <img data-src="video/html5lab_72.jpg" data-sec="72" />
-    <img data-src="video/html5lab_73.jpg" data-sec="73" />
-    <img data-src="video/html5lab_74.jpg" data-sec="74" />
-    <img data-src="video/html5lab_75.jpg" data-sec="75" />
-    <img data-src="video/html5lab_76.jpg" data-sec="76" />
-    <img data-src="video/html5lab_77.jpg" data-sec="77" />
-    <img data-src="video/html5lab_78.jpg" data-sec="78" />
-    <img data-src="video/html5lab_79.jpg" data-sec="79" />
-    <img data-src="video/html5lab_80.jpg" data-sec="80" />
-    <img data-src="video/html5lab_81.jpg" data-sec="81" />
-    <img data-src="video/html5lab_82.jpg" data-sec="82" />
-    <img data-src="video/html5lab_83.jpg" data-sec="83" />
-    <img data-src="video/html5lab_84.jpg" data-sec="84" />
-    <img data-src="video/html5lab_85.jpg" data-sec="85" />
-    <img data-src="video/html5lab_86.jpg" data-sec="86" />
-    <img data-src="video/html5lab_87.jpg" data-sec="87" />
-    <img data-src="video/html5lab_88.jpg" data-sec="88" />
-    <img data-src="video/html5lab_89.jpg" data-sec="89" />
-  </div>
-</section>
+<section id="flexvideo"></section>
 
 <section class="seek-bar">
-  <div id="played"></div>
+  <div id="played">
+    <div id="current"></div>
+  </div>
   <div class="buffered"></div>
 </section>
 
@@ -119,7 +24,7 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
     <div class="content">
       <p>
         HTML5 Labとは、NTTコミュニケーションズという企業の中で、HTML5を初めとしたWeb最新技術に取り組んでいる、小さなラボです。<br>
-        小さいからこその自由を活かして、なるべく発想を柔軟にし、可能な限り先進的でユニーク事に取り組むことをミッションとして活動しています。
+        小さいからこその自由を活かして、なるべく発想を柔軟に、可能な限り先進的でユニークな事に取り組むことをミッションとして活動しています。
         <a href="#" class="more">もっと見る</a>
       </p>
     </div>
@@ -135,9 +40,9 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
         また、開発合宿としての24時間ハッカソン、オープンソースでのプロダクト公開、GitHubを活用した開発スタイルなど、開発そのものを楽しむための努力は惜しみません。
       </p>
       <div class="row">
-        <section class="col-xs-12 col-sm-6 col-md-4">
+        <section class="product col-xs-12 col-sm-6 col-md-4">
           <header>
-            <h3><img src="img/skyway_logo.png" class="img-responsive" alt="SkyWay"></h3>
+            <h3><img src="img/skyway_logo.png" class="img-responsive header-thumb" alt="SkyWay"></h3>
             <div class="github-fork-ribbon-wrapper right">
               <div class="github-fork-ribbon">
                 <a href="https://github.com/nttcom/peerjs">Fork me on GitHub</a>
@@ -157,22 +62,22 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
                     allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
           </p>
         </section>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <img src="http://ushi.skyway.io/images/logo.png" class="img-responsive" alt="WebRTC Chat" style="background-color: #fff;">
+        <div class="product col-xs-12 col-sm-6 col-md-4">
+          <header>
+            <h3><img src="img/webrtc-chat.png" class="img-responsive header-thumb" alt="WebRTC Chat" style="background-color: #fff;"></h3>
+          </header>
           <p>
-            WebRTCを使ったアプリを簡単に作れる開発者向けのAPIとライブラリ。
-            WebRTCを使ったアプリを簡単に作れる開発者向けのAPIとライブラリ。
-            WebRTCを使ったアプリを簡単に作れる開発者向けのAPIとライブラリ。
-            <a href="http://nttcom.github.io/skyway/">もっと見る</a>
+            WebRTC Chatは、インストールやユーザ登録なしで利用できる無料のビデオ・ボイスチャットサービスです。離れた家族や友達と一緒にいるような感覚と楽しい毎日を提供します。
+            <a href="https://chat.skyway.io/" rel="external" target="_blank" class="more">もっと見る</a><br>
           </p>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <img src="http://app.html5experts.jp/manga/img/mangatvlogo.svg" class="img-responsive" alt="マンガテレビ">
+        <div class="product col-xs-12 col-sm-6 col-md-4">
+          <header>
+            <h3><img src="http://app.html5experts.jp/manga/img/mangatvlogo.svg" class="img-responsive header-thumb" alt="マンガテレビ"></h3>
+          </header>
           <p>
-            WebRTCを使ったアプリを簡単に作れる開発者向けのAPIとライブラリ。
-            WebRTCを使ったアプリを簡単に作れる開発者向けのAPIとライブラリ。
-            WebRTCを使ったアプリを簡単に作れる開発者向けのAPIとライブラリ。
-            <a href="http://nttcom.github.io/skyway/">もっと見る</a>
+            マンガテレビは、Webカメラから取り込んだ動画をマンガチックに変換して表示するサービスです。音声コマンドにより、背景に集中線や効果音を表示できたり、アニメーションGIFの保存を行えるなど、実は機能満載です。
+            <a href="https://app.html5experts.jp/manga/" rel="external" target="_blank" class="more">もっと見る</a><br>
           </p>
         </div>
       </div>
@@ -186,36 +91,37 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
         HTML5 Labは、Web技術者コミュニティ（特に<a href="http://html5j.org" rel="external" target="_blank">html5j</a>）への支援も積極的に行っています。<br>
         様々なイベントへのスポンサーを行っているだけではなく、ラボのメンバーがコミュニティのスタッフを担っていたり、コミュニティの中核メンバーをラボに招待したりして、Webを盛り上げる活動をともに行っています。
       </p>
-      <section class="row">
+      <section>
         <h3>HTML5 Labが協賛・協力したイベント（一部）</h3>
-        <section class="col-xs-12 col-sm-6">
-          <header>
-            <img src="http://events.html5j.org/conference/2013/11/img/conf2013Logo.png" alt="HTML5 Conference" class="img-responsive" style="background-color: #fff;">
-            <h4>HTML5 Conference</h4>
-          </header>
-          <p>
-            2013年11月に開催されたHTML5 Conference 2013は、参加者2,000名、協賛企業50社以上という、日本でも有数の大きなWeb技術者向けカンファレンスとなりました。
-            NTTコミュニケーションズとしても、メインスポンサーとして協賛するだけではなく、イベント企画やネットワーク敷設などに直接携わり、一緒になってイベントを作り上げました。
-          </p>
-          <p>
-            特にネットワーク敷設に関しては、通信事業者のプライドを賭けて「本気」で携わりました。たった1日のカンファレンスのために張り巡らせたケーブルの総延長は、なんと2,580m！
-            その時の様子は、<a href="http://www.slideshare.net/hirotakanakajima1/html5-conference-2013-28829301" target="_blank" rel="external">こちらのスライド</a> をご覧ください。
-          </p>
-        </section>
-        <section class="col-xs-12 col-sm-6">
-          <header>
-            <img src="http://5jcup.org/img/etc/html5JC_logo2.png" alt="HTML5 Japan Cup" class="img-responsive">
-            <h4>HTML5 Japan Cup</h4>
-          </header>
-          <p>
-            <a href="http://5jcup.org" target="_blank">HTML5 Japan Cup</a>とは、html5jが主催を務めるWebクリエイター向けコンテストです。
-            最優秀賞賞金は100万円、賞金総額は350万円！2014年初めての取り組みにもかかわらず、協賛企業・後援団体の数はなんと40以上にのぼります。
-          </p>
-          <p>
-            NTTコミュニケーションズはHTML5 Japan Cupのメインスポンサーを務め、企画や事務局業務などの支援を積極的に行っています。
-            HTML5 Labは、<strong><a href="https://5jcup.org/awards/ntt-com" target="_blank">WebRTC賞</a></strong>を創設しました。
-          </p>
-        </section>
+        <div class="row">
+          <section class="community-event col-xs-12 col-sm-6">
+            <header>
+              <h4><img src="http://events.html5j.org/conference/2013/11/img/conf2013Logo.png" alt="HTML5 Conference" class="img-responsive" style="background-color: #fff;"></h4>
+            </header>
+            <p>
+              2013年11月に開催されたHTML5 Conference 2013は、参加者2,000名、協賛企業50社以上という、日本でも有数の大きなWeb技術者向けカンファレンスとなりました。
+              NTTコミュニケーションズとしても、メインスポンサーとして協賛するだけではなく、イベント企画やネットワーク敷設などに直接携わり、一緒になってイベントを作り上げました。
+            </p>
+            <p>
+              特にネットワーク敷設に関しては、通信事業者のプライドを賭けて「本気」で携わりました。たった1日のカンファレンスのために張り巡らせたケーブルの総延長は、なんと2,580m！
+              その時の様子は、<a href="http://www.slideshare.net/hirotakanakajima1/html5-conference-2013-28829301" target="_blank" rel="external">こちらのスライド</a> をご覧ください。
+            </p>
+          </section>
+          <section class="community-event col-xs-12 col-sm-6">
+            <header>
+              <h4><img src="img/5jcup-logo-horizontal.png" alt="HTML5 Japan Cup" class="img-responsive"></h4>
+            </header>
+            <p>
+              <a href="http://5jcup.org" target="_blank">HTML5 Japan Cup</a>とは、html5jが主催を務めるWebクリエイター向けコンテストです。
+              最優秀賞賞金は100万円、賞金総額は350万円！2014年初めての取り組みにもかかわらず、協賛企業・後援団体の数はなんと40以上にのぼります。
+            </p>
+            <p>
+              NTTコミュニケーションズはHTML5 Japan Cupのメインスポンサーを務め、企画や事務局業務などの支援を積極的に行っています。
+              HTML5 Labは、<strong><a href="https://5jcup.org/awards/ntt-com" target="_blank">WebRTC賞</a></strong>を創設しました。
+            </p>
+          </section>
+        </div>
+      </section>
         <!--
             <div class="col-xs-12 col-sm-4">
               <img src="http://events.html5j.org/meetup/46/img/web25th.png" alt="Web25th" class="img-responsive" style="background-color: #fff;">
@@ -225,34 +131,40 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
               </p>
             </div>
             -->
-        <section class="row">
-          <h3>HTML5 Labを一緒に支えてくれている、html5jのメンバー</h3>
-          <section class="col-xs-12 col-sm-6">
-            <img src="http://html5experts.jp/wp-content/uploads/2013/07/50e6c8f7b9e8f666a4b0a7b2026fda86.png" class="img-responsive" alt="白石俊平" style="width: 66px; height: 66px;">
-            <h4>白石俊平</h4>
-            <p>
-              <a target="_blank" href="http://openweb.co.jp" rel="external">株式会社オープンウェブ・テクノロジー</a>代表取締役 /
-              <a href="http://html5j.org" target="_blank" rel="external">html5j</a>ファウンダー
-            </p>
-            <p>
-              <a href="http://html5experts.jp/shumpei.shiraishi/" rel="external" target="_blank" class="more">もっと見る</a>
-            </p>
+      <section>
+        <h3>HTML5 Labを支えるhtml5jのメンバー</h3>
+        <div class="row">
+          <section class="col-xs-12 col-sm-6 row">
+            <header class="col-sm-3">
+              <img src="http://html5experts.jp/wp-content/uploads/2013/07/50e6c8f7b9e8f666a4b0a7b2026fda86.png" class="img-responsive" alt="白石俊平" style="width: 66px; height: 66px;">
+              <h4>白石俊平</h4>
+            </header>
+            <div class="col-sm-9">
+              <p>
+                <a target="_blank" href="http://openweb.co.jp" rel="external">株式会社オープンウェブ・テクノロジー</a>代表取締役 /
+                <a href="http://html5j.org" target="_blank" rel="external">html5j</a>ファウンダー
+              </p>
+              <p>
+                <a href="http://html5experts.jp/shumpei.shiraishi/" rel="external" target="_blank" class="more">もっと見る</a>
+              </p>
+            </div>
           </section>
-          <section class="col-xs-12 col-sm-6">
-            <header>
+          <section class="col-xs-12 col-sm-6 row">
+            <header class="col-sm-3">
               <img src="http://html5experts.jp/wp-content/uploads/2013/07/6aeaa9dc41e8ac788741825263d95e8a-66x66.jpg" class="img-responsive" alt="吉川徹">
               <h4>吉川徹</h4>
             </header>
-            <p>
-              フリーランス /
-              <a href="http://html5j.org" target="_blank" rel="external">html5j</a>スタッフ
-            </p>
-            <p>
-              <a href="http://html5experts.jp/yoshikawa_t/" rel="external" target="_blank" class="more">もっと見る</a>
-            </p>
+            <div class="col-sm-9">
+              <p>
+                フリーランス /
+                <a href="http://html5j.org" target="_blank" rel="external">html5j</a>スタッフ
+              </p>
+              <p>
+                <a href="http://html5experts.jp/yoshikawa_t/" rel="external" target="_blank" class="more">もっと見る</a>
+              </p>
+            </div>
           </section>
-        </section>
-
+        </div>
       </section>
     </div>
   </section>
@@ -265,9 +177,11 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
         キャッチフレーズは「日本に、もっとエキスパートを」。国内外で活躍する、50人以上のHTML5のエキスパートたちを執筆陣として集め、Web技術の最新情報を積極的に発信しています。
       </p>
       <div class="row">
-        <section class="col-xs-12 col-sm-6">
+        <section class="media-site col-xs-12 col-sm-6">
           <header>
-            <img src="img/html5Experts_logo.png" alt="HTML5 Experts.jp" class="img-responsive">
+            <div class="logo-container">
+              <img src="img/hx-logo.png" alt="HTML5 Experts.jp" class="img-responsive">
+            </div>
             <h3>HTML5 Experts.jp</h3>
           </header>
           <p>
@@ -280,9 +194,11 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
             <a href="http://html5experts.jp/" target="_blank" rel="external" class="more">もっと見る</a>
           </p>
         </section>
-        <div class="col-xs-12 col-sm-6">
+        <section class="media-site col-xs-12 col-sm-6">
           <header>
-            <img src="http://placekitten.com/375/115" alt="HTML5 Experts Works" class="img-responsive">
+            <div class="logo-container">
+              <img src="img/hxworks-logo.png" alt="HTML5 Experts Works" class="img-responsive">
+            </div>
             <h3>HTML5 Experts Works</h3>
           </header>
           <p>
@@ -294,7 +210,7 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
             更にその先には、日本のWebエキスパートたちが手がけた、全ての素晴らしい作品をこのサイトに集約することで、日本国内外へ「<em>日本のWeb技術者はスゴい</em>」ということを発信、アピールすることを目指します。
             <a href="http://works.html5experts.jp/" rel="external" class="more">もっと見る</a>
           </p>
-        </div>
+        </section>
       </div>
     </div>
   </section>
@@ -303,66 +219,58 @@ description: WebRTCは、ブラウザ同士でリアルタイムに映像、音�
     <h2>Activities</h2>
     <div class="content">
       <p>
-        以下に、HTML5 Labが行っている活動を紹介していきます。
+        以下に、HTML5 Labが行っている活動を紹介します。
       </p>
-      <div class="row">
-        <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placekitten.com/80/80" alt="">
-          </a>
-          <div class="media-body">
-            2014年04月08日 html5j自動車部(部長：仲)が第3回勉強会「車載とWebの今がわかる、てんこ盛りの165分！」を開催します。
-          </div>
-        </div>
-        <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placekitten.com/80/80" alt="">
-          </a>
-          <div class="media-body">
-            2014年03月31日 テレビ東京 ワールドビジネスサテライトの「【トレたま】消えるチャット」で、現在開発中のWebRTC Chat on SkyWayが紹介されました。
-          </div>
-        </div>
-        <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placekitten.com/80/80" alt="">
-          </a>
-          <div class="media-body">
-            2014年03月20日 起業家たちがWebRTCの可能性をディスカッションするイベント「WebRTCが作るコミュニケーションの未来」を開催しました。
-          </div>
-        </div>
-        <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placekitten.com/80/80" alt="">
-          </a>
-          <div class="media-body">
-            2014年03月13日 html5jとW3C合同のWeb生誕25周年記念イベント「Webの過去、現在、そして未来」のパネルディスカッションに、村井純さん、夏野剛さんと共に、小松と白石が登壇しました。
-          </div>
-        </div>
-        <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placekitten.com/80/80" alt="">
-          </a>
-          <div class="media-body">
-            2014年03月12日 @ITの連載「HTML5アプリ作ろうぜ！」でSkyWayが取り上げられました。
-          </div>
-        </div>
-        <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placekitten.com/80/80" alt="">
-          </a>
-          <div class="media-body">
-            2014年02月08日 HTML5 Experts.jp主催でハッカソンを行いました。
-          </div>
-        </div>
-        <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placekitten.com/80/80" alt="">
-          </a>
-          <div class="media-body">
-            2013年12月05日 開発者向けWebRTCプラットフォーム「SkyWay」を公開しました。
-          </div>
-        </div>
-      </div>
+      <ul class="activity-list">
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-30">2014年06月30日</time>
+          </p>
+          <p class="activity-subject">
+            HTML5 Labの主催イベント「WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜」の様子が日経産業新聞で紹介されました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-20">2014年06月20日</time>
+          </p>
+          <p class="activity-subject">
+            雑誌「月刊コンピューターテレフォニー2014年7月号」の記事「<a href="http://ct.callcenter-japan.com/computer_telephony/1237.html" target="_blank">商品トレンド／WebRTC</a>」に大津谷と小松のコメントが掲載されました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-07">2014年06月07日</time>
+          </p>
+          <p class="activity-subject">
+            HTML5ラボが「<a href="http://codeforjapan.doorkeeper.jp/events/11422" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜</a>」を開催しました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-03">2014年06月03日</time>
+          </p>
+          <p class="activity-subject">
+            仲、岩瀬が「<a href="http://atnd.org/events/50382" target="_blank">WebRTC Meetup Tokyo #2</a>」を開催しました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-05-31">2014年05月31日</time>
+          </p>
+          <p class="activity-subject">
+            HTML5ラボが「<a href="http://codeforjapan.doorkeeper.jp/events/11305" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCアイデアソン〜</a>」を開催しました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-03-13">2014年05月25日</time>
+          </p>
+          <p class="activity-subject">
+            雑誌「月刊テレコミュニケーション 2014年6月号」の特集「<a href="http://www.telecomi.biz/book/TC2014_06/index.html#6" target="_blank">WebRTCのインパクト</a>」に、大津谷と小松のコメントとSkyWayが掲載されました。
+          </p>
+        </li>
+      </ul>
     </div>
   </section>
 </div>
