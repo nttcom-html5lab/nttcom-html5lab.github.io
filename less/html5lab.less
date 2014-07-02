@@ -258,11 +258,12 @@ img.header-thumb {
 
 .controls {
   position: fixed;
-  bottom: 0;
+  bottom: -50px;
   left: 0;
   width: 100%;
   text-align: center;
   z-index: 100;
+  transition: bottom 0.5s ease-out 0.5s;
   #playButton, #pauseButton {
     color: @aqua-color;
     &:hover {
@@ -281,6 +282,11 @@ img.header-thumb {
 }
 
 html {
+  &.isPlaying, &.isPausing {
+    .controls {
+      bottom: 0;
+    }
+  }
   &.isPlaying {
     #pauseButton {
       display: block;
