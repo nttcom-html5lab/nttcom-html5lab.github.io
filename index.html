@@ -1,9 +1,285 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-It works!
-</body>
-</html>
+---
+layout: global
+title: NTTコミュニケーションズ HTML5 Lab
+description: HTML5 Labとは、NTTコミュニケーションズという企業の中で、HTML5を初めとしたWeb最新技術に取り組んでいる、小さなラボです。小さいからこその自由を活かして、なるべく発想を柔軟に、可能な限り先進的でユニークな事に取り組むことをミッションとして活動しています。
+---
+{% include assign_current_year.html %}
+
+<section id="flexvideo"></section>
+
+<section class="seek-bar">
+  <div id="played">
+    <div id="current"></div>
+  </div>
+  <div class="buffered"></div>
+</section>
+
+<section class="controls">
+  <a href="#play" id="playButton"><span class="glyphicon glyphicon-play"></span></a>
+  <a href="#pause" id="pauseButton"><span class="glyphicon glyphicon-pause"></span></a>
+</section>
+<div class="container">
+  <section id="toppageWhat" class="textbox">
+    <h2>What is HTML5 Lab?</h2>
+    <div class="content">
+      <p>
+        HTML5 Labとは、NTTコミュニケーションズという企業の中で、HTML5を初めとしたWeb最新技術に取り組んでいる、小さなラボです。<br>
+        小さいからこその自由を活かして、なるべく発想を柔軟に、可能な限り先進的でユニークな事に取り組むことをミッションとして活動しています。
+        <a href="#" class="more">もっと見る</a>
+      </p>
+    </div>
+  </section>
+  <section id="toppageOss" class="textbox">
+    <h2>Product</h2>
+    <div class="content">
+      <p>
+        HTML5 Labでは、Webの最新技術を活用した様々なプロダクトを開発しています。<br>
+        特に最近では、<a href="http://ja.wikipedia.org/wiki/WebRTC" target="_blank">WebRTC</a>に着目し、WebRTCを簡単に使えるプラットフォームや、そのプラットフォーム上で動作するアプリケーションを開発中です。<br>
+      </p>
+      <p>
+        また、開発合宿としての24時間ハッカソン、オープンソースでのプロダクト公開、GitHubを活用した開発スタイルなど、開発そのものを楽しむための努力は惜しみません。
+      </p>
+      <div class="row">
+        <section class="product col-xs-12 col-sm-6 col-md-4">
+          <header>
+            <h3><img src="img/skyway_logo.png" class="img-responsive header-thumb" alt="SkyWay"></h3>
+            <div class="github-fork-ribbon-wrapper right">
+              <div class="github-fork-ribbon">
+                <a href="https://github.com/nttcom/peerjs">Fork me on GitHub</a>
+              </div>
+            </div>
+          </header>
+
+          <p>
+            <a href="http://skyway.io" rel="external" target="_blank">SkyWay</a>は、WebRTCを簡単に使えるオープンソースのプラットフォームです。
+          </p>
+          <p>
+            WebRTCは、ブラウザでビデオチャットやP2P通信を実現する画期的な新技術です。<br>
+            しかし、Web開発者にとって開発の難易度が高いのが難点でした。<br>
+            SkyWayは、WebRTCを使った開発を劇的に容易化し、Webアプリケーションに新たな可能性をもたらします。
+            <a href="http://nttcom.github.io/skyway/" rel="external" target="_blank" class="more">もっと見る</a><br>
+            <iframe src="github-btn.html?user=nttcom&repo=peerjs&type=watch&count=true&size=small"
+                    allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+          </p>
+        </section>
+        <div class="product col-xs-12 col-sm-6 col-md-4">
+          <header>
+            <h3><img src="img/webrtc-chat.png" class="img-responsive header-thumb" alt="WebRTC Chat" style="background-color: #fff;"></h3>
+          </header>
+          <p>
+            WebRTC Chatは、インストールやユーザ登録なしで利用できる無料のビデオ・ボイスチャットサービスです。離れた家族や友達と一緒にいるような感覚と楽しい毎日を提供します。
+            <a href="https://chat.skyway.io/" rel="external" target="_blank" class="more">もっと見る</a><br>
+          </p>
+        </div>
+        <div class="product col-xs-12 col-sm-6 col-md-4">
+          <header>
+            <h3><img src="http://app.html5experts.jp/manga/img/mangatvlogo.svg" class="img-responsive header-thumb" alt="マンガテレビ"></h3>
+          </header>
+          <p>
+            マンガテレビは、Webカメラから取り込んだ動画をマンガチックに変換して表示するサービスです。音声コマンドにより、背景に集中線や効果音を表示できたり、アニメーションGIFの保存を行えるなど、実は機能満載です。
+            <a href="https://app.html5experts.jp/manga/" rel="external" target="_blank" class="more">もっと見る</a><br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="textbox">
+    <h2>Community</h2>
+    <div class="content">
+      <p>
+        HTML5 Labは、Web技術者コミュニティ（特に<a href="http://html5j.org" rel="external" target="_blank">html5j</a>）への支援も積極的に行っています。<br>
+        様々なイベントへのスポンサーを行っているだけではなく、ラボのメンバーがコミュニティのスタッフを担っていたり、コミュニティの中核メンバーをラボに招待したりして、Webを盛り上げる活動をともに行っています。
+      </p>
+      <section>
+        <h3>HTML5 Labが協賛・協力したイベント（一部）</h3>
+        <div class="row">
+          <section class="community-event col-xs-12 col-sm-6">
+            <header>
+              <h4><img src="http://events.html5j.org/conference/2013/11/img/conf2013Logo.png" alt="HTML5 Conference" class="img-responsive" style="background-color: #fff;"></h4>
+            </header>
+            <p>
+              2013年11月に開催されたHTML5 Conference 2013は、参加者2,000名、協賛企業50社以上という、日本でも有数の大きなWeb技術者向けカンファレンスとなりました。
+              NTTコミュニケーションズとしても、メインスポンサーとして協賛するだけではなく、イベント企画やネットワーク敷設などに直接携わり、一緒になってイベントを作り上げました。
+            </p>
+            <p>
+              特にネットワーク敷設に関しては、通信事業者のプライドを賭けて「本気」で携わりました。たった1日のカンファレンスのために張り巡らせたケーブルの総延長は、なんと2,580m！
+              その時の様子は、<a href="http://www.slideshare.net/hirotakanakajima1/html5-conference-2013-28829301" target="_blank" rel="external">こちらのスライド</a> をご覧ください。
+            </p>
+          </section>
+          <section class="community-event col-xs-12 col-sm-6">
+            <header>
+              <h4><img src="img/5jcup-logo-horizontal.png" alt="HTML5 Japan Cup" class="img-responsive"></h4>
+            </header>
+            <p>
+              <a href="http://5jcup.org" target="_blank">HTML5 Japan Cup</a>とは、html5jが主催を務めるWebクリエイター向けコンテストです。
+              最優秀賞賞金は100万円、賞金総額は350万円！2014年初めての取り組みにもかかわらず、協賛企業・後援団体の数はなんと40以上にのぼります。
+            </p>
+            <p>
+              NTTコミュニケーションズはHTML5 Japan Cupのメインスポンサーを務め、企画や事務局業務などの支援を積極的に行っています。
+              HTML5 Labは、<strong><a href="https://5jcup.org/awards/ntt-com" target="_blank">WebRTC賞</a></strong>を創設しました。
+            </p>
+          </section>
+        </div>
+      </section>
+        <!--
+            <div class="col-xs-12 col-sm-4">
+              <img src="http://events.html5j.org/meetup/46/img/web25th.png" alt="Web25th" class="img-responsive" style="background-color: #fff;">
+              <p>
+                村井純さん、夏野剛さんと共に、小松と白石がパネルディスカッションに登壇しました。
+                <a href="http://nttcom.github.io/skyway/">もっと見る</a>
+              </p>
+            </div>
+            -->
+      <section>
+        <h3>HTML5 Labを支えるhtml5jのメンバー</h3>
+        <div class="row">
+          <section class="col-xs-12 col-sm-6 row">
+            <header class="col-sm-3">
+              <img src="http://html5experts.jp/wp-content/uploads/2013/07/50e6c8f7b9e8f666a4b0a7b2026fda86.png" class="img-responsive" alt="白石俊平" style="width: 66px; height: 66px;">
+              <h4>白石俊平</h4>
+            </header>
+            <div class="col-sm-9">
+              <p>
+                <a target="_blank" href="http://openweb.co.jp" rel="external">株式会社オープンウェブ・テクノロジー</a>代表取締役 /
+                <a href="http://html5j.org" target="_blank" rel="external">html5j</a>ファウンダー
+              </p>
+              <p>
+                <a href="http://html5experts.jp/shumpei.shiraishi/" rel="external" target="_blank" class="more">もっと見る</a>
+              </p>
+            </div>
+          </section>
+          <section class="col-xs-12 col-sm-6 row">
+            <header class="col-sm-3">
+              <img src="http://html5experts.jp/wp-content/uploads/2013/07/6aeaa9dc41e8ac788741825263d95e8a-66x66.jpg" class="img-responsive" alt="吉川徹">
+              <h4>吉川徹</h4>
+            </header>
+            <div class="col-sm-9">
+              <p>
+                フリーランス /
+                <a href="http://html5j.org" target="_blank" rel="external">html5j</a>スタッフ
+              </p>
+              <p>
+                <a href="http://html5experts.jp/yoshikawa_t/" rel="external" target="_blank" class="more">もっと見る</a>
+              </p>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="textbox">
+    <h2>Media</h2>
+    <div class="content">
+      <p>
+        日本のWeb技術者を支援するため、技術情報メディア「<a href="http://html5experts.jp" target="_blank" rel="external">HTML5 Experts.jp</a>」を運営しています。
+        キャッチフレーズは「日本に、もっとエキスパートを」。国内外で活躍する、50人以上のHTML5のエキスパートたちを執筆陣として集め、Web技術の最新情報を積極的に発信しています。
+      </p>
+      <div class="row">
+        <section class="media-site col-xs-12 col-sm-6">
+          <header>
+            <div class="logo-container">
+              <img src="img/hx-logo.png" alt="HTML5 Experts.jp" class="img-responsive">
+            </div>
+            <h3>HTML5 Experts.jp</h3>
+          </header>
+          <p>
+            HTML5 Experts.jpは、2013年7月にNTTコミュニケーションズの支援を受けて立ち上げられた、Web技術者向けの情報メディアです。
+          </p>
+          <p>
+            「HTML5 Experts.jp」という名前、そして「日本に、もっとエキスパートを。」というミッションステートメントには、「エキスパートによる質の高い情報を発信する」「日本に、一人でも多くのエキスパートを輩出する」という２つの意味を込めています。
+          </p>
+            国内外で活躍する、50人以上のHTML5のエキスパートたちを執筆陣として集め、HTML5を中心とした情報を扱っています。
+            <a href="http://html5experts.jp/" target="_blank" rel="external" class="more">もっと見る</a>
+          </p>
+        </section>
+        <section class="media-site col-xs-12 col-sm-6">
+          <header>
+            <div class="logo-container">
+              <img src="img/hxworks-logo.png" alt="HTML5 Experts Works" class="img-responsive">
+            </div>
+            <h3>HTML5 Experts Works</h3>
+          </header>
+          <p>
+            HTML5 Experts Worksは、日本のWeb技術者が制作した様々な作品を紹介するギャラリーサイトとして、2014年4月21日にスタートしました。
+          </p>
+          <p>
+            HTML5 Experts.jpは、エキスパートやコントリビューターの方々と「執筆した記事」を結びつけることで、「顔の見えるメディア」を目指してきました。
+            そして、HTML5 Experts Worksでは、HTML5 Experts.jpのエキスパートやコントリビューターの方々と「手がけた作品」を結びつける場を作ることで、「エキスパート、コントリビューターの方々のポートフォリオ・ギャラリー」としての役割を果たしていきます。
+            更にその先には、日本のWebエキスパートたちが手がけた、全ての素晴らしい作品をこのサイトに集約することで、日本国内外へ「<em>日本のWeb技術者はスゴい</em>」ということを発信、アピールすることを目指します。
+            <a href="http://works.html5experts.jp/" rel="external" class="more">もっと見る</a>
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="textbox">
+    <h2>Activities</h2>
+    <div class="content">
+      <p>
+        以下に、HTML5 Labが行っている活動を紹介します。
+      </p>
+      <ul class="activity-list">
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-30">2014年06月30日</time>
+          </p>
+          <p class="activity-subject">
+            HTML5 Labの主催イベント「WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜」の様子が日経産業新聞で紹介されました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-20">2014年06月20日</time>
+          </p>
+          <p class="activity-subject">
+            雑誌「月刊コンピューターテレフォニー2014年7月号」の記事「<a href="http://ct.callcenter-japan.com/computer_telephony/1237.html" target="_blank">商品トレンド／WebRTC</a>」に大津谷と小松のコメントが掲載されました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-07">2014年06月07日</time>
+          </p>
+          <p class="activity-subject">
+            HTML5ラボが「<a href="http://codeforjapan.doorkeeper.jp/events/11422" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜</a>」を開催しました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-06-03">2014年06月03日</time>
+          </p>
+          <p class="activity-subject">
+            仲、岩瀬が「<a href="http://atnd.org/events/50382" target="_blank">WebRTC Meetup Tokyo #2</a>」を開催しました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-05-31">2014年05月31日</time>
+          </p>
+          <p class="activity-subject">
+            HTML5ラボが「<a href="http://codeforjapan.doorkeeper.jp/events/11305" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCアイデアソン〜</a>」を開催しました。
+          </p>
+        </li>
+        <li>
+          <p class="activity-date">
+            <time datetime="2014-03-13">2014年05月25日</time>
+          </p>
+          <p class="activity-subject">
+            雑誌「月刊テレコミュニケーション 2014年6月号」の特集「<a href="http://www.telecomi.biz/book/TC2014_06/index.html#6" target="_blank">WebRTCのインパクト</a>」に、大津谷と小松のコメントとSkyWayが掲載されました。
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+{% comment %}
+<script src="{{ relative_path }}js/toppage.all.min.js"></script>
+{% endcomment %}
+<!-- デバッグ用 -->
+<script src="{{ relative_path }}js/util.js"></script>
+<script src="{{ relative_path }}js/flexvideo.js"></script>
+<script src="{{ relative_path }}js/bgv.js"></script>
+<script src="{{ relative_path }}js/toppage.js"></script>

@@ -1,0 +1,15 @@
+{% comment %} 変数 post_year に現在処理中のページの年をセットする {% endcomment %}
+{% comment %} URLのパス(例：/2014/)を利用する {% endcomment %}
+{% if post %}
+    {% assign _paths = post.url | split: '/' %}
+{% else %}
+    {% assign _paths = page.url | split: '/' %}
+{% endif %}
+{% for _path in _paths %}
+    {% if forloop.last %}
+        {% assign _level = forloop.index %}
+    {% endif %}
+{% endfor %}
+{% if _level >= 4 %}
+    {% assign post_year = _paths[2] %}
+{% endif %}

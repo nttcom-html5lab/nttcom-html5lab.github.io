@@ -1,0 +1,6 @@
+{% comment %} 変数 current_year に今の年をセットする {% endcomment %}
+{% comment %} 最新記事の年で代用する {% endcomment %}
+{% for _post in site.posts limit:1 %}
+    {% assign _paths = _post.url | split: '/' %}
+    {% assign current_year = _paths[2] %}
+{% endfor %}
