@@ -9,8 +9,7 @@ var util = (function() {
 
     var ua = navigator.userAgent.toLowerCase();
 
-
-    var isDebug = true;
+    var isDebug = false;
 
     var isAndroid = /android/.test(ua);
     var isMobile = /mobile/.test(ua);
