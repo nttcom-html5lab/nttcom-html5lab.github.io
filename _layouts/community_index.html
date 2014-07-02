@@ -1,0 +1,46 @@
+---
+layout: global
+title: コミュニティ／イベント一覧
+description: WebRTCは、ブラウザ同士でリアルタイムに映像、音声、データを送受信できる画期的な新技術。SkyWayを使えば、サーバを準備することなく、簡単なJavaScriptを書くだけで、WebRTCを使ったアプリが開発できます。
+---
+{% include assign_post_year_from_path.html %}
+{% include assign_current_year.html %}
+{% include assign_relative_path.html %}
+<section class="comcontents ">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
+                <ol class="breadcrumb">
+                    <li><a href="../../">Top</a></li>
+                    <li><a href="../{{ current_year }}/">{{ page.title }}</a></li>
+                    <li class="active">{{ post_year }}</li>
+                </ol>
+                <header class="page-header">
+                    <h1>{{ page.title }}</h1>
+                </header>
+                {% for post in site.categories[post_year] %}
+                {% include community_post_summary.html %}
+                {% endfor %}
+
+                {{ content }}
+            </div>
+            <div class="hidden-xs hidden-sm col-md-2">
+                <div class="hl-affix">
+                    <nav>
+                        <ul class="nav nav-pills nav-stacked">
+                            {% capture categories %}{% for category in site.categories %}{% if category[0] contains '20' %}{{ category[0] }},{% endif %}{% endfor %}{% endcapture %}
+                            {% assign sorted_categories = categories | split: ',' | sort %}
+                            {% for category in sorted_categories reversed %}
+                            {% if post_year == category %}
+                            <li class="active"><a href="./">{{ category }}</a></li>
+                            {% else %}
+                            <li><a href="../{{ category }}/">{{ category }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

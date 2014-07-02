@@ -1,0 +1,41 @@
+---
+layout: global
+---
+{% include assign_post_year_from_post.html %}
+{% include assign_current_year.html %}
+{% include assign_relative_path.html %}
+<section class="comcontents ">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="../../">Top</a></li>
+            <li><a href="../../community/{{ current_year }}/">コミュニティ／イベント一覧</a></li>
+            <li><a href="./">{{ post_year }}</a></li>
+            <li class="active">{{ page.title }}</li>
+        </ol>
+        <header class="page-header">
+            <h1>{{ page.title }} <small>{{ page.date | date: site.date_format }}</small></h1>
+        </header>
+        {{ content }}
+        <p class="text-center">
+            <a href="./" class="btn btn-primary" role="button">{{post_year}}年のコミュニティ／イベント一覧</a>
+        </p>
+        <ul class="pager">
+            {% if page.previous.url %}
+            <li class="previous">
+                <a href="{{ relative_path }}{{ page.previous.url | remove_first: '/' }}">
+                    &larr;
+                    古い投稿
+                </a>
+            </li>
+            {% endif %}
+            {% if page.next.url %}
+            <li class="next">
+                <a href="{{ relative_path }}{{ page.next.url | remove_first: '/' }}">
+                    新しい投稿
+                    &rarr;
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</section>

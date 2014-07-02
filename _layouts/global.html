@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]--><head>
+    {% include assign_relative_path.html %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="{{ page.description }}">
+    {% if page.url == '/index.html' %}
+    <title>{{ site.title }}</title>
+    {% else %}
+    <title>{{ page.title }} ― {{ site.title }}</title>
+    {% endif %}
+    <link href="{{ relative_path }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ relative_path }}css/html5lab.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{{ relative_path }}js/html5shiv.js"></script>
+    <script src="{{ relative_path }}js/respond.min.js"></script>
+    <![endif]-->
+    <script src="{{ relative_path }}js/jquery-1.11.0.js"></script>
+    <script src="{{ relative_path }}js/bootstrap.min.js"></script>
+    <!--
+     _   _  _____  __  __  _     ___    _       _    ___
+    | |_| ||_   _||  \/  || |   | __|  | |     / \  | D )
+    |  _  |  | |  | |\/| || |__ |__ \  | |__  / A \ | D \
+    |_| |_|  |_|  |_|  |_||____||___/  |____||_|¯|_||___/
+
+             N T T   C o m m u n i c a t i o n s
+
+    Hi! Thank you for looking at the source!
+    If you have any cool ideas or see any bugs,
+    please submit a pull request.
+
+    ソースまで見てくれてありがとう！
+    おもしろいアイデアや不具合などあれば、プルリクエストを送ってくださいね。
+
+    https://github.com/html5lab/html5lab.github.io/
+    -->
+</head>
+<body data-spy="scroll" data-target=".hl-scroll-spy" data-offset="0">
+<nav class="navbar navbar-inverse navbar-fixed-top hl-navbar" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hl-brand" href="{{ relative_path }}./">
+              <img class="hl-logo" src="img/logo.png" alt="NTTコミュニケーションズ HTML5 Lab">
+
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            {% comment %}
+            <ul class="nav navbar-nav">
+                {% if page.url == '/about/index.html' %}
+                <li class="active">
+                    <a href="{{ relative_path }}about/">About</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ relative_path }}about/">About</a>
+                </li>
+                {% endif %}
+                {% if page.url == '/contact/index.html' %}
+                <li class="active">
+                    <a href="{{ relative_path }}contact/">Contact</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ relative_path }}contact/">Contact</a>
+                </li>
+                {% endif %}
+            </ul>
+            {% endcomment %}
+            <ul class="nav navbar-nav hl-social-buttons navbar-right">
+                <li class="navbar-text">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site:homepage_url}}" data-lang="ja">ツイート</a>
+                <li class="navbar-text">
+                    <div class="fb-like" data-text="{{ site.title }}" data-href="{{ site.homepage_url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                    <div id="fb-root"></div>
+                </li>
+                <li class="navbar-text">
+                    <a href="http://b.hatena.ne.jp/entry/{{ site.homepage_url }}" class="hatena-bookmark-button" data-hatena-bookmark-title="{{ site.title }}" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<main>
+    {{ content }}
+</main>
+<footer class="hl-footer text-muted text-center">
+    <div class="container">
+        <ul class="hl-links">
+            <li><a href="http://www.ntt.com/aboutus/hp/disclaimer.html">免責事項・準拠法</a></li>
+            <li>|</li>
+            <li><a href="http://www.ntt.com/copyright/">著作権について</a></li>
+            <li>|</li>
+            <li><a href="http://www.ntt.com/privacy/">プライバシーポリシー</a></li>
+            <li>|</li>
+            <li><a href="http://www.ntt.com/aboutus/hp/webbeacon.html">クッキーとウェブビーコンについて</a></li>
+        </ul>
+        <p class="hl-logo"><a href="http://www.ntt.com/"><img src="img/nttcom-logo.png" alt="NTT Communications" /></a></p>
+        <p class="hl-copyright">Copyright &copy; 2014 NTT Communications</p>    </div>
+</footer>
+<script>
+    // Twitter, Facebook, Hatena
+    var jsload = function (d, s, id, src) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = src;
+        fjs.parentNode.insertBefore(js, fjs);
+    };
+    // Twitter
+    jsload(document, 'script', 'twitter-wjs', '//platform.twitter.com/widgets.js');
+    // Facebook
+    jsload(document, 'script', 'facebook-jssdk', '//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=582225031817530');
+    // Hatena
+    jsload(document, 'script', 'hatena-js', '//b.st-hatena.com/js/bookmark_button.js');
+
+    // Google Analytics
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-52441304-2', 'auto');
+    ga('send', 'pageview');
+</script></body>
+</html>

@@ -1,0 +1,7 @@
+permalink: /:categories/:month-:day-:title.html
+date_format: "%Y/%m/%d"
+excerpt_separator: "</p>"
+homepage_url: http://html5lab.ntt.com/
+title: NTTコミュニケーションズ HTML5 Lab
+markdown: kramdown
+exclude: [less, node_modules]
