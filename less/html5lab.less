@@ -94,6 +94,8 @@ body {
   }
   .content {
     background-color: @content-background-color;
+    -webkit-box-shadow: 0px 0px 6px #000;
+    -moz-box-shadow: 0px 0px 6px #000;
     box-shadow: 0px 0px 6px #000;
     color: @content-text-color;
     a {
@@ -114,7 +116,11 @@ body {
 
 a.more {
   border: 2px solid #e48729;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
   border-radius: 2px;
+  -webkit-box-shadow: 0px 0px 4px #e48729;
+  -moz-box-shadow: 0px 0px 4px #e48729;
   box-shadow: 0px 0px 4px #e48729;
   padding: 0 32px 0 16px;
   color: #e48729;
@@ -215,7 +221,6 @@ img.header-thumb {
     z-index: 2020;
     -webkit-transition: left 0.1s linear 0, width 0.1s linear 0;
     -moz-transition: left 0.1s linear 0, width 0.1s linear 0;
-    -ms-transition: left 0.1s linear 0, width 0.1s linear 0;
     -o-transition: left 0.1s linear 0, width 0.1s linear 0;
     transition: left 0.1s linear 0, width 0.1s linear 0;
   }
@@ -230,19 +235,22 @@ img.header-thumb {
     z-index: 2010;
     -webkit-transition: left 0.2s linear 0, width 0.2s linear 0;
     -moz-transition: left 0.2s linear 0, width 0.2s linear 0;
-    -ms-transition: left 0.2s linear 0, width 0.2s linear 0;
     -o-transition: left 0.2s linear 0, width 0.2s linear 0;
     transition: left 0.2s linear 0, width 0.2s linear 0;
   }
 
   #current {
     position: absolute;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
     top: 0px;
     right: 0px;
     width: 2px;
     height: 2px;
     background-color: lighten(@aqua-color, 50%);
+    -webkit-box-shadow: 0 0 2px 1px white, 0 0 8px 4px white;
+    -moz-box-shadow: 0 0 2px 1px white, 0 0 8px 4px white;
     box-shadow: 0 0 2px 1px white, 0 0 8px 4px white;
   }
 }
@@ -263,6 +271,9 @@ img.header-thumb {
   width: 100%;
   text-align: center;
   z-index: 100;
+  -webkit-transition: bottom 0.5s ease-out 0.5s;
+  -moz-transition: bottom 0.5s ease-out 0.5s;
+  -o-transition: bottom 0.5s ease-out 0.5s;
   transition: bottom 0.5s ease-out 0.5s;
   #playButton, #pauseButton {
     color: @aqua-color;
@@ -277,6 +288,8 @@ img.header-thumb {
     margin: 0 auto;
     display: none;
     background: black;
+    -webkit-border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
     border-radius: 10px 10px 0 0;
   }
 }
@@ -321,6 +334,7 @@ html {
 
   /* Add a drop shadow */
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
 
   z-index: 100000;
