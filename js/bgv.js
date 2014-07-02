@@ -40,8 +40,6 @@ var bgv = (function() {
             .on('paused', pausedHandler)
             .initialize(FLEXVIDEO_SELECTOR, VIDEO_FILE_NAME, PICTURE_FILE_NAME, PICTURE_DURATION, PICTURE_INTERVAL);
 
-        $html.addClass('isPausing');
-
         if (util.isDebug) {
             $('main').append(
                 '<section class="current-time-container">'
@@ -87,6 +85,7 @@ var bgv = (function() {
 
     function initialize() {
         if (util.isDebug) console.log('bgv.initialize()');
+        $html.addClass('isPausing');
         setTimeout(function() {
             isInitialized = true;
             measureSizes();
