@@ -19,8 +19,8 @@ var bgv = (function() {
     var duration = 0;
 
     var FLEXVIDEO_SELECTOR = '#flexvideo';
-    var VIDEO_FILE_NAME = 'video/html5lab-min-0.1.3';
-    var PICTURE_FILE_NAME = 'video/html5lab-0.1.3-%{sec}';
+    var VIDEO_FILE_NAME = 'video/html5lab-min-1.0';
+    var PICTURE_FILE_NAME = 'video/html5lab-1.0-%{sec}';
     var PICTURE_DURATION = 57;
     var PICTURE_INTERVAL = 1;
 

@@ -99,7 +99,7 @@ var util = (function() {
             'コンソールまで見てくれてありがとう！\n' +
             'おもしろいアイデアや不具合などあれば、プルリクエストを送ってくださいね。\n' +
             '\n' +
-            'https://github.com/html5lab/html5lab.github.io/'
+            'https://github.com/nttcom-html5lab/nttcom-html5lab.github.io'
     );
     }
 
