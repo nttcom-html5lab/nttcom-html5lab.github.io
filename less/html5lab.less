@@ -98,10 +98,12 @@ body {
     -moz-box-shadow: 0px 0px 6px #000;
     box-shadow: 0px 0px 6px #000;
     color: @content-text-color;
-    a {
-      color: @aqua-color;
-      &:hover {
-        color: lighten(@aqua-color, 20%);
+    p {
+      a {
+        color: @aqua-color;
+        &:hover {
+          color: lighten(@aqua-color, 20%);
+        }
       }
     }
     padding: 8px;
@@ -270,7 +272,7 @@ img.header-thumb {
   left: 0;
   width: 100%;
   text-align: center;
-  z-index: 100;
+  z-index: 200000;
   -webkit-transition: bottom 0.5s ease-out 0.5s;
   -moz-transition: bottom 0.5s ease-out 0.5s;
   -o-transition: bottom 0.5s ease-out 0.5s;
@@ -376,17 +378,7 @@ html {
   top: 0;
 }
 
-
-
 .github-fork-ribbon-wrapper.right {
-  right: 0;
-}
-
-
-.github-fork-ribbon-wrapper.right-bottom {
-  position: fixed;
-  top: inherit;
-  bottom: 0;
   right: 0;
 }
 
@@ -399,38 +391,4 @@ html {
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
-}
-
-.github-fork-ribbon-wrapper.left .github-fork-ribbon {
-  top: 42px;
-  left: -43px;
-
-  /* Rotate the banner -45 degrees */
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
-
-.github-fork-ribbon-wrapper.left-bottom .github-fork-ribbon {
-  top: 80px;
-  left: -43px;
-
-  /* Rotate the banner -45 degrees */
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.github-fork-ribbon-wrapper.right-bottom .github-fork-ribbon {
-  top: 80px;
-  right: -43px;
-
-  /* Rotate the banner -45 degrees */
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
 }
