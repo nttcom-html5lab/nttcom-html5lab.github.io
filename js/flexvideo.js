@@ -52,7 +52,8 @@ var flexvideo = (function() {
 
             $video = $('<video>').attr({
                 id: 'video',
-                autoplay: 'autoplay'
+                autoplay: 'autoplay',
+                poster: picture_source.replace('%{sec}', '0') + '.' + PICTURE_EXTENSION
             });
             video = $video.get(0);
             $.each(VIDEO_EXTENSIONS, function() {
