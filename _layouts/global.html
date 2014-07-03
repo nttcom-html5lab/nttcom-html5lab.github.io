@@ -9,8 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="{{ page.description }}">
     {% if page.url == '/index.html' %}
+    <meta property="og:type" content="company">
+    <meta property="og:image" content="http://html5lab.ntt.com/img/html5lab-ogp.png">
     <title>{{ site.title }}</title>
     {% else %}
+    <meta property="og:type" content="article">
     <title>{{ page.title }} ― {{ site.title }}</title>
     {% endif %}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
