@@ -16,14 +16,27 @@
     <meta property="og:type" content="article">
     <title>{{ page.title }} ― {{ site.title }}</title>
     {% endif %}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link href="{{ relative_path }}css/html5lab.css" rel="stylesheet">
     <!--[if lt IE 9]>
+    <link rel="stylesheet" href="{{ relative_path }}css/bootstrap.min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!--<![endif]-->
+    <link rel="stylesheet" href="{{ relative_path }}css/html5lab.css">
+    <!--[if lt IE 9]>
+    <script src="{{ relative_path }}js/html5shiv.js"></script>
+    <script src="{{ relative_path }}js/respond.min.js"></script>
+    <script src="{{ relative_path }}js/jquery-1.11.0.min.js"></script>
+    <script src="{{ relative_path }}js/bootstrap.min.js"></script>
+    <![endif]-->
+    <!--[if IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!--[if gt IE 8]><!-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--<![endif]-->
     <!--
      _   _  _____  __  __  _     ___    _       _    ___
     | |_| ||_   _||  \/  || |   | __|  | |     / \  | D )
