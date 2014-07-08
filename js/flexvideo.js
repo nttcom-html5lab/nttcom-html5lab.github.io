@@ -107,6 +107,10 @@ var flexvideo = (function() {
                 }
                 secondsOfPictures.push(sec);
             }
+            var $img = $('<img>').attr({
+                class: 'poster',
+                src: picture_source.replace('%{sec}', 0) + '.' + PICTURE_EXTENSION
+            }).appendTo($pictures);
 
             $frag.append($pictures);
 
@@ -123,7 +127,6 @@ var flexvideo = (function() {
         }
 
         $container = $(container).append($frag);
-
 
         if (!util.support.inlineVideo && !util.support.transform) {
             $container.find('img').css({
