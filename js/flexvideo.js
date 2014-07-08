@@ -112,13 +112,6 @@ var flexvideo = (function() {
 
             $pictures.show();
 
-            if (!util.support.transform) {
-                $container.find('img').css({
-                    width: '100%',
-                    height: '100%'
-                });
-            }
-
             duration = picture_duration;
 
             setTimeout($.proxy(function() {
@@ -130,6 +123,14 @@ var flexvideo = (function() {
         }
 
         $container = $(container).append($frag);
+
+
+        if (!util.support.inlineVideo && !util.support.transform) {
+            $container.find('img').css({
+                width: '100%',
+                height: '100%'
+            });
+        }
 
         $window.on('resize iosstatusbarvisibilitychange', resizeHandler);
         resizeHandler();
