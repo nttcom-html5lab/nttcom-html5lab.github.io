@@ -290,10 +290,13 @@ var flexvideo = (function() {
                     }
                 }
                 if (_toShow) {
-                    $img.show();
+                    $img.css('z-index', '0').fadeIn('1000');
                 }
                 if (_toHide) {
-                    $img.hide();
+                    $img.css('z-index', '-100');
+                    setTimeout(function() {
+                        $img.hide();
+                    }, 1000);
                 }
             }
 
