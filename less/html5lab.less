@@ -21,6 +21,9 @@ body {
 .hl-navbar {
   background-color: @navbar-background-color;
   border-width: 0;
+  h1 {
+    margin: 0;
+  }
   .hl-brand {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -50,7 +53,8 @@ body {
   margin-top: 20%;
   padding-top: 40px;
   padding-bottom: 90px;
-  background: @footer-background-color;
+  background-color: black;
+  background-color: @footer-background-color;
   color: @footer-text-color;
 
   a {
@@ -73,10 +77,6 @@ body {
 // Top Page
 // --------------------------------------------------
 
-#toppageWhat {
-  margin-top: 20%;
-}
-
 .textbox {
   h2 {
     color: white;
@@ -93,6 +93,7 @@ body {
     }
   }
   .content {
+    background-color: black;
     background-color: @content-background-color;
     -webkit-box-shadow: 0px 0px 6px #000;
     -moz-box-shadow: 0px 0px 6px #000;
@@ -164,27 +165,10 @@ a.more {
     }
   }
 }
-.product header {
-  height: 120px;
-}
-.community-event header {
-  height: 160px;
-  background: white;
-  display: table-cell;
-  vertical-align: middle;
-  padding: 0 16px;
+.product {
   h4 {
-    margin: 0;
+    margin: 20px 0;
   }
-}
-.media-site header .logo-container {
-  background-color: white;
-  display: table-cell;
-  vertical-align: middle;
-  height: 120px;
-}
-img.header-thumb {
-  width: 100%;
 }
 .activity-list {
   list-style-type: none;
@@ -271,7 +255,7 @@ img.header-thumb {
   left: 0;
   width: 100%;
   text-align: center;
-  z-index: 200000;
+  z-index: 2000;
   -webkit-transition: bottom 0.5s ease-out 0.5s;
   -moz-transition: bottom 0.5s ease-out 0.5s;
   -o-transition: bottom 0.5s ease-out 0.5s;
@@ -316,6 +300,11 @@ html {
 /* Left will inherit from right (so we don't need to duplicate code */
 .github-fork-ribbon {
   /* The right and left lasses determine the side we attach our banner to */
+  display: none;
+  @media (min-width: @screen-sm-min) {
+    display: block;
+  }
+
   position: absolute;
 
   /* Add a bit of padding to give some substance outside the "stitching" */
@@ -338,7 +327,7 @@ html {
   -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
 
-  z-index: 100000;
+  z-index: 1000;
 }
 
 .github-fork-ribbon a {

@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><html class="lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!--><html><!--<![endif]--><head>
     {% include assign_relative_path.html %}
@@ -8,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="{{ page.description }}">
+    <meta name="keywords" content="NTT,NTT Communications,NTTコミュニケーションズ,HTML5 Lab,HTML5,SkyWay,WebRTC,HTML5 Experts.jp">
     {% if page.url == '/index.html' %}
     <meta property="og:type" content="company">
     <meta property="og:image" content="http://html5lab.ntt.com/img/html5lab-ogp.png">
@@ -16,14 +15,23 @@
     <meta property="og:type" content="article">
     <title>{{ page.title }} ― {{ site.title }}</title>
     {% endif %}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link href="{{ relative_path }}css/html5lab.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="{{ relative_path }}css/bootstrap.min.css">
     <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!--<![endif]-->
+    <link rel="stylesheet" href="{{ relative_path }}css/html5lab.css">
+    <!--[if lt IE 9]>
+    <script src="{{ relative_path }}js/html5shiv.js"></script>
+    <script src="{{ relative_path }}js/respond.min.js"></script>
+    <script src="{{ relative_path }}js/jquery-1.11.0.min.js"></script>
+    <script src="{{ relative_path }}js/bootstrap.min.js"></script>
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--<![endif]-->
     <!--
      _   _  _____  __  __  _     ___    _       _    ___
     | |_| ||_   _||  \/  || |   | __|  | |     / \  | D )
@@ -52,10 +60,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hl-brand" href="{{ relative_path }}./">
-              <img class="hl-logo" src="img/logo.png" alt="NTTコミュニケーションズ HTML5 Lab">
-
-            </a>
+            <h1>
+                <a class="navbar-brand hl-brand" href="{{ relative_path }}./">
+                    <img class="hl-logo" src="img/logo.png" alt="NTTコミュニケーションズ HTML5 Lab">
+                </a>
+            </h1>
         </div>
         <div class="collapse navbar-collapse">
             {% comment %}
