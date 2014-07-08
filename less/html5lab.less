@@ -318,6 +318,11 @@ html {
 /* Left will inherit from right (so we don't need to duplicate code */
 .github-fork-ribbon {
   /* The right and left lasses determine the side we attach our banner to */
+  display: none;
+  @media (min-width: @screen-sm-min) {
+    display: block;
+  }
+
   position: absolute;
 
   /* Add a bit of padding to give some substance outside the "stitching" */
