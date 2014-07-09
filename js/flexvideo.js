@@ -38,9 +38,10 @@ var flexvideo = (function() {
         var secondsOfPictures = [];   // 使わないコードも書ける to be refactored
         var pictureUpdateTimer = 0;
         var currenPictureIndex = 0;
-        var nextPictureIndex = 0;
+        var preloadPictureIndex = 0;
         var lastTimePictureUpdate = util.getNow();
         var PICTURE_UPDATE_DURATION = 200;
+        var PRELOAD_IMAGES = 5;
     }
 
     function initialize(container, video_source, picture_source, picture_duration, picture_interval) {
@@ -102,15 +103,14 @@ var flexvideo = (function() {
                     'data-sec': sec,
                     'data-src': src
                 }).appendTo($pictures);
-                if (sec === 0) {
+                if (sec < sec + picture_interval * PRELOAD_IMAGES) {
                     $img.attr('src', src);
                 }
                 secondsOfPictures.push(sec);
             }
             var $img = $('<img>').attr({
-                class: 'poster',
                 src: picture_source.replace('%{sec}', 0) + '.' + PICTURE_EXTENSION
-            }).appendTo($pictures);
+            }).addClass('poster').appendTo($pictures);
 
             $frag.append($pictures);
 
@@ -290,10 +290,13 @@ var flexvideo = (function() {
                     }
                 }
                 if (_toShow) {
-                    $img.show();
+                    $img.css('z-index', '0').fadeIn('1000');
                 }
                 if (_toHide) {
-                    $img.hide();
+                    $img.css('z-index', '-100');
+                    setTimeout(function() {
+                        $img.hide();
+                    }, 1000);
                 }
             }
 
@@ -301,11 +304,9 @@ var flexvideo = (function() {
             loadImage(newFrame, true, true, false);
 
             // 先読み
-            if (newFrame < keyFrameLength - 1) {
-                nextPictureIndex = newFrame + 1;
-                loadImage(nextPictureIndex, true, false, false);
-            } else {
-                nextPictureIndex = newFrame;
+            preloadPictureIndex = Math.min(newFrame + PRELOAD_IMAGES, keyFrameLength);
+            for (var i = newFrame + 1; i < preloadPictureIndex; i++) {
+                loadImage(i, true, false, false);
             }
 
             if (util.isDebug) console.log('change picture ' + newFrame);
@@ -364,7 +365,7 @@ var flexvideo = (function() {
                 return secondsOfPictures[currenPictureIndex];
             },
             end: function() {
-                return secondsOfPictures[nextPictureIndex];
+                return secondsOfPictures[preloadPictureIndex];
             }
         }
     }
