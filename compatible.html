@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <title>互換モード</title>
+</head>
+<body>
+<code>
+  <script>
+    document.writeln('document.documentMode = ' + document.documentMode);
+  </script>
+  <br>
+  <script>
+    document.writeln('navigator.userAgent = ' + navigator.userAgent);
+  </script>
+</code>
+
+<!--[if lt IE 9]>
+<p>IE 8以下のみ表示される</p>
+<![endif]-->
+<!--[if lt IE 10]>
+<p>IE 9以下のみ表示される</p>
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<p>IE 9以上のみ表示される</p>
+<!--<![endif]-->
+</body>
+</html>
