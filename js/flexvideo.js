@@ -140,7 +140,7 @@ var flexvideo = (function() {
     }
 
     function resizeHandler(event) {
-        if (event && event.type) {
+        if (util.isDebug && event && event.type) {
             console.log('window.on' + event.type);
         }
 

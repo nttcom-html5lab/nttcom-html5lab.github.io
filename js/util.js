@@ -100,7 +100,7 @@ var util = (function() {
             'おもしろいアイデアや不具合などあれば、プルリクエストを送ってくださいね。\n' +
             '\n' +
             'https://github.com/nttcom-html5lab/nttcom-html5lab.github.io'
-    );
+        );
     }
 
     return {
