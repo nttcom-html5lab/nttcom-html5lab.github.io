@@ -103,7 +103,7 @@ var flexvideo = (function() {
                     'data-sec': sec,
                     'data-src': src
                 }).appendTo($pictures);
-                if (sec < sec + picture_interval * PRELOAD_IMAGES) {
+                if (sec < picture_interval * PRELOAD_IMAGES) {
                     $img.attr('src', src);
                 }
                 secondsOfPictures.push(sec);
