@@ -106,6 +106,7 @@ var util = (function() {
     return {
         getNow: getNow,
         isDebug: isDebug && support.console,
+        device: device,
         support: support,
         os: os,
         browser: browser
