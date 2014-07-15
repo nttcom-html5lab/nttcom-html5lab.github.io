@@ -19,9 +19,9 @@ var bgv = (function() {
     var duration = 0;
 
     var FLEXVIDEO_SELECTOR = '#flexvideo';
-    var VIDEO_FILE_NAME = 'video/html5lab-min-1.0';
-    var PICTURE_FILE_NAME = 'video/html5lab-1.0-%{sec}';
-    var PICTURE_DURATION = 57;
+    var VIDEO_FILE_NAME = 'video/html5lab-min-1.0.3';
+    var PICTURE_FILE_NAME = 'video/html5lab-1.0.3-%{sec}';
+    var PICTURE_DURATION = 60;
     var PICTURE_INTERVAL = 1;
 
     if (util.os.iOS) {
@@ -70,7 +70,7 @@ var bgv = (function() {
     function windowLoadHandler() {
         if (util.isDebug) console.log('window.onload');
         isWindowLoaded = true;
-        if (isWindowLoaded && isBgvLoaded) {
+        if (isWindowLoaded && (isBgvLoaded || util.device.iPad)) {
             initialize();
         }
     }
