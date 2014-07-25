@@ -30,11 +30,6 @@ body {
     .hl-logo {
       height: 28px;
     }
-    .hl-tagline {
-      font-size: 10px;
-      line-height: 11px;
-      letter-spacing: -1px;
-    }
   }
 }
 
@@ -100,6 +95,7 @@ body {
     box-shadow: 0px 0px 6px #000;
     color: @content-text-color;
     p {
+      line-height: 2;
       a {
         color: @aqua-color;
         &:hover {
@@ -107,9 +103,17 @@ body {
         }
       }
     }
+    li > p {
+        line-height: inherit;
+    }
+    time {
+      font-weight: 400;
+      font-size: 75%;
+      float: right;
+      line-height: 1.46666667;
+    }
     padding: 8px;
     font-size: 16px;
-    line-height: 32px;
     @media (min-width: @screen-sm-min) {
       padding: 40px;
     }
