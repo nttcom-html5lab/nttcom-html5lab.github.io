@@ -19,7 +19,7 @@ description: HTML5 Labとは、NTTコミュニケーションズという企業�
   <a href="#pause" id="pauseButton"><span class="glyphicon glyphicon-pause"></span></a>
 </section>
 <div class="container">
-  <section id="toppageWhat" class="textbox">
+  <section id="what" class="textbox">
     <h2>What is HTML5 Lab?</h2>
     <div class="content">
       <p>
@@ -31,7 +31,7 @@ description: HTML5 Labとは、NTTコミュニケーションズという企業�
       </p>
     </div>
   </section>
-  <section id="toppageOss" class="textbox">
+  <section class="textbox" id="product">
     <h2>Product</h2>
     <div class="content">
       <p>
@@ -85,7 +85,7 @@ description: HTML5 Labとは、NTTコミュニケーションズという企業�
     </div>
   </section>
 
-  <section class="textbox">
+  <section class="textbox" id="community">
     <h2>Community</h2>
     <div class="content">
       <p>
@@ -161,7 +161,7 @@ description: HTML5 Labとは、NTTコミュニケーションズという企業�
     </div>
   </section>
 
-  <section class="textbox">
+  <section class="textbox" id="media">
     <h2>Media</h2>
     <div class="content">
       <p>
@@ -202,66 +202,100 @@ description: HTML5 Labとは、NTTコミュニケーションズという企業�
     </div>
   </section>
 
-  <section class="textbox">
-    <h2>Activities</h2>
+  <section class="textbox" id="activity">
+    <h2>Activity</h2>
     <div class="content">
       <p>
         以下に、HTML5 Labが行っている活動を紹介します。
       </p>
       <ul class="activity-list">
         <li>
-          <p class="activity-date">
-            <time datetime="2014-06-30">2014年06月30日</time>
+          <h4 class="activity-date">
+            WebRTC Meetup Tokyo #3を開催
+            <time datetime="2014-07-25">2014年07月25日</time>
+          </h4>
+          <p class="activity-subject">
+            8月1日に仲、岩瀬が「<a href="https://atnd.org/events/53504" target="_blank">WebRTC Meetup Tokyo #3</a>」を開催します。(定員に達しました。補欠の募集を受け付けています。)
           </p>
+        </li>
+        <li>
+          <h4 class="activity-date">
+            Romoハッカソンの審査員に小松が就任
+            <time datetime="2014-07-13">2014年07月13日</time>
+          </h4>
+          <p class="activity-subject">
+            教育用ロボット「<a href="http://www.romotive.jp/" target="_blank">Romo</a>」の<a href="http://www.romotive.jp/event/hackathon01/index.html" target="_blank">ハッカソン</a>が開催され、小松が審査員を努めました。Romoのビデオ通話機能はWebRTCを利用しています。
+          </p>
+        </li>
+        <li>
+          <h4 class="activity-date">
+            エフサミで小松が「WebRTC 傾向と対策」について講演
+            <time datetime="2014-07-12">2014年07月12日</time>
+          </h4>
+          <p class="activity-subject">
+            福島で開催されたITイベント「<a href="http://summit.efsta.com/2014/" target="_blank">エフサミ</a>」で「WebRTC 傾向と対策」というセッションに小松が登壇しました。
+          </p>
+        </li>
+        <li>
+          <h4 class="activity-date">
+            日経産業新聞にWebRTCハッカソンの様子が掲載
+            <time datetime="2014-06-30">2014年06月30日</time>
+          </h4>
           <p class="activity-subject">
             HTML5 Labの主催イベント「WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜」の様子が日経産業新聞で紹介されました。
           </p>
         </li>
         <li>
-          <p class="activity-date">
+          <h4 class="activity-date">
+            コンピューターテレフォニー誌に大津谷と小松のコメントが掲載
             <time datetime="2014-06-20">2014年06月20日</time>
-          </p>
+          </h4>
           <p class="activity-subject">
             雑誌「月刊コンピューターテレフォニー2014年7月号」の記事「<a href="http://ct.callcenter-japan.com/computer_telephony/1237.html" target="_blank">商品トレンド／WebRTC</a>」に大津谷と小松のコメントが掲載されました。
           </p>
         </li>
         <li>
-          <p class="activity-date">
+          <h4 class="activity-date">
+            APPS JAPAN 2014にWebRTC Chat on SkyWayを出展、大津谷が基調講演に登壇
             <time datetime="2014-06-11">2014年06月11日</time>
-          </p>
+          </h4>
           <p class="activity-subject">
-            INTEROPと同時開催の<a href="http://www.f2ff.jp/apps-japan/2014/" target="_blank">APPS JAPAN 2014</a>に「WebRTC Chat on SkyWay」のデモ、および「HTTPとSPDYの性質検証」の成果を出典しました。「<a href="http://codeforjapan.doorkeeper.jp/events/11422" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜</a>」を開催しました。
+            INTEROPと同時開催の<a href="http://www.f2ff.jp/apps-japan/2014/" target="_blank">APPS JAPAN 2014</a>に「WebRTC Chat on SkyWay」のデモ、および「HTTPとSPDYの性質検証」の成果を出展しました。「<a href="http://codeforjapan.doorkeeper.jp/events/11422" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜</a>」を開催しました。
             また、大津谷が特別基調講演「進化するWebとInternetの関係」でW3Cサイトマネージャー 中村修教授、Mozilla Japan代表理事 瀧田佐登子様と対談しました。
           </p>
         </li>
         <li>
-          <p class="activity-date">
+          <h4 class="activity-date">
+            復興支援を目的としたWebRTCハッカソンを開催
             <time datetime="2014-06-07">2014年06月07日</time>
-          </p>
+          </h4>
           <p class="activity-subject">
             HTML5ラボが「<a href="http://codeforjapan.doorkeeper.jp/events/11422" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCハッカソン〜</a>」を開催しました。
           </p>
         </li>
         <li>
-          <p class="activity-date">
+          <h4 class="activity-date">
+            WebRTC Meetup Tokyo #2を開催
             <time datetime="2014-06-03">2014年06月03日</time>
-          </p>
+          </h4>
           <p class="activity-subject">
             仲、岩瀬が「<a href="http://atnd.org/events/50382" target="_blank">WebRTC Meetup Tokyo #2</a>」を開催しました。
           </p>
         </li>
         <li>
-          <p class="activity-date">
+          <h4 class="activity-date">
+            復興支援を目的としたWebRTCアイデアソンを開催
             <time datetime="2014-05-31">2014年05月31日</time>
-          </p>
+          </h4>
           <p class="activity-subject">
             HTML5ラボが「<a href="http://codeforjapan.doorkeeper.jp/events/11305" target="_blank">WebRTCを使って復興支援アプリを作ろう〜WebRTCアイデアソン〜</a>」を開催しました。
           </p>
         </li>
         <li>
-          <p class="activity-date">
+          <h4 class="activity-date">
+            テレコミュニケーション誌に大津谷と小松のコメントが掲載
             <time datetime="2014-03-13">2014年05月25日</time>
-          </p>
+          </h4>
           <p class="activity-subject">
             雑誌「月刊テレコミュニケーション 2014年6月号」の特集「<a href="http://www.telecomi.biz/book/TC2014_06/index.html#6" target="_blank">WebRTCのインパクト</a>」に、大津谷と小松のコメントとSkyWayが掲載されました。
           </p>
